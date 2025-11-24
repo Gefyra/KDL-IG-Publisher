@@ -53,6 +53,18 @@ jobs:
           path: |
             ${{ env.INPUT_DIR }}/output
 
+      # Configure Git identity
+      - name: Set git user
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+      # Mark repository as safe to avoid dubious ownership warnings
+      - name: Mark repository as safe
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
+        run: git config --global --add safe.directory ${{ github.workspace }}
+
       # Publish the IG output to a branch-specific directory on gh-pages
       - name: Publish branch output to GitHub Pages
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
