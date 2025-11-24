@@ -1,0 +1,30 @@
+# dvmd.kdl.r4#2025.0.1: null
+
+## Pages
+
+* [Home](index.md)
+* [Artifacts Summary](artifacts.md)
+
+## Resources
+
+### CodeSystems
+
+* [CodeSystem Klinische Dokumentenklassen-Liste (Version 2025)](CodeSystem-kdl-cs-2025.md)
+
+### ValueSets
+
+* [ValueSet Klinische Dokumentenklassen-Liste (Version 2025)](ValueSet-kdl-vs-2025.md)
+
+### ConceptMaps
+
+* [ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.classCodes - Kontext: Archivierung, inkl. eVV](ConceptMap-kdl-ihe-classcode.md)
+* [ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.typeCodes - Kontext: Archivierung, inkl. eVV](ConceptMap-kdl-ihe-typecode.md)
+
+### ImplementationGuides
+
+* [KDL](index.md)
+
+### Examples
+
+* [kdl-dokref-ex-1 (DocumentReference)](DocumentReference-kdl-dokref-ex-1.md)
+* [kdl-dokref-ex-2 (DocumentReference)](DocumentReference-kdl-dokref-ex-2.md)

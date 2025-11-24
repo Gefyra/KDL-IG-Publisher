@@ -1,0 +1,389 @@
+{
+  "date" : "Mon, 24 Nov, 2025 14:59:13 +0000",
+  "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
+  "files" : [
+    {
+      "name" : "/fsh-generated/resources/ImplementationGuide-dvmd.kdl.r4.json",
+      "size" : 4192,
+      "processes" : [
+        {
+          "activity" : "load",
+          "start" : 43,
+          "length" : 26
+        },
+        {
+          "activity" : "loadDepInfo",
+          "start" : 44,
+          "length" : 1
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 44,
+          "length" : 11
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 44,
+          "length" : 76
+        },
+        {
+          "activity" : "validate",
+          "start" : 49,
+          "length" : 2753
+        },
+        {
+          "activity" : "generate1",
+          "start" : 54,
+          "length" : 75
+        },
+        {
+          "activity" : "generate2",
+          "start" : 59,
+          "length" : 90
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 68,
+          "length" : 4
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/CodeSystem-kdl-cs-2025.json",
+      "size" : 165797,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 43,
+          "length" : 43
+        },
+        {
+          "activity" : "load",
+          "start" : 43,
+          "length" : 87
+        },
+        {
+          "activity" : "load-configure",
+          "start" : 44,
+          "length" : 1
+        },
+        {
+          "activity" : "scan",
+          "start" : 44,
+          "length" : 1
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 44,
+          "length" : 17
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 44,
+          "length" : 173
+        },
+        {
+          "activity" : "validate",
+          "start" : 47,
+          "length" : 469
+        },
+        {
+          "activity" : "checkConformanceResources",
+          "start" : 51,
+          "length" : 1
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 51,
+          "length" : 2
+        },
+        {
+          "activity" : "generate1",
+          "start" : 54,
+          "length" : 486
+        },
+        {
+          "activity" : "generate2",
+          "start" : 59,
+          "length" : 1005
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 68,
+          "length" : 29
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 74,
+          "length" : 2
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/ConceptMap-kdl-ihe-classcode.json",
+      "size" : 134552,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 43,
+          "length" : 44
+        },
+        {
+          "activity" : "load",
+          "start" : 43,
+          "length" : 59
+        },
+        {
+          "activity" : "load",
+          "start" : 43,
+          "length" : 47
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 44,
+          "length" : 19
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 45,
+          "length" : 792
+        },
+        {
+          "activity" : "validate",
+          "start" : 47,
+          "length" : 820
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 51,
+          "length" : 1
+        },
+        {
+          "activity" : "generate1",
+          "start" : 54,
+          "length" : 268
+        },
+        {
+          "activity" : "generate2",
+          "start" : 60,
+          "length" : 198
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 68,
+          "length" : 15
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/ConceptMap-kdl-ihe-typecode.json",
+      "size" : 137086,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 43,
+          "length" : 40
+        },
+        {
+          "activity" : "load",
+          "start" : 43,
+          "length" : 54
+        },
+        {
+          "activity" : "load",
+          "start" : 43,
+          "length" : 45
+        },
+        {
+          "activity" : "load",
+          "start" : 43,
+          "length" : 1
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 44,
+          "length" : 14
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 45,
+          "length" : 491
+        },
+        {
+          "activity" : "validate",
+          "start" : 48,
+          "length" : 500
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 51,
+          "length" : 1
+        },
+        {
+          "activity" : "generate1",
+          "start" : 55,
+          "length" : 277
+        },
+        {
+          "activity" : "generate2",
+          "start" : 60,
+          "length" : 144
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 68,
+          "length" : 18
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 74,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/DocumentReference-kdl-dokref-ex-1.json",
+      "size" : 716,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 43,
+          "length" : 20
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 46,
+          "length" : 769
+        },
+        {
+          "activity" : "validate",
+          "start" : 51,
+          "length" : 1284
+        },
+        {
+          "activity" : "generate1",
+          "start" : 55,
+          "length" : 9
+        },
+        {
+          "activity" : "generate2",
+          "start" : 61,
+          "length" : 14
+        },
+        {
+          "activity" : "generateExampleZip",
+          "start" : 67,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/DocumentReference-kdl-dokref-ex-2.json",
+      "size" : 1232,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 43,
+          "length" : 20
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 47,
+          "length" : 7
+        },
+        {
+          "activity" : "validate",
+          "start" : 53,
+          "length" : 994
+        },
+        {
+          "activity" : "generate1",
+          "start" : 55,
+          "length" : 11
+        },
+        {
+          "activity" : "generate2",
+          "start" : 61,
+          "length" : 8
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/ValueSet-kdl-vs-2025.json",
+      "size" : 1980,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 43,
+          "length" : 19
+        },
+        {
+          "activity" : "load",
+          "start" : 43,
+          "length" : 23
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 44,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 47,
+          "length" : 30
+        },
+        {
+          "activity" : "validate",
+          "start" : 47,
+          "length" : 14
+        },
+        {
+          "activity" : "generate1",
+          "start" : 55,
+          "length" : 9
+        },
+        {
+          "activity" : "generate2",
+          "start" : 61,
+          "length" : 2194
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 68,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "/fsh-generated/includes/fsh-link-references.md",
+      "size" : 309
+    },
+    {
+      "name" : "/fsh-generated/includes/menu.xml",
+      "size" : 1043
+    },
+    {
+      "name" : "/input/pagecontent/index.md",
+      "size" : 73
+    },
+    {
+      "name" : "/template/config",
+      "size" : 0
+    },
+    {
+      "name" : "/template/config/_config.yml",
+      "size" : 140,
+      "processes" : [
+        {
+          "activity" : "generate2",
+          "start" : 63,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "/temp/pages/_includes/artifacts.xml",
+      "size" : 5877
+    }
+  ]
+}

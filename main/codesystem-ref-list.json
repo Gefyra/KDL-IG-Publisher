@@ -1,0 +1,31 @@
+{
+  "codeSystems" : [
+    {
+      "url" : "http://dvmd.de/fhir/CodeSystem/kdl",
+      "version" : "2025.0.1",
+      "status" : "active",
+      "name" : "CodeSystemKDL",
+      "title" : "CodeSystem Klinische Dokumentenklassen-Liste (Version 2025)",
+      "description" : "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokumentenklassen-Liste aktuell gültigen Codes.",
+      "oids" : ["1.2.276.0.76.5.553"],
+      "uses" : {
+      },
+      "ConceptMap-kdl-ihe-classcode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.classCodes - Kontext: Archivierung, inkl. eVV",
+      "ConceptMap-kdl-ihe-typecode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.typeCodes - Kontext: Archivierung, inkl. eVV",
+      "ValueSet-kdl-vs-2025.html" : "ValueSet Klinische Dokumentenklassen-Liste (Version 2025)"
+    },
+    {
+      "url" : "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+      "version" : "3.0.0",
+      "status" : "active",
+      "name" : "NullFlavor",
+      "title" : "NullFlavor",
+      "description" : "A collection of codes specifying why a valid value is not present.",
+      "oids" : ["2.16.840.1.113883.5.1008"],
+      "uses" : {
+      },
+      "ConceptMap-kdl-ihe-classcode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.classCodes - Kontext: Archivierung, inkl. eVV",
+      "ConceptMap-kdl-ihe-typecode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.typeCodes - Kontext: Archivierung, inkl. eVV"
+    }
+  ]
+}

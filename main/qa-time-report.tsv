@@ -1,0 +1,14 @@
+Source File	Size	loadResources	load	generateSnapshots	load-configure	scan	loadDepInfo	loadInfo	checkR4R4B	generateNarratives	validate	loadLists	checkConformanceResources	checkConformanceResources2	checkConformanceResources3	generateLogicalMaps	validateExpressions	scanForUsageStats	checkURLsUnique	processProvenanceDetails	generate1	generate2	generateLogicals	makeDependencies	generateExampleZip	generateValidationPack	scanProfilesForR5	scanExamplesForR5
+/fsh-generated/resources/ImplementationGuide-dvmd.kdl.r4.json	4192	-	0	0	0	0	1	0	11	76	0	0	0	0	0	0	0	0	0	0	75	90	0	0	0	4	0	0
+fsh-generated/resources/CodeSystem-kdl-cs-2025.json	165797	43	0	0	1	0	0	0	17	173	0	0	1	0	0	0	0	2	0	0	486	1005	0	0	0	29	0	2
+fsh-generated/resources/ConceptMap-kdl-ihe-classcode.json	134552	44	0	0	0	0	0	0	19	792	0	0	0	0	0	0	0	1	0	0	268	198	0	0	0	15	0	0
+fsh-generated/resources/ConceptMap-kdl-ihe-typecode.json	137086	40	0	0	0	0	0	0	14	491	0	0	0	0	0	0	0	1	0	0	277	144	0	0	0	18	0	1
+fsh-generated/resources/DocumentReference-kdl-dokref-ex-1.json	716	20	0	0	0	0	0	0	0	769	0	0	0	0	0	0	0	0	0	0	9	14	0	0	0	0	0	0
+fsh-generated/resources/DocumentReference-kdl-dokref-ex-2.json	1232	20	0	0	0	0	0	0	0	7	0	0	0	0	0	0	0	0	0	0	11	8	0	0	0	0	0	0
+fsh-generated/resources/ValueSet-kdl-vs-2025.json	1980	19	0	0	0	0	0	0	1	30	0	0	0	0	0	0	0	0	0	0	9	2194	0	0	0	1	0	0
+/fsh-generated/includes/fsh-link-references.md	309	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/fsh-generated/includes/menu.xml	1043	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/index.md	73	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/template/config	0	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/template/config/_config.yml	140	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+/temp/pages/_includes/artifacts.xml	5877	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	0	0	0	0	0	0	0
