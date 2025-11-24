@@ -10,9 +10,9 @@
       "oids" : ["1.2.276.0.76.5.553"],
       "uses" : {
       },
-      "ValueSet-kdl-vs-2025.html" : "ValueSet Klinische Dokumentenklassen-Liste (Version 2025)",
       "ConceptMap-kdl-ihe-classcode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.classCodes - Kontext: Archivierung, inkl. eVV",
-      "ConceptMap-kdl-ihe-typecode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.typeCodes - Kontext: Archivierung, inkl. eVV"
+      "ConceptMap-kdl-ihe-typecode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.typeCodes - Kontext: Archivierung, inkl. eVV",
+      "ValueSet-kdl-vs-2025.html" : "ValueSet Klinische Dokumentenklassen-Liste (Version 2025)"
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
