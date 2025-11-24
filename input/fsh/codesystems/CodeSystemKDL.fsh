@@ -11,22 +11,16 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
 * ^caseSensitive = true
 * ^hierarchyMeaning = #is-a
 * ^content = #complete
-* contact[0]
-  * name = "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"
-  * telecom[0]
-    * system = #email
-    * value = "dvmd@dvmd.de"
-  * telecom[+]
-    * system = #url
-    * value = "https://www.dvmd.de"
-* contact[+]
-  * name = "Leitung der Arbeitsgruppe: Annett Müller, M.A. Health Information Management"
-  * telecom[0]
-    * system = #email
-    * value = "mueller@dvmd.de"
-  * telecom[+]
-    * system = #url
-    * value = "https://www.dvmd.de"
+* ^contact[0].name = "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"
+* ^contact[=].telecom[0].system = #email
+* ^contact[=].telecom[=].value = "dvmd@dvmd.de"
+* ^contact[=].telecom[+].system = #url
+* ^contact[=].telecom[=].value = "https://www.dvmd.de"
+* ^contact[+].name = "Leitung der Arbeitsgruppe: Annett Müller, M.A. Health Information Management"
+* ^contact[=].telecom[0].system = #email
+* ^contact[=].telecom[=].value = "mueller@dvmd.de"
+* ^contact[=].telecom[+].system = #url
+* ^contact[=].telecom[=].value = "https://dvmd.de/publikationen/kdl/"
 //* ^count = 557
 * ^property.code = #status
 * ^property.uri = "http://hl7.org/fhir/concept-properties#status"
