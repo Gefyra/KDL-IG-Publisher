@@ -1,0 +1,122 @@
+KDL : Validation Results
+=========================================
+
+err = 12, warn = 82, info = 2
+$--
+Generated $--. FHIR version $-- for dvmd.kdl.r4#$-- (canonical = http://dvmd.de/fhir)
+ Build Errors : 3 / 4 / 0
+ /__w/KDL-IG-Publisher/KDL-IG-Publisher/fsh-generated/resources/CodeSystem-kdl-cs-2025 : 3 / 4 / 1
+ /__w/KDL-IG-Publisher/KDL-IG-Publisher/fsh-generated/resources/ConceptMap-kdl-ihe-classcode : 0 / 35 / 1
+ /__w/KDL-IG-Publisher/KDL-IG-Publisher/fsh-generated/resources/ConceptMap-kdl-ihe-typecode : 0 / 35 / 1
+ /__w/KDL-IG-Publisher/KDL-IG-Publisher/fsh-generated/resources/DocumentReference-kdl-dokref-ex-1 : 2 / 1 / 2
+ /__w/KDL-IG-Publisher/KDL-IG-Publisher/fsh-generated/resources/DocumentReference-kdl-dokref-ex-2 : 4 / 3 / 2
+ /__w/KDL-IG-Publisher/KDL-IG-Publisher/fsh-generated/resources/ImplementationGuide-dvmd.kdl.r4 : 0 / 0 / 1
+ /__w/KDL-IG-Publisher/KDL-IG-Publisher/fsh-generated/resources/ValueSet-kdl-vs-2025 : 3 / 0 / 1
+</table>
+== n/a ==
+ERROR: DocumentReference-kdl-dokref-ex-1.html#/html/body/div/div/div/div/div/div/p/a at Line 179, column 339: The link 'Patient/example' for "Patient/example" cannot be resolved
+ERROR: DocumentReference-kdl-dokref-ex-2.html#/html/body/div/div/div/div/div/div/p/a at Line 179, column 516: The link 'Patient/example' for "Patient/example" cannot be resolved
+ERROR: DocumentReference-kdl-dokref-ex-2.html#/html/body/div/div/div/div/div/div/table/tr/td/a at Line 179, column 1133: The link 'Encounter/example' for "Encounter/example" cannot be resolved
+WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
+WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
+WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide
+WARNING: 4: The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced implementation guide
+== fsh-generated/resources/CodeSystem-kdl-cs-2025.json ==
+ERROR: CodeSystem.where(url = 'http://dvmd.de/fhir/CodeSystem/kdl'): Conformance resource /__w/KDL-IG-Publisher/KDL-IG-Publisher/fsh-generated/resources/CodeSystem-kdl-cs-2025.json - the canonical URL (http://dvmd.de/fhir/CodeSystem/kdl-cs-2025) does not match the URL (http://dvmd.de/fhir/CodeSystem/kdl). Use the special-url parameter if you really mean for it not to match
+ERROR: CodeSystem.url: Resource id/url mismatch: kdl-cs-2025/http://dvmd.de/fhir/CodeSystem/kdl
+WARNING: CodeSystem/kdl-cs-2025: CodeSystem.concept[0].concept[3].concept[3].definition: value should not start or finish with whitespace 'Die Dokumentation beinhaltet die Zusammenfassung der Befundung und Empfehlung eines Facharztes für den weiteren Behandlungsverlauf. Erstellt von einer Fremdeinrichtung. Inkl.: KBV Muster 22 (Konsiliarbericht vor Aufnahme einer Psychotherapie); Hinw.: Diese KDL-Dokumentenklasse wird ab 1. Januar 2026 obsolet. Die Abbildung ist ab sofort mit der KDL AD060110 (Konsilbericht) möglich. '
+WARNING: CodeSystem/kdl-cs-2025: CodeSystem.concept[1].concept[1].concept[10].definition: value should not start or finish with whitespace 'Die Dokumentation enthält den Antrag gemäß der Richtlinie des Medizinischen Dienstes Bund nach § 283 Absatz 2 Satz 1  Nr.3 SGBV zu den regelmäßigen Begutachtungen zur Einhaltung von Strukturmerkmalen  von OPS-Kodes nach § 275d SGB V '
+WARNING: CodeSystem/kdl-cs-2025: CodeSystem.concept[12].concept[2].concept[3].definition: value should not start or finish with whitespace 'Die Dokumentation beinhaltet den Nachweis über durchgeführte Einweisungen von Personal an medizinischen Geräten. '
+WARNING: CodeSystem/kdl-cs-2025: CodeSystem.concept[12].concept[4].concept[0].definition: value should not start or finish with whitespace 'Die Dokumentation beinhaltet die Nachweise (inkl. Dosis, Mengenangaben, Indikationsstellung) der durchgeführten diagnostischen, therapeutischen und/oder pflegerischen Maßnahmen von Entgelten, ergänzenden Tagesentgelten (ET), ZE oder ZP. Dieser KDL-Kode ist ausschließlich für die Anforderung von Unterlagen durch den MD zu verwenden. '
+ERROR: /__w/KDL-IG-Publisher/KDL-IG-Publisher/fsh-generated/resources/CodeSystem-kdl-cs-2025: URL Mismatch http://dvmd.de/fhir/CodeSystem/kdl-cs-2025 vs http://dvmd.de/fhir/CodeSystem/kdl
+== fsh-generated/resources/ConceptMap-kdl-ihe-classcode.json ==
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.target.ofType(uri): No definition could be found for URL value 'http://ihe-d.de/ValueSets/IHEXDSclassCode'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[0].target: No definition could be found for URL value 'http://ihe-d.de/CodeSystems/IHEXDSclassCode'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[0].element[361].code: The source display 'Arzneimitteladministration' for the code 'http://dvmd.de/fhir/CodeSystem/kdl|2025.0.1#TH130102' is not valid. Possible displays: 'Arzneiadministration'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[0].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[1].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[2].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[3].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[4].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[5].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[6].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[7].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[8].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[9].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[10].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[11].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[12].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[13].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[14].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[15].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[16].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[17].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[18].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[19].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[20].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[21].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[22].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[23].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[24].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[25].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[26].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[27].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[28].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[29].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[30].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-classcode: ConceptMap.group[1].element[31].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+== fsh-generated/resources/ConceptMap-kdl-ihe-typecode.json ==
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.target.ofType(uri): No definition could be found for URL value 'http://ihe-d.de/ValueSets/IHEXDStypeCode'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[0].target: No definition could be found for URL value 'http://ihe-d.de/CodeSystems/IHEXDStypeCode'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[0].element[361].code: The source display 'Arzneimitteladministration' for the code 'http://dvmd.de/fhir/CodeSystem/kdl|2025.0.1#TH130102' is not valid. Possible displays: 'Arzneiadministration'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[0].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[1].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[2].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[3].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[4].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[5].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[6].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[7].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[8].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[9].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[10].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[11].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[12].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[13].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[14].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[15].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[16].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[17].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[18].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[19].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[20].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[21].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[22].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[23].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[24].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[25].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[26].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[27].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[28].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[29].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[30].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+WARNING: ConceptMap/kdl-ihe-typecode: ConceptMap.group[1].element[31].target[0].code: The target display 'Unbekannt' for the code 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor|3.0.0#UNK' is not valid. Possible displays: 'unknown'
+== fsh-generated/resources/DocumentReference-kdl-dokref-ex-1.json ==
+INFORMATION: DocumentReference/kdl-dokref-ex-1: DocumentReference.type: None of the codings provided are in the value set 'Document Type Value Set' (http://hl7.org/fhir/ValueSet/c80-doc-typecodes|4.0.1), and a coding is recommended to come from this value set (codes = http://dvmd.de/fhir/CodeSystem/kdl#AD010103)
+ERROR: DocumentReference/kdl-dokref-ex-1: DocumentReference.subject: Unable to resolve resource with reference 'Patient/example'
+WARNING: DocumentReference/kdl-dokref-ex-1: DocumentReference.content[0].attachment.url: No definition could be found for URL value 'Binary/95a0827c-b3dc-41b6-a114-f7dde38e9f3e'
+ERROR: DocumentReference.text.div: Hyperlink 'Patient/example' at 'div/p/a' for 'Patient/example' does not resolve
+== fsh-generated/resources/DocumentReference-kdl-dokref-ex-2.json ==
+WARNING: DocumentReference/kdl-dokref-ex-2: DocumentReference.type.coding[1].system: A definition for CodeSystem 'http://ihe-d.de/CodeSystems/IHEXDStypeCode' could not be found, so the code cannot be validated
+INFORMATION: DocumentReference/kdl-dokref-ex-2: DocumentReference.type: None of the codings provided are in the value set 'Document Type Value Set' (http://hl7.org/fhir/ValueSet/c80-doc-typecodes|4.0.1), and a coding is recommended to come from this value set (codes = http://dvmd.de/fhir/CodeSystem/kdl#AM010301, http://ihe-d.de/CodeSystems/IHEXDStypeCode#EINW)
+WARNING: DocumentReference/kdl-dokref-ex-2: DocumentReference.category[0].coding[0].system: A definition for CodeSystem 'http://ihe-d.de/CodeSystems/IHEXDSclassCode' could not be found, so the code cannot be validated
+ERROR: DocumentReference/kdl-dokref-ex-2: DocumentReference.subject: Unable to resolve resource with reference 'Patient/example'
+WARNING: DocumentReference/kdl-dokref-ex-2: DocumentReference.content[0].attachment.url: No definition could be found for URL value 'Binary/example'
+ERROR: DocumentReference/kdl-dokref-ex-2: DocumentReference.context.encounter[0]: Unable to resolve resource with reference 'Encounter/example'
+ERROR: DocumentReference.text.div: Hyperlink 'Patient/example' at 'div/p/a' for 'Patient/example' does not resolve
+ERROR: DocumentReference.text.div: Hyperlink 'Encounter/example' at 'div/table/tr/td/a' for 'Encounter/example' does not resolve
+== fsh-generated/resources/ImplementationGuide-dvmd.kdl.r4.json ==
+== fsh-generated/resources/ValueSet-kdl-vs-2025.json ==
+ERROR: ValueSet.where(url = 'http://dvmd.de/fhir/ValueSet/kdl'): Conformance resource /__w/KDL-IG-Publisher/KDL-IG-Publisher/fsh-generated/resources/ValueSet-kdl-vs-2025.json - the canonical URL (http://dvmd.de/fhir/ValueSet/kdl-vs-2025) does not match the URL (http://dvmd.de/fhir/ValueSet/kdl). Use the special-url parameter if you really mean for it not to match
+ERROR: ValueSet.url: Resource id/url mismatch: kdl-vs-2025/http://dvmd.de/fhir/ValueSet/kdl
+ERROR: /__w/KDL-IG-Publisher/KDL-IG-Publisher/fsh-generated/resources/ValueSet-kdl-vs-2025: URL Mismatch http://dvmd.de/fhir/ValueSet/kdl-vs-2025 vs http://dvmd.de/fhir/ValueSet/kdl

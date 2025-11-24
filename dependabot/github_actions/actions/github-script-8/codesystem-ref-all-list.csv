@@ -1,0 +1,3 @@
+URL,Version,Status,OIDs,Name,Title,Description,Used
+http://dvmd.de/fhir/CodeSystem/kdl,2025.0.1,active,"1.2.276.0.76.5.553",CodeSystemKDL,CodeSystem Klinische Dokumentenklassen-Liste (Version 2025),"Diese CodeSystem-Ressource definiert alle in der Klinischen Dokumentenklassen-Liste aktuell gültigen Codes.","ConceptMap/kdl-ihe-typecode,ConceptMap/kdl-ihe-classcode,ValueSet/kdl-vs-2025"
+http://terminology.hl7.org/CodeSystem/v3-NullFlavor,3.0.0,active,"2.16.840.1.113883.5.1008",NullFlavor,NullFlavor,"A collection of codes specifying why a valid value is not present.","ConceptMap/kdl-ihe-typecode,ConceptMap/kdl-ihe-classcode"

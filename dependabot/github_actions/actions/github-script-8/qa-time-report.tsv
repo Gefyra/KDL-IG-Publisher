@@ -1,0 +1,20 @@
+Source File	Size	loadResources	load	generateSnapshots	load-configure	scan	loadDepInfo	loadInfo	checkR4R4B	generateNarratives	validate	loadLists	checkConformanceResources	checkConformanceResources2	checkConformanceResources3	generateLogicalMaps	validateExpressions	scanForUsageStats	checkURLsUnique	processProvenanceDetails	generate1	generate2	generateLogicals	makeDependencies	generateExampleZip	generateValidationPack	scanProfilesForR5	scanExamplesForR5
+/fsh-generated/resources/ImplementationGuide-dvmd.kdl.r4.json	4353	-	0	0	1	0	0	0	10	50	0	0	0	0	1	0	0	1	0	0	79	61	0	0	0	2	0	1
+fsh-generated/resources/CodeSystem-kdl-cs-2025.json	165797	50	0	0	0	0	0	0	16	139	0	0	1	0	0	0	0	2	0	0	510	1024	0	0	0	21	0	1
+fsh-generated/resources/ConceptMap-kdl-ihe-classcode.json	134552	45	0	0	0	0	0	0	10	593	0	0	0	0	0	0	0	1	0	0	278	311	0	0	0	12	0	1
+fsh-generated/resources/ConceptMap-kdl-ihe-typecode.json	137086	44	0	0	0	0	0	0	9	379	0	0	0	0	0	0	0	1	0	0	245	345	0	0	0	11	0	1
+fsh-generated/resources/DocumentReference-kdl-dokref-ex-1.json	716	21	0	0	0	0	0	0	0	685	0	0	0	0	0	0	0	0	0	0	10	22	0	0	1	0	0	0
+fsh-generated/resources/DocumentReference-kdl-dokref-ex-2.json	1232	20	0	0	1	0	0	0	0	7	0	0	0	0	0	0	0	0	0	0	12	16	0	0	0	0	0	0
+fsh-generated/resources/ValueSet-kdl-vs-2025.json	1980	20	0	0	0	0	0	0	0	43	0	0	0	0	0	0	0	0	0	0	10	1810	0	0	0	0	0	0
+/fsh-generated/includes/fsh-link-references.md	309	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+/fsh-generated/includes/menu.xml	1135	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/CodeSystem-kdl-cs-2025-intro.md	2133	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/Aenderungen-zur-Vorversion.md	11963	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/index.md	4573	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+/template/config	0	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/template/config/_config.yml	140	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/images	0	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/images/GefyralogosoloM_Claim_sehrklein.jpg	683825	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+/input/images/DMI_Logo.png	2739	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/images/DVMD-logo.png	9598	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/temp/pages/_includes/artifacts.xml	5877	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	0	0	0	0	0	0	0

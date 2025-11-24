@@ -1,0 +1,427 @@
+{
+  "date" : "Mon, 24 Nov, 2025 15:39:00 +0000",
+  "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
+  "files" : [
+    {
+      "name" : "/fsh-generated/resources/ImplementationGuide-dvmd.kdl.r4.json",
+      "size" : 4353,
+      "processes" : [
+        {
+          "activity" : "load",
+          "start" : 43,
+          "length" : 26
+        },
+        {
+          "activity" : "load-configure",
+          "start" : 44,
+          "length" : 1
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 44,
+          "length" : 10
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 44,
+          "length" : 50
+        },
+        {
+          "activity" : "validate",
+          "start" : 47,
+          "length" : 2854
+        },
+        {
+          "activity" : "checkConformanceResources3",
+          "start" : 50,
+          "length" : 1
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 50,
+          "length" : 1
+        },
+        {
+          "activity" : "generate1",
+          "start" : 52,
+          "length" : 79
+        },
+        {
+          "activity" : "generate2",
+          "start" : 57,
+          "length" : 61
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 66,
+          "length" : 2
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 72,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/CodeSystem-kdl-cs-2025.json",
+      "size" : 165797,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 42,
+          "length" : 50
+        },
+        {
+          "activity" : "load",
+          "start" : 42,
+          "length" : 62
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 44,
+          "length" : 16
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 44,
+          "length" : 139
+        },
+        {
+          "activity" : "validate",
+          "start" : 46,
+          "length" : 494
+        },
+        {
+          "activity" : "checkConformanceResources",
+          "start" : 50,
+          "length" : 1
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 50,
+          "length" : 2
+        },
+        {
+          "activity" : "generate1",
+          "start" : 52,
+          "length" : 510
+        },
+        {
+          "activity" : "generate2",
+          "start" : 58,
+          "length" : 1024
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 66,
+          "length" : 21
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 72,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/ConceptMap-kdl-ihe-classcode.json",
+      "size" : 134552,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 42,
+          "length" : 45
+        },
+        {
+          "activity" : "load",
+          "start" : 42,
+          "length" : 60
+        },
+        {
+          "activity" : "load",
+          "start" : 43,
+          "length" : 47
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 44,
+          "length" : 10
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 44,
+          "length" : 593
+        },
+        {
+          "activity" : "validate",
+          "start" : 46,
+          "length" : 713
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 50,
+          "length" : 1
+        },
+        {
+          "activity" : "generate1",
+          "start" : 53,
+          "length" : 278
+        },
+        {
+          "activity" : "generate2",
+          "start" : 59,
+          "length" : 311
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 66,
+          "length" : 12
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 72,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/ConceptMap-kdl-ihe-typecode.json",
+      "size" : 137086,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 42,
+          "length" : 44
+        },
+        {
+          "activity" : "load",
+          "start" : 43,
+          "length" : 52
+        },
+        {
+          "activity" : "load",
+          "start" : 43,
+          "length" : 44
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 44,
+          "length" : 9
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 45,
+          "length" : 379
+        },
+        {
+          "activity" : "validate",
+          "start" : 47,
+          "length" : 449
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 50,
+          "length" : 1
+        },
+        {
+          "activity" : "generate1",
+          "start" : 53,
+          "length" : 245
+        },
+        {
+          "activity" : "generate2",
+          "start" : 59,
+          "length" : 345
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 66,
+          "length" : 11
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 72,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/DocumentReference-kdl-dokref-ex-1.json",
+      "size" : 716,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 42,
+          "length" : 21
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 45,
+          "length" : 685
+        },
+        {
+          "activity" : "validate",
+          "start" : 50,
+          "length" : 973
+        },
+        {
+          "activity" : "generate1",
+          "start" : 53,
+          "length" : 10
+        },
+        {
+          "activity" : "generate2",
+          "start" : 59,
+          "length" : 22
+        },
+        {
+          "activity" : "generateExampleZip",
+          "start" : 65,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/DocumentReference-kdl-dokref-ex-2.json",
+      "size" : 1232,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 42,
+          "length" : 20
+        },
+        {
+          "activity" : "load-configure",
+          "start" : 44,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 46,
+          "length" : 7
+        },
+        {
+          "activity" : "validate",
+          "start" : 51,
+          "length" : 728
+        },
+        {
+          "activity" : "generate1",
+          "start" : 53,
+          "length" : 12
+        },
+        {
+          "activity" : "generate2",
+          "start" : 59,
+          "length" : 16
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/ValueSet-kdl-vs-2025.json",
+      "size" : 1980,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 42,
+          "length" : 20
+        },
+        {
+          "activity" : "load",
+          "start" : 42,
+          "length" : 21
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 46,
+          "length" : 43
+        },
+        {
+          "activity" : "validate",
+          "start" : 46,
+          "length" : 18
+        },
+        {
+          "activity" : "generate1",
+          "start" : 53,
+          "length" : 10
+        },
+        {
+          "activity" : "generate2",
+          "start" : 59,
+          "length" : 1810
+        }
+      ]
+    },
+    {
+      "name" : "/fsh-generated/includes/fsh-link-references.md",
+      "size" : 309,
+      "processes" : [
+        {
+          "activity" : "generate2",
+          "start" : 61,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "/fsh-generated/includes/menu.xml",
+      "size" : 1135
+    },
+    {
+      "name" : "/input/pagecontent/CodeSystem-kdl-cs-2025-intro.md",
+      "size" : 2133
+    },
+    {
+      "name" : "/input/pagecontent/Aenderungen-zur-Vorversion.md",
+      "size" : 11963
+    },
+    {
+      "name" : "/input/pagecontent/index.md",
+      "size" : 4573,
+      "processes" : [
+        {
+          "activity" : "generate2",
+          "start" : 61,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "/template/config",
+      "size" : 0
+    },
+    {
+      "name" : "/template/config/_config.yml",
+      "size" : 140
+    },
+    {
+      "name" : "/input/images",
+      "size" : 0
+    },
+    {
+      "name" : "/input/images/GefyralogosoloM_Claim_sehrklein.jpg",
+      "size" : 683825,
+      "processes" : [
+        {
+          "activity" : "generate2",
+          "start" : 61,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "/input/images/DMI_Logo.png",
+      "size" : 2739
+    },
+    {
+      "name" : "/input/images/DVMD-logo.png",
+      "size" : 9598
+    },
+    {
+      "name" : "/temp/pages/_includes/artifacts.xml",
+      "size" : 5877
+    }
+  ]
+}
