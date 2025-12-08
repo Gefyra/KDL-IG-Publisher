@@ -1,24 +1,31 @@
 {
-  "taskButtons.tasks": [
+  "VsCodeTaskButtons.showCounter": true,
+  "VsCodeTaskButtons.tasks": [
     {
-      "label": "$(tools) SUSHI Build",
-      "task": "SUSHI: Build FSH",
-      "tooltip": "Build FSH files with SUSHI"
-    },
-    {
-      "label": "$(package) Full Build",
-      "task": "IG Publisher: Full Build",
-      "tooltip": "Run complete IG Publisher build"
-    },
-    {
-      "label": "$(cloud-download) Update Publisher",
-      "task": "Update IG Publisher",
-      "tooltip": "Update IG Publisher to latest version"
-    },
-    {
-      "label": "$(archive) Download Dependencies",
-      "task": "FHIR Package: Download and Snapshot Dependencies",
-      "tooltip": "Download and snapshot FHIR package dependencies"
+      "label": "$(tools) Build",
+      "tasks": [
+        {
+          "label": "$(tools) SUSHI Build",
+          "task": "SUSHI: Build FSH",
+          "description": "Build FSH files with SUSHI"
+        },
+        {
+          "label": "$(package) Full Build",
+          "task": "IG Publisher: Full Build",
+          "description": "Run complete IG Publisher build"
+        },
+        {
+          "label": "$(cloud-download) Update Publisher",
+          "task": "Update IG Publisher",
+          "description": "Update IG Publisher to latest version"
+        },
+        {
+          "label": "$(archive) Download Dependencies",
+          "task": "FHIR Package: Download and Snapshot Dependencies",
+          "description": "Download and snapshot FHIR package dependencies"
+        }
+      ],
+      "tooltip": "Build & Update Tasks"
     },
     {
       "label": "$(globe) Serve IG",
@@ -31,5 +38,7 @@
       "tooltip": "Änderungen committen (speichert alle Dateien)"
     }
   ],
-  "github.copilot.chat.startupMessage": false
+  "github.copilot.chat.startupMessage": false,
+  "github.copilot.chat.welcomeMessage": "never",
+  "workbench.secondarySideBar.defaultVisibility": "hidden"
 }
