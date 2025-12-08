@@ -76,7 +76,7 @@ Diese Publikation wurde erstellt mit freundlicher Unterstützung von
   "version" : "2025.0.1",
   "name" : "KDL",
   "status" : "active",
-  "date" : "2025-12-08T09:27:18+00:00",
+  "date" : "2025-12-08T09:27:49+00:00",
   "publisher" : "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)",
   "contact" : [
     {
