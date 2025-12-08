@@ -30,5 +30,6 @@
       "task": "Git: Commit Changes",
       "tooltip": "Änderungen committen (speichert alle Dateien)"
     }
-  ]
+  ],
+  "github.copilot.chat.startupMessage": false
 }
