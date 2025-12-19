@@ -1,14 +1,14 @@
 Source File	Size	loadResources	load	generateSnapshots	load-configure	scan	loadDepInfo	loadInfo	checkR4R4B	generateNarratives	validate	loadLists	checkConformanceResources	checkConformanceResources2	checkConformanceResources3	generateLogicalMaps	validateExpressions	scanForUsageStats	checkURLsUnique	processProvenanceDetails	generate1	generate2	generateLogicals	makeDependencies	generateExampleZip	generateValidationPack	scanProfilesForR5	scanExamplesForR5
-/fsh-generated/resources/ImplementationGuide-dvmd.kdl.r4.json	4353	-	0	0	0	0	0	0	11	68	0	0	0	0	0	0	0	0	0	0	82	68	0	0	0	2	0	0
-fsh-generated/resources/CodeSystem-kdl-cs-2025.json	165797	47	0	0	0	0	0	0	17	159	0	0	0	0	0	0	0	1	0	0	556	1033	0	0	0	19	0	2
-fsh-generated/resources/ConceptMap-kdl-ihe-classcode.json	134552	48	0	0	0	0	0	0	11	796	0	0	0	0	0	0	0	2	0	0	265	301	0	1	0	11	0	0
-fsh-generated/resources/ConceptMap-kdl-ihe-typecode.json	137086	47	0	0	0	0	0	0	9	310	0	0	0	0	0	0	0	1	0	0	253	273	0	0	0	10	0	1
-fsh-generated/resources/DocumentReference-kdl-dokref-ex-1.json	716	20	0	0	1	0	0	0	0	230	0	0	0	0	0	0	0	0	0	0	10	20	0	0	0	0	0	0
-fsh-generated/resources/DocumentReference-kdl-dokref-ex-2.json	1232	20	0	0	0	0	0	0	0	9	0	0	0	0	0	0	0	0	0	0	11	13	0	0	0	0	0	0
-fsh-generated/resources/ValueSet-kdl-vs-2025.json	1980	20	0	0	0	0	0	0	0	74	0	0	0	0	0	0	0	0	0	0	9	1518	0	0	0	0	0	0
-/fsh-generated/includes/fsh-link-references.md	309	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/fsh-generated/includes/menu.xml	1135	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
-/input/pagecontent/CodeSystem-kdl-cs-2025-intro.md	2133	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/fsh-generated/resources/ImplementationGuide-dvmd.kdl.r4.json	4353	-	0	0	0	0	0	0	9	65	0	0	0	0	0	0	0	0	0	0	83	66	0	0	0	3	0	1
+fsh-generated/resources/CodeSystem-kdl-cs-2026.json	166483	43	0	0	0	0	1	0	18	128	0	0	1	0	0	0	0	2	0	0	493	1279	0	0	0	34	0	1
+fsh-generated/resources/ConceptMap-kdl-ihe-classcode.json	134552	47	0	0	1	0	0	0	17	871	0	0	0	0	0	0	0	2	0	0	270	315	0	0	0	18	0	1
+fsh-generated/resources/ConceptMap-kdl-ihe-typecode.json	137086	45	0	0	0	0	0	0	15	406	0	0	0	0	0	0	0	1	0	0	248	283	0	0	0	17	0	1
+fsh-generated/resources/DocumentReference-kdl-dokref-ex-1.json	716	21	0	0	0	0	0	0	0	697	0	0	0	0	0	0	0	0	0	0	10	20	0	0	1	0	0	0
+fsh-generated/resources/DocumentReference-kdl-dokref-ex-2.json	1232	20	0	0	0	0	0	0	0	8	0	0	0	0	0	0	0	0	0	0	11	13	0	0	0	0	0	0
+fsh-generated/resources/ValueSet-kdl-vs-2025.json	1980	20	0	0	0	0	0	0	0	42	0	0	0	0	0	0	0	0	0	0	14	1565	0	0	0	1	0	0
+/fsh-generated/includes/fsh-link-references.md	309	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+/fsh-generated/includes/menu.xml	1135	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/CodeSystem-kdl-cs-2025-intro.md	2133	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0
 /input/pagecontent/Aenderungen-zur-Vorversion.md	11963	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
 /input/pagecontent/index.md	4573	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 /template/config	0	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0

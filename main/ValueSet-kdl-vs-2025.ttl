@@ -11,7 +11,7 @@
   fhir:id [ fhir:v "kdl-vs-2025"] ; # 
   fhir:text [
      fhir:status [ fhir:v "generated" ] ;
-     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet kdl-vs-2025</b></p><a name=\"kdl-vs-2025\"> </a><a name=\"hckdl-vs-2025\"> </a><ul><li>Include codes from<a href=\"CodeSystem-kdl-cs-2025.html\"><code>http://dvmd.de/fhir/CodeSystem/kdl</code></a><span title=\"Version is not explicitly stated, which means it is fixed to the version provided in this specification\"> version ?2025.0.1</span> where child doesn't exist</li></ul></div>"^^rdf:XMLLiteral ]
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet kdl-vs-2025</b></p><a name=\"kdl-vs-2025\"> </a><a name=\"hckdl-vs-2025\"> </a><ul><li>Include codes from<a href=\"CodeSystem-kdl-cs-2026.html\"><code>http://dvmd.de/fhir/CodeSystem/kdl</code></a><span title=\"Version is not explicitly stated, which means it is fixed to the version provided in this specification\"> version ?2025.0.1</span> where child doesn't exist</li></ul></div>"^^rdf:XMLLiteral ]
   ] ; # 
   fhir:url [
      fhir:v "http://dvmd.de/fhir/ValueSet/kdl"^^xsd:anyURI ;

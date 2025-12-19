@@ -22,15 +22,9 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
 
 ### Logical Definition (CLD)
 
-* Include codes from[`http://dvmd.de/fhir/CodeSystem/kdl`](CodeSystem-kdl-cs-2025.md)version 📦2025.0.1 where child doesn't exist
-
  
 
 ### Expansion
-
-Expansion from tx.fhir.org based on [codesystem CodeSystem Klinische Dokumentenklassen-Liste (Version 2025) v2025.0.1 (CodeSystem)](CodeSystem-kdl-cs-2025.md)
-
-This value set contains 480 concepts
 
 -------
 

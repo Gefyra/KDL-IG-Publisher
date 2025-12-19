@@ -1,11 +1,11 @@
 [
   {
-    "id" : "kdl-cs-2025",
+    "id" : "kdl-cs-2026",
     "type" : "CodeSystem",
     "url" : "http://dvmd.de/fhir/CodeSystem/kdl",
     "version" : "2025.0.1",
     "name" : "CodeSystemKDL",
-    "oids" : ["1.2.276.0.76.5.553"]
+    "oids" : ["1.2.276.0.76.5.562"]
   },
   {
     "id" : "kdl-ihe-classcode",

@@ -1,2 +1,2 @@
 URL,Version,Status,OIDs,Name,Title,Description,Used
-http://dvmd.de/fhir/CodeSystem/kdl,2025.0.1,active,"1.2.276.0.76.5.553",CodeSystemKDL,CodeSystem Klinische Dokumentenklassen-Liste (Version 2025),"Diese CodeSystem-Ressource definiert alle in der Klinischen Dokumentenklassen-Liste aktuell gültigen Codes.",
+http://dvmd.de/fhir/CodeSystem/kdl,2025.0.1,active,"1.2.276.0.76.5.562",CodeSystemKDL,CodeSystem Klinische Dokumentenklassen-Liste (Version 2026),"Diese CodeSystem-Ressource definiert alle in der Klinischen Dokumentenklassen-Liste aktuell gültigen Codes.",

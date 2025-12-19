@@ -21,7 +21,7 @@ These define new code systems used by systems conforming to this implementation 
 
 | | |
 | :--- | :--- |
-| [CodeSystem Klinische Dokumentenklassen-Liste (Version 2025)](CodeSystem-kdl-cs-2025.md) | Diese CodeSystem-Ressource definiert alle in der Klinischen Dokumentenklassen-Liste aktuell gültigen Codes. |
+| [CodeSystem Klinische Dokumentenklassen-Liste (Version 2026)](CodeSystem-kdl-cs-2026.md) | Diese CodeSystem-Ressource definiert alle in der Klinischen Dokumentenklassen-Liste aktuell gültigen Codes. |
 
 ### Terminology: Concept Maps 
 

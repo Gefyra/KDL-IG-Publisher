@@ -20,7 +20,7 @@
   fhir:version [ fhir:v "2025.0.1"] ; # 
   fhir:name [ fhir:v "KDL"] ; # 
   fhir:status [ fhir:v "active"] ; # 
-  fhir:date [ fhir:v "2025-12-08T11:38:45+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2025-12-19T12:43:04+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)" ] ;
@@ -52,7 +52,7 @@
        fhir:l <http://terminology.hl7.org/ImplementationGuide/hl7.terminology>
      ] ;
      fhir:packageId [ fhir:v "hl7.terminology.r4" ] ;
-     fhir:version [ fhir:v "7.0.0" ]
+     fhir:version [ fhir:v "7.0.1" ]
   ] [
      fhir:id [ fhir:v "hl7ext" ] ;
      fhir:extension ( [
@@ -680,7 +680,7 @@
        ] ;
        fhir:value [
          a fhir:Code ;
-         fhir:v "hl7.fhir.uv.tools.r4#0.8.0"
+         fhir:v "hl7.fhir.uv.tools.r4#0.9.0"
        ]
      ] [
        fhir:extension ( [
@@ -1295,10 +1295,10 @@
          ]
        ] ) ;
        fhir:reference [
-         fhir:l <http://dvmd.de/fhir/CodeSystem/kdl-cs-2025> ;
-         fhir:reference [ fhir:v "CodeSystem/kdl-cs-2025" ]
+         fhir:l <http://dvmd.de/fhir/CodeSystem/kdl-cs-2026> ;
+         fhir:reference [ fhir:v "CodeSystem/kdl-cs-2026" ]
        ] ;
-       fhir:name [ fhir:v "CodeSystem Klinische Dokumentenklassen-Liste (Version 2025)" ] ;
+       fhir:name [ fhir:v "CodeSystem Klinische Dokumentenklassen-Liste (Version 2026)" ] ;
        fhir:description [ fhir:v "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokumentenklassen-Liste aktuell gültigen Codes." ] ;
        fhir:example [
          a fhir:Boolean ;

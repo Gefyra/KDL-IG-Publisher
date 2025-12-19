@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://dvmd.de/fhir/ImplementationGuide/dvmd.kdl.r4 | *Version*:2025.0.1 |
-| Active as of 2025-12-08 | *Computable Name*:KDL |
+| Active as of 2025-12-19 | *Computable Name*:KDL |
 
 # Hauptseite
 
@@ -76,7 +76,7 @@ Diese Publikation wurde erstellt mit freundlicher Unterstützung von
   "version" : "2025.0.1",
   "name" : "KDL",
   "status" : "active",
-  "date" : "2025-12-08T11:38:45+00:00",
+  "date" : "2025-12-19T12:43:04+00:00",
   "publisher" : "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)",
   "contact" : [
     {
@@ -107,7 +107,7 @@ Diese Publikation wurde erstellt mit freundlicher Unterstützung von
       ],
       "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
       "packageId" : "hl7.terminology.r4",
-      "version" : "7.0.0"
+      "version" : "7.0.1"
     },
     {
       "id" : "hl7ext",
@@ -451,7 +451,7 @@ Diese Publikation wurde erstellt mit freundlicher Unterstützung von
       },
       {
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
-        "valueCode" : "hl7.fhir.uv.tools.r4#0.8.0"
+        "valueCode" : "hl7.fhir.uv.tools.r4#0.9.0"
       },
       {
         "extension" : [
@@ -788,9 +788,9 @@ Diese Publikation wurde erstellt mit freundlicher Unterstützung von
           }
         ],
         "reference" : {
-          "reference" : "CodeSystem/kdl-cs-2025"
+          "reference" : "CodeSystem/kdl-cs-2026"
         },
-        "name" : "CodeSystem Klinische Dokumentenklassen-Liste (Version 2025)",
+        "name" : "CodeSystem Klinische Dokumentenklassen-Liste (Version 2026)",
         "description" : "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokumentenklassen-Liste aktuell gültigen Codes.",
         "exampleBoolean" : false
       },

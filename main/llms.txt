@@ -10,7 +10,7 @@
 
 ### CodeSystems
 
-* [CodeSystem Klinische Dokumentenklassen-Liste (Version 2025)](CodeSystem-kdl-cs-2025.md)
+* [CodeSystem Klinische Dokumentenklassen-Liste (Version 2026)](CodeSystem-kdl-cs-2026.md)
 
 ### ValueSets
 
