@@ -1278,7 +1278,7 @@ Usage: #definition
       * code = #BILD
       * display = "Ergebnisse bildgebender Diagnostik"
       * equivalence = #wider
-    * element[+]
+  * element[+]
     * code = #DG020116
     * display = "Zugangscode Bildportal"
     * target
