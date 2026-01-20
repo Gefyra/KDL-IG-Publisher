@@ -1,0 +1,61 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://dvmd.de/fhir/ValueSet/kdl-vs-2026> a fhir:ValueSet ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "kdl-vs-2026"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet kdl-vs-2026</b></p><a name=\"kdl-vs-2026\"> </a><a name=\"hckdl-vs-2026\"> </a><ul><li>Include codes from<a href=\"CodeSystem-kdl-cs-2026.html\"><code>http://dvmd.de/fhir/CodeSystem/kdl</code></a><span title=\"Version is not explicitly stated, which means it is fixed to the version provided in this specification\"> version ?2026.0.0</span> where child doesn't exist</li></ul></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "http://dvmd.de/fhir/ValueSet/kdl"^^xsd:anyURI ;
+     fhir:l <http://dvmd.de/fhir/ValueSet/kdl>
+  ] ; # 
+  fhir:identifier ( [
+     fhir:system [
+       fhir:v "urn:ietf:rfc:3986"^^xsd:anyURI ;
+       fhir:l <urn:ietf:rfc:3986>
+     ] ;
+     fhir:value [ fhir:v "urn:oid:1.2.276.0.76.11.469" ]
+  ] ) ; # 
+  fhir:version [ fhir:v "2026.0.0"] ; # 
+  fhir:name [ fhir:v "ValueSetKDL"] ; # 
+  fhir:title [ fhir:v "ValueSet Klinische Dokumentenklassen-Liste (Version 2025)"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-01-01"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.dvmd.de" ]
+     ] [
+       fhir:system [ fhir:v "email" ] ;
+       fhir:value [ fhir:v "dvmd@dvmd.de" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "ValueSets sind Listen von Codes, die in einem bestimmten Kontext verwendet werden. Durch sog. &quot;Terminology-Binding&quot; können Attribute von FHIR-Ressourcen an ValueSets gebunden werden, um die Menge der zulässigen Werte für dieses Attribut einzuschränken.  Dieses ValueSet enthält sämtliche Codes aus dem CodeSystem &quot;KDL&quot; und ist für Bindings an Attribute geeignet, an denen alle Werte aus dem CodeSystem &quot;KDL&quot; erlaubt werden sollen.  Beispiel: DocumentReference.type"] ; # 
+  fhir:copyright [ fhir:v "2026 DVMD e.V."] ; # 
+  fhir:compose [
+     fhir:include ( [
+       fhir:system [
+         fhir:v "http://dvmd.de/fhir/CodeSystem/kdl"^^xsd:anyURI ;
+         fhir:l <http://dvmd.de/fhir/CodeSystem/kdl>
+       ] ;
+       fhir:filter ( [
+         fhir:property [ fhir:v "child" ] ;
+         fhir:op [ fhir:v "exists" ] ;
+         fhir:value [ fhir:v "false" ]
+       ] )
+     ] )
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

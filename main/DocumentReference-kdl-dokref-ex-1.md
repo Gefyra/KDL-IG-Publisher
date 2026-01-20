@@ -1,4 +1,4 @@
-# kdl-dokref-ex-1 - v2025.0.1
+# kdl-dokref-ex-1 - v2026.0.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)

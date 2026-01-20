@@ -3,7 +3,7 @@
     "id" : "kdl-cs-2026",
     "type" : "CodeSystem",
     "url" : "http://dvmd.de/fhir/CodeSystem/kdl",
-    "version" : "2025.0.1",
+    "version" : "2026.0.0",
     "name" : "CodeSystemKDL",
     "oids" : ["1.2.276.0.76.5.562"]
   },
@@ -11,28 +11,28 @@
     "id" : "kdl-ihe-classcode",
     "type" : "ConceptMap",
     "url" : "http://dvmd.de/fhir/ConceptMap/kdl-ihe-classcode",
-    "version" : "2025.0.1",
+    "version" : "2026.0.0",
     "name" : "ConceptMapKdlIheClasscode"
   },
   {
     "id" : "kdl-ihe-typecode",
     "type" : "ConceptMap",
     "url" : "http://dvmd.de/fhir/ConceptMap/kdl-ihe-typecode",
-    "version" : "2025.0.1",
+    "version" : "2026.0.0",
     "name" : "ConceptMapKdlIheTypecode"
   },
   {
     "id" : "dvmd.kdl.r4",
     "type" : "ImplementationGuide",
     "url" : "http://dvmd.de/fhir/ImplementationGuide/dvmd.kdl.r4",
-    "version" : "2025.0.1",
+    "version" : "2026.0.0",
     "name" : "KDL"
   },
   {
-    "id" : "kdl-vs-2025",
+    "id" : "kdl-vs-2026",
     "type" : "ValueSet",
     "url" : "http://dvmd.de/fhir/ValueSet/kdl",
-    "version" : "2025.0.1",
+    "version" : "2026.0.0",
     "name" : "ValueSetKDL",
     "oids" : ["1.2.276.0.76.11.469"]
   }

@@ -10,7 +10,7 @@
     "system" : "urn:ietf:rfc:3986",
     "value" : "urn:oid:1.2.276.0.76.5.562"
   }],
-  "version" : "2025.0.1",
+  "version" : "2026.0.0",
   "name" : "CodeSystemKDL",
   "title" : "CodeSystem Klinische Dokumentenklassen-Liste (Version 2026)",
   "status" : "active",

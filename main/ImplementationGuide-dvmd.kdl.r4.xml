@@ -6,10 +6,10 @@
     <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ImplementationGuide dvmd.kdl.r4</b></p><a name="dvmd.kdl.r4"> </a><a name="hcdvmd.kdl.r4"> </a><h2>KDL</h2><p>The official URL for this implementation guide is: </p><pre>http://dvmd.de/fhir/ImplementationGuide/dvmd.kdl.r4</pre></div>
   </text>
   <url value="http://dvmd.de/fhir/ImplementationGuide/dvmd.kdl.r4"/>
-  <version value="2025.0.1"/>
+  <version value="2026.0.0"/>
   <name value="KDL"/>
   <status value="active"/>
-  <date value="2026-01-20T10:40:55+00:00"/>
+  <date value="2026-01-20T10:41:16+00:00"/>
   <publisher value="Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"/>
   <contact>
     <name value="Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"/>
@@ -47,7 +47,7 @@
         <valueString value="copyrightyear"/>
       </extension>
       <extension url="value">
-        <valueString value="2025+"/>
+        <valueString value="2026+"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -250,7 +250,7 @@
         <valueCode value="copyrightyear"/>
       </extension>
       <extension url="value">
-        <valueString value="2025+"/>
+        <valueString value="2026+"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -505,7 +505,7 @@
         <valueString value="ValueSet"/>
       </extension>
       <reference>
-        <reference value="ValueSet/kdl-vs-2025"/>
+        <reference value="ValueSet/kdl-vs-2026"/>
       </reference>
       <name value="ValueSet Klinische Dokumentenklassen-Liste (Version 2025)"/>
       <description value="ValueSets sind Listen von Codes, die in einem bestimmten Kontext verwendet werden. Durch sog. &amp;quot;Terminology-Binding&amp;quot; können Attribute von FHIR-Ressourcen an ValueSets gebunden werden, um die Menge der zulässigen Werte für dieses Attribut einzuschränken.  Dieses ValueSet enthält sämtliche Codes aus dem CodeSystem &amp;quot;KDL&amp;quot; und ist für Bindings an Attribute geeignet, an denen alle Werte aus dem CodeSystem &amp;quot;KDL&amp;quot; erlaubt werden sollen.  Beispiel: DocumentReference.type"/>

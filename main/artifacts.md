@@ -1,4 +1,4 @@
-# Artifacts Summary - v2025.0.1
+# Artifacts Summary - v2026.0.0
 
 * [**Table of Contents**](toc.md)
 * **Artifacts Summary**
@@ -13,7 +13,7 @@ These define sets of codes used by systems conforming to this implementation gui
 
 | | |
 | :--- | :--- |
-| [ValueSet Klinische Dokumentenklassen-Liste (Version 2025)](ValueSet-kdl-vs-2025.md) | ValueSets sind Listen von Codes, die in einem bestimmten Kontext verwendet werden. Durch sog. &quot;Terminology-Binding&quot; können Attribute von FHIR-Ressourcen an ValueSets gebunden werden, um die Menge der zulässigen Werte für dieses Attribut einzuschränken. Dieses ValueSet enthält sämtliche Codes aus dem CodeSystem &quot;KDL&quot; und ist für Bindings an Attribute geeignet, an denen alle Werte aus dem CodeSystem &quot;KDL&quot; erlaubt werden sollen. Beispiel: DocumentReference.type |
+| [ValueSet Klinische Dokumentenklassen-Liste (Version 2025)](ValueSet-kdl-vs-2026.md) | ValueSets sind Listen von Codes, die in einem bestimmten Kontext verwendet werden. Durch sog. &quot;Terminology-Binding&quot; können Attribute von FHIR-Ressourcen an ValueSets gebunden werden, um die Menge der zulässigen Werte für dieses Attribut einzuschränken. Dieses ValueSet enthält sämtliche Codes aus dem CodeSystem &quot;KDL&quot; und ist für Bindings an Attribute geeignet, an denen alle Werte aus dem CodeSystem &quot;KDL&quot; erlaubt werden sollen. Beispiel: DocumentReference.type |
 
 ### Terminology: Code Systems 
 

@@ -1,4 +1,4 @@
-# Home - v2025.0.1
+# Home - v2026.0.0
 
 * [**Table of Contents**](toc.md)
 * **Home**
@@ -7,7 +7,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://dvmd.de/fhir/ImplementationGuide/dvmd.kdl.r4 | *Version*:2025.0.1 |
+| *Official URL*:http://dvmd.de/fhir/ImplementationGuide/dvmd.kdl.r4 | *Version*:2026.0.0 |
 | Active as of 2026-01-20 | *Computable Name*:KDL |
 
 # Hauptseite
@@ -18,13 +18,11 @@ Die Klinische Dokumentenklassen-Liste (KDL) ist eine Entwicklung der anwendungso
 
 Als Ergebnis dieser umfassenden Praxiserfahrung von Dokumenttyp-Benennungen deutscher Krankenhäuser leistet die KDL einen wichtigen Beitrag zur semantischen Interoperabilität in der Gesundheits-IT: Sie ermöglicht das Klassieren, also die Zuordnung, interner Dokumenttyp-Benennungen der Einrichtungen zu den Bezeichnungen bei Stakeholdern – und schafft so die Basis für den digitalen Austausch. Zu den zahlreichen potenziellen Stakeholdern in der Kommunikation, die bei der Informationen aus Patientenakten eine Rolle spielen, zählen unter anderem Leistungspartner in der Behandlungskette, Kostenträger, der Medizinische Dienst, Behörden und der Patient.
 
-Die KDL ermöglicht eine einheitliche Bezeichnung der enorm vielfältigen Dokumententyp-Benennungen im täglichen Gebrauch. Sie stellt den Kern von Dokumententypen in einer medizinischen Einrichtung dar.
-
 ## Zweckbestimmung dieses Leitfadens
 
 Dieser Implementierungsleitfaden soll es Anwendern und Entwicklern erleichtern, die KDL in FHIR-basierte Systeme zu integrieren. Die Repräsentation und Bereitstellung der Terminologie in einem standardisierten, maschinenlesbaren Format, reduziert den Aufwand bei der Implementierung erheblich und macht die KDL für FHIR-basierte Anwendungssysteme bzw. Terminologieserver umgehend nutzbar.
 
-Mit dem neuen HL7©-Standard FHIR© liegt erstmals ein moderner webbasierter Standard für das Gesundheitswesen vor, der es Entwicklern erlaubt, klinische Informationen und Terminologien mit einer einheitlichen technologischen Basis zu integrieren.
+Mit dem neuen HL7©-Standard FHIR© liegt ein moderner webbasierter Standard für das Gesundheitswesen vor, der es Entwicklern erlaubt, klinische Informationen und Terminologien mit einer einheitlichen technologischen Basis zu integrieren.
 
 Eine standardisierte Terminologie-API erlaubt die Anbindung spezialisierter Terminologie-Dienste in Anwendungssysteme sowie den standardisierten Austausch von Terminologien.
 
@@ -40,17 +38,13 @@ Für Fragen zur FHIR-Implementierung im Allgemeinen und der Nutzung von Terminol
 
 Die mit diesem Leitfaden assozizierten FHIR-Ressourcen sind als Packages publiziert. Die aktuelle sowie vergangene Versionen können unter folgendem Link heruntergeladen werden:
 
-https://simplifier.net/kdl/~packages
-
-Unter folgendem Link finden Sie stets die aktuelle Arbeitsversion:
-
-https://simplifier.net/KDL/~introduction
+https://terminologien.bfarm.de/kodiersysteme.html
 
 ## Ansprechpartner, Gültigkeit, Lizenzbedingungen
 
-Die KDL-2025 gilt ab 1. Januar 2025.
+Die KDL-2026 gilt ab 1. Januar 2026.
 
-Weitere Empfehlungen, Änderungswünsche und Hinweise sind bis 15. September 2025 an die Leitung der AG, Annett Müller (mueller@dvmd.de), zu senden. Gemeinsam mit den Teilnehmenden der AG "Weiterentwicklung KDL", aber auch im regelmäßigen Austausch mit der "KDL-Anwendergruppe" werden die Einreichungen diskutiert. Ergeben sich daraus essentielle Anpassungen des Klassiifkationssystems, ist die Notwendigkeit einer neuen Version gegeben.
+Weitere Empfehlungen, Änderungswünsche und Hinweise sind bis 15. September 2026 an die Leitung der AG, Annett Müller (mueller@dvmd.de), zu senden. Gemeinsam mit den Teilnehmenden der AG "KDL-Weiterentwicklung", aber auch im regelmäßigen Austausch mit der "KDL-Anwendergruppe" werden die Einreichungen diskutiert. Ergeben sich daraus essentielle Anpassungen des Klassiifkationssystems, ist die Notwendigkeit einer neuen Version gegeben.
 
 Weitere Informationen sind auf der Webseite des DVMD zu finden: https://dvmd.de/publikationen/kdl/. Bitte beachten Sie auch die Veranstaltungen des DVMD - u. a. zur KDL: https://dvmd.de/veranstaltungen/
 
@@ -73,10 +67,10 @@ Diese Publikation wurde erstellt mit freundlicher Unterstützung von
   "resourceType" : "ImplementationGuide",
   "id" : "dvmd.kdl.r4",
   "url" : "http://dvmd.de/fhir/ImplementationGuide/dvmd.kdl.r4",
-  "version" : "2025.0.1",
+  "version" : "2026.0.0",
   "name" : "KDL",
   "status" : "active",
-  "date" : "2026-01-20T10:40:55+00:00",
+  "date" : "2026-01-20T10:41:16+00:00",
   "publisher" : "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)",
   "contact" : [
     {
@@ -132,7 +126,7 @@ Diese Publikation wurde erstellt mit freundlicher Unterstützung von
           },
           {
             "url" : "value",
-            "valueString" : "2025+"
+            "valueString" : "2026+"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -461,7 +455,7 @@ Diese Publikation wurde erstellt mit freundlicher Unterstützung von
           },
           {
             "url" : "value",
-            "valueString" : "2025+"
+            "valueString" : "2026+"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -858,7 +852,7 @@ Diese Publikation wurde erstellt mit freundlicher Unterstützung von
           }
         ],
         "reference" : {
-          "reference" : "ValueSet/kdl-vs-2025"
+          "reference" : "ValueSet/kdl-vs-2026"
         },
         "name" : "ValueSet Klinische Dokumentenklassen-Liste (Version 2025)",
         "description" : "ValueSets sind Listen von Codes, die in einem bestimmten Kontext verwendet werden. Durch sog. &quot;Terminology-Binding&quot; können Attribute von FHIR-Ressourcen an ValueSets gebunden werden, um die Menge der zulässigen Werte für dieses Attribut einzuschränken.  Dieses ValueSet enthält sämtliche Codes aus dem CodeSystem &quot;KDL&quot; und ist für Bindings an Attribute geeignet, an denen alle Werte aus dem CodeSystem &quot;KDL&quot; erlaubt werden sollen.  Beispiel: DocumentReference.type",

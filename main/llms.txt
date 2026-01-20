@@ -1,4 +1,4 @@
-# dvmd.kdl.r4#2025.0.1: null
+# dvmd.kdl.r4#2026.0.0: null
 
 ## Pages
 
@@ -14,7 +14,7 @@
 
 ### ValueSets
 
-* [ValueSet Klinische Dokumentenklassen-Liste (Version 2025)](ValueSet-kdl-vs-2025.md)
+* [ValueSet Klinische Dokumentenklassen-Liste (Version 2025)](ValueSet-kdl-vs-2026.md)
 
 ### ConceptMaps
 

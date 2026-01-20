@@ -1,4 +1,4 @@
-# ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.typeCodes - Kontext: Archivierung, inkl. eVV - v2025.0.1
+# ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.typeCodes - Kontext: Archivierung, inkl. eVV - v2026.0.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,9 +8,9 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://dvmd.de/fhir/ConceptMap/kdl-ihe-typecode | *Version*:2025.0.1 |
-| Active as of 2025-01-01 | *Computable Name*:ConceptMapKdlIheTypecode |
-| **Copyright/Legal**: 2025 DVMD e.V. | |
+| *Official URL*:http://dvmd.de/fhir/ConceptMap/kdl-ihe-typecode | *Version*:2026.0.0 |
+| Active as of 2026-01-01 | *Computable Name*:ConceptMapKdlIheTypecode |
+| **Copyright/Legal**: 2026 DVMD e.V. | |
 
  
 Diese Ressource dient als Grundlage für die Zuordnung von KDL-Codes zu IHE-XDS DocumentEntry.typeCodes (gemäß Spezifikation von IHE Deutschland e.V., siehe http://www.ihe-d.de/projekte/xds-value-sets-fuer-deutschland/). Grundlage ist der ANWENDUNGSFALL: DIGITALE ARCHIVIERUNG, inkl. aktuelle Anforderungen des Anhangs zur Anlage 1 der eVV. Das Reviewergebnis - zu diesem Mappingkonzept - von der IHE-AG IHE-XDS ValueSets aus 2023 wurde berücksichtigt. 
@@ -24,12 +24,12 @@ Diese Ressource dient als Grundlage für die Zuordnung von KDL-Codes zu IHE-XDS 
   "resourceType" : "ConceptMap",
   "id" : "kdl-ihe-typecode",
   "url" : "http://dvmd.de/fhir/ConceptMap/kdl-ihe-typecode",
-  "version" : "2025.0.1",
+  "version" : "2026.0.0",
   "name" : "ConceptMapKdlIheTypecode",
   "title" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.typeCodes - Kontext: Archivierung, inkl. eVV",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-01-01",
+  "date" : "2026-01-01",
   "publisher" : "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)",
   "contact" : [
     {
@@ -47,7 +47,7 @@ Diese Ressource dient als Grundlage für die Zuordnung von KDL-Codes zu IHE-XDS 
     }
   ],
   "description" : "Diese Ressource dient als Grundlage für die Zuordnung von KDL-Codes zu IHE-XDS DocumentEntry.typeCodes (gemäß Spezifikation von IHE Deutschland e.V., siehe http://www.ihe-d.de/projekte/xds-value-sets-fuer-deutschland/). Grundlage ist der ANWENDUNGSFALL: DIGITALE ARCHIVIERUNG, inkl. aktuelle Anforderungen des Anhangs zur Anlage 1 der eVV. Das Reviewergebnis - zu diesem Mappingkonzept - von der IHE-AG IHE-XDS ValueSets aus 2023 wurde berücksichtigt.",
-  "copyright" : "2025 DVMD e.V.",
+  "copyright" : "2026 DVMD e.V.",
   "sourceUri" : "http://dvmd.de/fhir/ValueSet/kdl",
   "targetUri" : "http://ihe-d.de/ValueSets/IHEXDStypeCode",
   "group" : [
@@ -1211,6 +1211,17 @@ Diese Ressource dient als Grundlage für die Zuordnung von KDL-Codes zu IHE-XDS 
           ]
         },
         {
+          "code" : "AM160114",
+          "display" : "Anästhesieausweis",
+          "target" : [
+            {
+              "code" : "ANAE",
+              "display" : "Anästhesiedokumente",
+              "equivalence" : "wider"
+            }
+          ]
+        },
+        {
           "code" : "AM160199",
           "display" : "Sonstiges patienteneigenes Dokument",
           "target" : [
@@ -1994,6 +2005,17 @@ Diese Ressource dient als Grundlage für die Zuordnung von KDL-Codes zu IHE-XDS 
         {
           "code" : "DG020115",
           "display" : "Checkliste bildgebende Diagnostik",
+          "target" : [
+            {
+              "code" : "BILD",
+              "display" : "Ergebnisse bildgebender Diagnostik",
+              "equivalence" : "wider"
+            }
+          ]
+        },
+        {
+          "code" : "DG020116",
+          "display" : "Zugangscode Bildportal",
           "target" : [
             {
               "code" : "BILD",
@@ -4352,6 +4374,17 @@ Diese Ressource dient als Grundlage für die Zuordnung von KDL-Codes zu IHE-XDS 
             {
               "code" : "FUNK",
               "display" : "Ergebnisse Funktionsdiagnostik",
+              "equivalence" : "wider"
+            }
+          ]
+        },
+        {
+          "code" : "VL010109",
+          "display" : "Sepsisdokumentation",
+          "target" : [
+            {
+              "code" : "QUAL",
+              "display" : "Qualitätssicherung",
               "equivalence" : "wider"
             }
           ]

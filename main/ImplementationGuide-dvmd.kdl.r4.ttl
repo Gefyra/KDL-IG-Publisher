@@ -17,10 +17,10 @@
      fhir:v "http://dvmd.de/fhir/ImplementationGuide/dvmd.kdl.r4"^^xsd:anyURI ;
      fhir:l <http://dvmd.de/fhir/ImplementationGuide/dvmd.kdl.r4>
   ] ; # 
-  fhir:version [ fhir:v "2025.0.1"] ; # 
+  fhir:version [ fhir:v "2026.0.0"] ; # 
   fhir:name [ fhir:v "KDL"] ; # 
   fhir:status [ fhir:v "active"] ; # 
-  fhir:date [ fhir:v "2026-01-20T10:40:55+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-01-20T10:41:16+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)" ] ;
@@ -90,7 +90,7 @@
          ] ;
          fhir:value [
            a fhir:String ;
-           fhir:v "2025+"
+           fhir:v "2026+"
          ]
        ] ) ;
        fhir:url [
@@ -699,7 +699,7 @@
          ] ;
          fhir:value [
            a fhir:String ;
-           fhir:v "2025+"
+           fhir:v "2026+"
          ]
        ] ) ;
        fhir:url [
@@ -1400,8 +1400,8 @@
          ]
        ] ) ;
        fhir:reference [
-         fhir:l <http://dvmd.de/fhir/ValueSet/kdl-vs-2025> ;
-         fhir:reference [ fhir:v "ValueSet/kdl-vs-2025" ]
+         fhir:l <http://dvmd.de/fhir/ValueSet/kdl-vs-2026> ;
+         fhir:reference [ fhir:v "ValueSet/kdl-vs-2026" ]
        ] ;
        fhir:name [ fhir:v "ValueSet Klinische Dokumentenklassen-Liste (Version 2025)" ] ;
        fhir:description [ fhir:v "ValueSets sind Listen von Codes, die in einem bestimmten Kontext verwendet werden. Durch sog. &quot;Terminology-Binding&quot; können Attribute von FHIR-Ressourcen an ValueSets gebunden werden, um die Menge der zulässigen Werte für dieses Attribut einzuschränken.  Dieses ValueSet enthält sämtliche Codes aus dem CodeSystem &quot;KDL&quot; und ist für Bindings an Attribute geeignet, an denen alle Werte aus dem CodeSystem &quot;KDL&quot; erlaubt werden sollen.  Beispiel: DocumentReference.type" ] ;

@@ -1,4 +1,4 @@
-# CodeSystem Klinische Dokumentenklassen-Liste (Version 2026) - v2025.0.1
+# CodeSystem Klinische Dokumentenklassen-Liste (Version 2026) - v2026.0.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://dvmd.de/fhir/CodeSystem/kdl | *Version*:2025.0.1 |
+| *Official URL*:http://dvmd.de/fhir/CodeSystem/kdl | *Version*:2026.0.0 |
 | Active as of 2026-01-01 | *Computable Name*:CodeSystemKDL |
 | *Other Identifiers:*OID:1.2.276.0.76.5.562 | |
 | **Copyright/Legal**: 2026 DVMD e.V. | |
@@ -18,7 +18,7 @@ Diese CodeSystem-Ressource definiert alle in der Klinischen Dokumentenklassen-Li
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [ValueSetKDL](ValueSet-kdl-vs-2025.md)
+* [ValueSetKDL](ValueSet-kdl-vs-2026.md)
 
 
 
@@ -35,7 +35,7 @@ Diese CodeSystem-Ressource definiert alle in der Klinischen Dokumentenklassen-Li
       "value" : "urn:oid:1.2.276.0.76.5.562"
     }
   ],
-  "version" : "2025.0.1",
+  "version" : "2026.0.0",
   "name" : "CodeSystemKDL",
   "title" : "CodeSystem Klinische Dokumentenklassen-Liste (Version 2026)",
   "status" : "active",

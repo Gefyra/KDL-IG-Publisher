@@ -2,7 +2,7 @@
   "codeSystems" : [
     {
       "url" : "http://dvmd.de/fhir/CodeSystem/kdl",
-      "version" : "2025.0.1",
+      "version" : "2026.0.0",
       "status" : "active",
       "name" : "CodeSystemKDL",
       "title" : "CodeSystem Klinische Dokumentenklassen-Liste (Version 2026)",
@@ -12,7 +12,7 @@
       },
       "ConceptMap-kdl-ihe-classcode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.classCodes - Kontext: Archivierung, inkl. eVV",
       "ConceptMap-kdl-ihe-typecode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.typeCodes - Kontext: Archivierung, inkl. eVV",
-      "ValueSet-kdl-vs-2025.html" : "ValueSet Klinische Dokumentenklassen-Liste (Version 2025)"
+      "ValueSet-kdl-vs-2026.html" : "ValueSet Klinische Dokumentenklassen-Liste (Version 2025)"
     },
     {
       "url" : "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",

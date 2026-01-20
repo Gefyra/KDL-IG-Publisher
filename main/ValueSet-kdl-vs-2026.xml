@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="kdl-vs-2026"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ValueSet kdl-vs-2026</b></p><a name="kdl-vs-2026"> </a><a name="hckdl-vs-2026"> </a><ul><li>Include codes from<a href="CodeSystem-kdl-cs-2026.html"><code>http://dvmd.de/fhir/CodeSystem/kdl</code></a><span title="Version is not explicitly stated, which means it is fixed to the version provided in this specification"> version &#x1F4E6;2026.0.0</span> where child doesn't exist</li></ul></div>
+  </text>
+  <url value="http://dvmd.de/fhir/ValueSet/kdl"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:1.2.276.0.76.11.469"/>
+  </identifier>
+  <version value="2026.0.0"/>
+  <name value="ValueSetKDL"/>
+  <title value="ValueSet Klinische Dokumentenklassen-Liste (Version 2025)"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-01-01"/>
+  <publisher value="Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"/>
+  <contact>
+    <name value="Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.dvmd.de"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="dvmd@dvmd.de"/>
+    </telecom>
+  </contact>
+  <description value="ValueSets sind Listen von Codes, die in einem bestimmten Kontext verwendet werden. Durch sog. &amp;quot;Terminology-Binding&amp;quot; können Attribute von FHIR-Ressourcen an ValueSets gebunden werden, um die Menge der zulässigen Werte für dieses Attribut einzuschränken.  Dieses ValueSet enthält sämtliche Codes aus dem CodeSystem &amp;quot;KDL&amp;quot; und ist für Bindings an Attribute geeignet, an denen alle Werte aus dem CodeSystem &amp;quot;KDL&amp;quot; erlaubt werden sollen.  Beispiel: DocumentReference.type"/>
+  <copyright value="2026 DVMD e.V."/>
+  <compose>
+    <include>
+      <system value="http://dvmd.de/fhir/CodeSystem/kdl"/>
+      <filter>
+        <property value="child"/>
+        <op value="exists"/>
+        <value value="false"/>
+      </filter>
+    </include>
+  </compose>
+</ValueSet>

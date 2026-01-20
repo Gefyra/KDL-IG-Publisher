@@ -2,7 +2,7 @@
   "codeSystems" : [
     {
       "url" : "http://dvmd.de/fhir/CodeSystem/kdl",
-      "version" : "2025.0.1",
+      "version" : "2026.0.0",
       "status" : "active",
       "name" : "CodeSystemKDL",
       "title" : "CodeSystem Klinische Dokumentenklassen-Liste (Version 2026)",

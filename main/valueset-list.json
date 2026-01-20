@@ -2,7 +2,7 @@
   "codeSystems" : [
     {
       "url" : "http://dvmd.de/fhir/ValueSet/kdl",
-      "version" : "2025.0.1",
+      "version" : "2026.0.0",
       "status" : "active",
       "name" : "ValueSetKDL",
       "title" : "ValueSet Klinische Dokumentenklassen-Liste (Version 2025)",
