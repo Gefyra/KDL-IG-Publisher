@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://dvmd.de/fhir/ImplementationGuide/dvmd.kdl.r4 | *Version*:2025.0.1 |
-| Active as of 2025-12-19 | *Computable Name*:KDL |
+| Active as of 2026-01-20 | *Computable Name*:KDL |
 
 # Hauptseite
 
@@ -76,7 +76,7 @@ Diese Publikation wurde erstellt mit freundlicher Unterstützung von
   "version" : "2025.0.1",
   "name" : "KDL",
   "status" : "active",
-  "date" : "2025-12-19T12:43:04+00:00",
+  "date" : "2026-01-20T10:40:55+00:00",
   "publisher" : "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)",
   "contact" : [
     {
