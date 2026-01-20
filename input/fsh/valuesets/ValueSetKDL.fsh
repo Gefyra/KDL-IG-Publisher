@@ -1,14 +1,14 @@
 ValueSet: ValueSetKDL
-Id: kdl-vs-2025
+Id: kdl-vs-2026
 Title: "ValueSet Klinische Dokumentenklassen-Liste (Version 2025)"
 Description: "ValueSets sind Listen von Codes, die in einem bestimmten Kontext verwendet werden. Durch sog. &quot;Terminology-Binding&quot; können Attribute von FHIR-Ressourcen an ValueSets gebunden werden, um die Menge der zulässigen Werte für dieses Attribut einzuschränken.  Dieses ValueSet enthält sämtliche Codes aus dem CodeSystem &quot;KDL&quot; und ist für Bindings an Attribute geeignet, an denen alle Werte aus dem CodeSystem &quot;KDL&quot; erlaubt werden sollen.  Beispiel: DocumentReference.type"
 * ^url = "http://dvmd.de/fhir/ValueSet/kdl"
 * ^identifier.system = "urn:ietf:rfc:3986"
 * ^identifier.value = "urn:oid:1.2.276.0.76.11.469"
-* ^version = "2025"
+* ^version = "2026"
 * ^status = #active
 * ^experimental = false
-* ^date = "2025-01-01"
+* ^date = "2026-01-01"
 * ^publisher = "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"
 * ^contact[0].name = "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"
 * ^contact[=].telecom[0].system = #email
@@ -20,9 +20,9 @@ Description: "ValueSets sind Listen von Codes, die in einem bestimmten Kontext v
 * ^contact[=].telecom[=].value = "mueller@dvmd.de"
 * ^contact[=].telecom[+].system = #url
 * ^contact[=].telecom[=].value = "https://dvmd.de/publikationen/kdl/"
-* ^copyright = "2025 DVMD e.V."
+* ^copyright = "2026 DVMD e.V."
 * include codes from system CodeSystemKDL where child exists false
-// * ^expansion.timestamp = "2025-01-01"
+// * ^expansion.timestamp = "2026-01-01"
 // * ^expansion.contains[0].system = "http://dvmd.de/fhir/CodeSystem/kdl"
 // * ^expansion.contains[=].code = #AD010101
 // * ^expansion.contains[=].display = "Ärztliche Stellungnahme"

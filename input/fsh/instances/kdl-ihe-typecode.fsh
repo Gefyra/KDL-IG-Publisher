@@ -2,12 +2,12 @@ Instance: kdl-ihe-typecode
 InstanceOf: ConceptMap
 Usage: #definition
 * url = "http://dvmd.de/fhir/ConceptMap/kdl-ihe-typecode"
-* version = "2025"
+* version = "2026"
 * name = "ConceptMapKdlIheTypecode"
 * title = "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.typeCodes - Kontext: Archivierung, inkl. eVV"
 * status = #active
 * experimental = false
-* date = "2025-01-01"
+* date = "2026-01-01"
 * publisher = "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"
 * contact[0]
   * name = "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"
@@ -26,7 +26,7 @@ Usage: #definition
     * system = #url
     * value = "https://www.dvmd.de"
 * description = "Diese Ressource dient als Grundlage für die Zuordnung von KDL-Codes zu IHE-XDS DocumentEntry.typeCodes (gemäß Spezifikation von IHE Deutschland e.V., siehe http://www.ihe-d.de/projekte/xds-value-sets-fuer-deutschland/). Grundlage ist der ANWENDUNGSFALL: DIGITALE ARCHIVIERUNG, inkl. aktuelle Anforderungen des Anhangs zur Anlage 1 der eVV. Das Reviewergebnis - zu diesem Mappingkonzept - von der IHE-AG IHE-XDS ValueSets aus 2023 wurde berücksichtigt."
-* copyright = "2025 DVMD e.V."
+* copyright = "2026 DVMD e.V."
 * sourceUri = Canonical(ValueSetKDL)
 * targetUri = "http://ihe-d.de/ValueSets/IHEXDStypeCode"
 * group[0]
@@ -768,6 +768,13 @@ Usage: #definition
       * display = "Einweisungs- und Aufnahmedokumente"
       * equivalence = #wider
   * element[+]
+    * code = #AM160114
+    * display = "Anästhesieausweis"
+    * target
+      * code = #ANAE
+      * display = "Anästhesiedokumente"
+      * equivalence = #wider      
+  * element[+]
     * code = #AM160199
     * display = "Sonstiges patienteneigenes Dokument"
     * target
@@ -1267,6 +1274,13 @@ Usage: #definition
   * element[+]
     * code = #DG020115
     * display = "Checkliste bildgebende Diagnostik"
+    * target
+      * code = #BILD
+      * display = "Ergebnisse bildgebender Diagnostik"
+      * equivalence = #wider
+  * element[+]
+    * code = #DG020116
+    * display = "Zugangscode Bildportal"
     * target
       * code = #BILD
       * display = "Ergebnisse bildgebender Diagnostik"
@@ -2769,6 +2783,13 @@ Usage: #definition
       * code = #FUNK
       * display = "Ergebnisse Funktionsdiagnostik"
       * equivalence = #wider
+  * element[+]
+    * code = #VL010109
+    * display = "Sepsisdokumentation"
+    * target
+      * code = #QUAL
+      * display = "Qualitätssicherung"
+      * equivalence = #wider      
   * element[+]
     * code = #VL010199
     * display = "Sonstiger Assessmentbogen"

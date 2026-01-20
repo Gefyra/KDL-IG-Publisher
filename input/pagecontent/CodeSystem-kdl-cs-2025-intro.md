@@ -1,4 +1,4 @@
-Die Klinische Dokumentenklassen-Liste (KDL) dient zur Klassierung medizinischer Dokumentation und unterstützt daher die Standardisierung und Interoperabilität. Die KDL umfasst Dokumententypen aus der stationären und ambulanten Versorgung, aber bereits auch aus der geriatrischen Pflege sowie klinischen Forschung und Rehabilitation.
+Die Klinische Dokumentenklassen-Liste (KDL) dient zur Klassierung medizinischer Dokumentation und unterstützt daher die Standardisierung und Interoperabilität. Die KDL umfasst Dokumententypen aus der stationären und ambulanten Versorgung sowie bereits aus der geriatrischen Pflege, klinischen Forschung und Rehabilitation.
 
 Durch eine systematische Klassierung der vorhandenen Dokumente einer Einrichtung des Gesundheitswesens mit der KDL wird die Standardisierung auf einheitliche Dokumententypennamen erreicht, wobei die einrichtungsindividuellen Bezeichnungen nicht verloren gehen. Damit ist sichergestellt, dass die – für den Nutzer – relevanten Dokumentenbezeichnungen in den Anwendungssystemen erhalten bleiben und der Nutzer die gewohnten Bezeichnungen sieht. 
 
@@ -10,7 +10,7 @@ Der Nutzen für den Einsatz der KDL liegt in den folgenden Bereichen:
 * Bereitstellung der gesamten Akte im Dokumentenmanagementsystem und revisionssicherem Langzeitarchiv, d. h. Zusammenführung (Konsolidierung) von papierbasierten und elektronisch erzeugten Dokumenten sowie strukturierten Daten und Bildern
 * Bereitstellung der gesamten strukturierten Akte für benutzerindividuelle Sichten
 * intersektoraler Austausch, z. B. IHE-XDS konform, gemäß den Vorgaben des 
-Medizinischen Dienstes oder externer Abrechnungsdienstleister der Klinik
+Medizinischen Dienstes, externer Abrechnungsdienstleister sowie in die ePA
 
 Hinweise zur nachfolgenden tabellarischen Darstellung des CodeSystems:
 * Level 1 | Klassen

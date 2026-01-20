@@ -2,12 +2,12 @@ Instance: kdl-ihe-classcode
 InstanceOf: ConceptMap
 Usage: #definition
 * url = "http://dvmd.de/fhir/ConceptMap/kdl-ihe-classcode"
-* version = "2025"
+* version = "2026"
 * name = "ConceptMapKdlIheClasscode"
 * title = "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.classCodes - Kontext: Archivierung, inkl. eVV"
 * status = #active
 * experimental = false
-* date = "2025-01-01"
+* date = "2026-01-01"
 * publisher = "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"
 * contact[0]
   * name = "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"
@@ -26,7 +26,7 @@ Usage: #definition
     * system = #url
     * value = "https://www.dvmd.de"
 * description = "Diese Ressource dient als Grundlage für die Zuordnung von KDL-Codes zu IHE-XDS DocumentEntry.classCodes (gemäß Spezifikation von IHE Deutschland e.V., siehe http://www.ihe-d.de/projekte/xds-value-sets-fuer-deutschland/). Grundlage ist der ANWENDUNGSFALL: DIGITALE ARCHIVIERUNG, inkl. aktuelle Anforderungen des Anhangs zur Anlage 1 der eVV. Das Reviewergebnis - zu diesem Mappingkonzept - von der IHE-AG IHE-XDS ValueSets aus 2023 wurde berücksichtigt."
-* copyright = "2025 DVMD e.V."
+* copyright = "2026 DVMD e.V."
 * sourceUri = "http://dvmd.de/fhir/ValueSet/kdl"
 * targetUri = "http://ihe-d.de/ValueSets/IHEXDSclassCode"
 * group[0]
@@ -768,6 +768,13 @@ Usage: #definition
       * display = "Administratives Dokument"
       * equivalence = #wider
   * element[+]
+    * code = #AM160114
+    * display = "Anästhesieausweis"
+    * target
+      * code = #AUS
+      * display = "Medizinischer Ausweis"
+      * equivalence = #wider
+  * element[+]
     * code = #AM160199
     * display = "Sonstiges patienteneigenes Dokument"
     * target
@@ -1271,6 +1278,13 @@ Usage: #definition
       * code = #DUR
       * display = "Durchführungsprotokoll"
       * equivalence = #wider
+  * element[+]
+    * code = #DG020116
+    * display = "Zugangscode Bildportal"
+    * target
+      * code = #ADM
+      * display = "Administratives Dokument"
+      * equivalence = #wider      
   * element[+]
     * code = #DG020199
     * display = "Sonstige Dokumentation bildgebende Diagnostik"
@@ -2769,6 +2783,13 @@ Usage: #definition
       * code = #ASM
       * display = "Assessment"
       * equivalence = #wider
+  * element[+]
+    * code = #VL010109
+    * display = "Sepsisdokumentation"
+    * target
+      * code = #ASM
+      * display = "Assessment"
+      * equivalence = #wider      
   * element[+]
     * code = #VL010199
     * display = "Sonstiger Assessmentbogen"

@@ -11,13 +11,11 @@ Die Klinische Dokumentenklassen-Liste (KDL) ist eine Entwicklung der anwendungso
 
 Als Ergebnis dieser umfassenden Praxiserfahrung von Dokumenttyp-Benennungen deutscher Krankenhäuser leistet die KDL einen wichtigen Beitrag zur semantischen Interoperabilität in der Gesundheits-IT: Sie ermöglicht das Klassieren, also die Zuordnung, interner Dokumenttyp-Benennungen der Einrichtungen zu den Bezeichnungen bei Stakeholdern – und schafft so die Basis für den digitalen Austausch. Zu den zahlreichen potenziellen Stakeholdern in der Kommunikation, die bei der Informationen aus Patientenakten eine Rolle spielen, zählen unter anderem Leistungspartner in der Behandlungskette, Kostenträger, der Medizinische Dienst, Behörden und der Patient.
 
-Die KDL ermöglicht eine einheitliche Bezeichnung der enorm vielfältigen Dokumententyp-Benennungen im täglichen Gebrauch. Sie stellt den Kern von Dokumententypen in einer medizinischen Einrichtung dar. 
-
 ## Zweckbestimmung dieses Leitfadens
 
 Dieser Implementierungsleitfaden soll es Anwendern und Entwicklern erleichtern, die KDL in FHIR-basierte Systeme zu integrieren. Die Repräsentation und Bereitstellung der Terminologie in einem standardisierten, maschinenlesbaren Format, reduziert den Aufwand bei der Implementierung erheblich und macht die KDL für FHIR-basierte Anwendungssysteme bzw. Terminologieserver umgehend nutzbar.
 
-Mit dem neuen HL7&copy;-Standard FHIR&copy; liegt erstmals ein moderner webbasierter Standard für das Gesundheitswesen vor, der es Entwicklern erlaubt, klinische Informationen und Terminologien mit einer einheitlichen technologischen Basis zu integrieren.
+Mit dem neuen HL7&copy;-Standard FHIR&copy; liegt ein moderner webbasierter Standard für das Gesundheitswesen vor, der es Entwicklern erlaubt, klinische Informationen und Terminologien mit einer einheitlichen technologischen Basis zu integrieren.
 
 Eine standardisierte Terminologie-API erlaubt die Anbindung spezialisierter Terminologie-Dienste in Anwendungssysteme sowie den standardisierten Austausch von Terminologien.
 
@@ -32,17 +30,13 @@ Für Fragen zur FHIR-Implementierung im Allgemeinen und der Nutzung von Terminol
 Die mit diesem Leitfaden assozizierten FHIR-Ressourcen sind als Packages publiziert.
 Die aktuelle sowie vergangene Versionen können unter folgendem Link heruntergeladen werden:
 
-https://simplifier.net/kdl/~packages
-
-Unter folgendem Link finden Sie stets die aktuelle Arbeitsversion:
-
-https://simplifier.net/KDL/~introduction
+https://terminologien.bfarm.de/kodiersysteme.html
 
 
 ## Ansprechpartner, Gültigkeit, Lizenzbedingungen
-Die KDL-2025 gilt ab 1. Januar 2025.
+Die KDL-2026 gilt ab 1. Januar 2026.
 
-Weitere Empfehlungen, Änderungswünsche und Hinweise sind bis 15. September 2025 an die Leitung der AG, Annett Müller (mueller@dvmd.de), zu senden. Gemeinsam mit den Teilnehmenden der AG "Weiterentwicklung KDL", aber auch im regelmäßigen Austausch mit der "KDL-Anwendergruppe" werden die Einreichungen diskutiert. Ergeben sich daraus essentielle Anpassungen des Klassiifkationssystems, ist die Notwendigkeit einer neuen Version gegeben.
+Weitere Empfehlungen, Änderungswünsche und Hinweise sind bis 15. September 2026 an die Leitung der AG, Annett Müller (mueller@dvmd.de), zu senden. Gemeinsam mit den Teilnehmenden der AG "KDL-Weiterentwicklung", aber auch im regelmäßigen Austausch mit der "KDL-Anwendergruppe" werden die Einreichungen diskutiert. Ergeben sich daraus essentielle Anpassungen des Klassiifkationssystems, ist die Notwendigkeit einer neuen Version gegeben.
 
 Weitere Informationen sind auf der Webseite des DVMD zu finden: https://dvmd.de/publikationen/kdl/. Bitte beachten Sie auch die Veranstaltungen des DVMD - u. a. zur KDL: https://dvmd.de/veranstaltungen/
 
