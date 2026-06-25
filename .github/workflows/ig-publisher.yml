@@ -31,13 +31,42 @@ jobs:
       # Run SUSHI (FSH -> FHIR conversion) on Resources directory
       - name: Run SUSHI
         run: |
+          set -euo pipefail
           sushi ${{ env.INPUT_DIR }}
 
 
-      # Run the HL7 FHIR IG Publisher
-      - name: Build IG
+      - name: Build hierarchical IG
         run: |
-          igpublisher -ig ${{ env.INPUT_DIR }}
+          set -euo pipefail
+          igpublisher -ig ${{ env.INPUT_DIR }} -no-sushi
+          mkdir -p .tmp/kdl-hierarchical
+          cp output/CodeSystem-kdl.html .tmp/kdl-hierarchical/CodeSystem-kdl.html
+
+      - name: Flatten KDL CodeSystem JSON
+        run: |
+          set -euo pipefail
+          node scripts/flatten-codesystem.js \
+            fsh-generated/resources/CodeSystem-kdl.json \
+            fsh-generated/resources/CodeSystem-kdl.json
+          if [ ! -f fsh-generated/resources/CodeSystem-kdl.json ]; then
+            echo "Expected flattened CodeSystem JSON was not generated"
+            exit 1
+          fi
+
+      - name: Build flat IG
+        run: |
+          set -euo pipefail
+          rm -rf output
+          igpublisher -ig ${{ env.INPUT_DIR }} -no-sushi
+
+      - name: Restore hierarchical CodeSystem HTML page
+        run: |
+          set -euo pipefail
+          cp .tmp/kdl-hierarchical/CodeSystem-kdl.html output/CodeSystem-kdl.html
+          if [ ! -f output/CodeSystem-kdl.html ]; then
+            echo "Expected CodeSystem-kdl.html was not restored"
+            exit 1
+          fi
 
       - name: Record branch metadata for Pages cleanup
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
