@@ -30,12 +30,14 @@ jobs:
 
       # Run SUSHI (FSH -> FHIR conversion) on Resources directory
       - name: Run SUSHI
+        shell: bash
         run: |
           set -euo pipefail
           sushi ${{ env.INPUT_DIR }}
 
 
       - name: Build hierarchical IG
+        shell: bash
         run: |
           set -euo pipefail
           igpublisher -ig ${{ env.INPUT_DIR }} -no-sushi
@@ -43,6 +45,7 @@ jobs:
           cp output/CodeSystem-kdl.html .tmp/kdl-hierarchical/CodeSystem-kdl.html
 
       - name: Flatten KDL CodeSystem JSON
+        shell: bash
         run: |
           set -euo pipefail
           node scripts/flatten-codesystem.js \
@@ -54,12 +57,14 @@ jobs:
           fi
 
       - name: Build flat IG
+        shell: bash
         run: |
           set -euo pipefail
           rm -rf output
           igpublisher -ig ${{ env.INPUT_DIR }} -no-sushi
 
       - name: Restore hierarchical CodeSystem HTML page
+        shell: bash
         run: |
           set -euo pipefail
           cp .tmp/kdl-hierarchical/CodeSystem-kdl.html output/CodeSystem-kdl.html
