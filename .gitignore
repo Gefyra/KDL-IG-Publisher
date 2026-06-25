@@ -5,3 +5,6 @@ Thumbs.db
 /output
 /temp
 /template
+
+.index.json
+.index.db

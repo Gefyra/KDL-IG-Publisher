@@ -6,20 +6,20 @@
 id: dvmd.kdl.r4
 canonical: http://dvmd.de/fhir
 name: KDL
-# title: Example Title
+title: Klinische Dokumentenklassen-Liste (KDL)
 # description: Example Implementation Guide for getting started with SUSHI
 status: active # draft | active | retired | unknown
 version: 2026.0.0
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2026+
-releaseLabel: ci-build
-# license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
-# jurisdiction: urn:iso:std:iso:3166#US "United States of America" # https://www.hl7.org/fhir/valueset-jurisdiction.html
+releaseLabel: 2026.0.0
+license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
+jurisdiction: urn:iso:std:iso:3166#DE "Germany" # https://www.hl7.org/fhir/valueset-jurisdiction.html
+language: de-DE
 publisher:
-  name: Der Fachverband für Dokumentation und Informationsmanagement in der Medizin
-    (DVMD)
-  url: https://www.dvmd.de
-  email: dvmd@dvmd.de
+  - name: Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)
+    url: https://www.dvmd.de
+    email: dvmd@dvmd.de
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced

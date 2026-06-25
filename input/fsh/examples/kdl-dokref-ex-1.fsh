@@ -5,8 +5,8 @@ Usage: #example
   * system = "urn:ietf:rfc:3986"
   * value = "urn:oid:1.2.276.0.76.3.1.191.0002.01.9999999999999.00000001.999.99.9999999999999999"
 * status = #current
-* type = CodeSystemKDL#AD010103 "Entlassungsbericht intern"
-* subject = Reference(Patient/example)
+* type = KDL#AD010103 "Entlassungsbericht intern"
+* subject.reference = "http://example.org/fhir/Patient/example"
 * date = "2018-10-30T07:24:22+00:00"
 * description = "Epikrise"
 * content.attachment

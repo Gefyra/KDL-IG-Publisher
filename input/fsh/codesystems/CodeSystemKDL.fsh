@@ -1,15 +1,27 @@
-CodeSystem: CodeSystemKDL
-Id: kdl-cs-2026
-Title: "CodeSystem Klinische Dokumentenklassen-Liste (Version 2026)"
-Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokumentenklassen-Liste aktuell gültigen Codes."
+CodeSystem: KDL
+Id: kdl
+Title: "CodeSystem Klinische Dokumentenklassen-Liste 2026"
+Description: """Die Klinische Dokumentenklassen-Liste (KDL) ist eine Entwicklung der anwendungsorientierten Forschung der DMI GmbH & Co. KG aus den Jahren 2013 – 2018 und basiert auf der Erfahrung aus der Indexierung von jährlich rund 4 Millionen Patientenakten mit 200 Millionen Dokumenten. Im Jahr 2018 ist die KDL für die Weiterentwicklung in den DVMD e. V. überführt wurden.
+
+Als Ergebnis dieser umfassenden Praxiserfahrung von Dokumenttyp-Benennungen deutscher Krankenhäuser leistet die KDL einen wichtigen Beitrag zur semantischen Interoperabilität in der Gesundheits-IT: Sie ermöglicht das Klassieren, also die Zuordnung, interner Dokumenttyp-Benennungen der Einrichtungen zu den Bezeichnungen bei Stakeholdern - und schafft so die Basis für den digitalen Austausch. Zu den zahlreichen potenziellen Stakeholdern in der Kommunikation - bei der Informationen aus Patientenakten eine Rolle spielen - zählen unter anderem Leistungspartner in der Behandlungskette, Kostenträger, der Medizinische Dienst, Behörden und der Patient.
+
+Die KDL ermöglicht eine einheitliche Bezeichnung der enorm vielfältigen Dokumententyp-Benennungen im täglichen Gebrauch. Sie stellt den Kern von Dokumententypen in einer medizinischen Einrichtung dar. Basis für die Liste sind die - von zwischenzeitlich über 300 Krankenhäusern aller Versorgungsstufen - vorhandenen Benennungen von Dokumenten (Bezeichnungen der papierbasierten und elektronischen Dokumentation) in einer Patientenakte.
+"""
+* insert DVMDAuthor
+* insert EffectivePeriod
+
 * ^url = "http://dvmd.de/fhir/CodeSystem/kdl"
+* ^language = #de-DE
 * ^identifier.system = "urn:ietf:rfc:3986"
 * ^identifier.value = "urn:oid:1.2.276.0.76.5.562"
+* ^identifier.use = #official
 * ^experimental = false
 * ^date = "2026-01-01"
 * ^copyright = "2026 DVMD e.V."
 * ^caseSensitive = true
-* ^hierarchyMeaning = #is-a
+* ^valueSet = Canonical(ValueSetKDL)
+* ^hierarchyMeaning = #classified-with
+* ^versionNeeded = true
 * ^content = #complete
 * ^contact[0].name = "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"
 * ^contact[=].telecom[0].system = #email
@@ -21,11 +33,12 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
 * ^contact[=].telecom[=].value = "mueller@dvmd.de"
 * ^contact[=].telecom[+].system = #url
 * ^contact[=].telecom[=].value = "https://dvmd.de/publikationen/kdl/"
-//* ^count = 540
+
 * ^property.code = #status
 * ^property.uri = "http://hl7.org/fhir/concept-properties#status"
-* ^property.description = "A property that indicates the status of the concept. One of active, experimental, deprecated,retired"
+* ^property.description = "A property that indicates the status of the concept. One of active, experimental, deprecated, retired"
 * ^property.type = #code
+
 * #AD "Arztdokumentation"
   * #AD0101 "Arztberichte"
     * #AD010101 "Ärztliche Stellungnahme" "Die Dokumentation beinhaltet die ärztliche Einschätzung zum Gesundheitszustand für nachfolgende Zwecke. Inkl.: Gutachten, Unfallanzeige, KBV Muster 36, PTV5/8, Ärztliches Zeugnis, Dokumentation von Therapiezielen/Therapiezieländerungen Exkl.: MD-Gutachten"
@@ -67,18 +80,18 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
     * #AD020299 "Sonstige ärztliche Befunderhebung" "Die Dokumentation beinhaltet Angaben, die nicht in einer spezifischeren KDL dieser Unterklasse abgebildet werden kann."
   * #AD0601 "Fallbesprechungen"
     * #AD060101 "Konsilanforderung" "Die Dokumentation beinhaltet die Anforderung/Anmeldung einer Befundung durch einen Facharzt aus einem weiteren Leistungsbereich."
-    * #AD060102 "Konsilanmeldung" "n.a."
+    * #AD060102 "Konsilanmeldung"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #AD060103 "Konsilbericht intern" "Die Dokumentation beinhaltet die Befundung und Empfehlung eines konsiliarischen Facharztes für den weiteren Behandlungsverlauf. Erstellt von der entlassenden Einrichtung."
     * #AD060104 "Konsilbericht extern" "Die Dokumentation beinhaltet die Zusammenfassung der Befundung und Empfehlung eines Facharztes für den weiteren Behandlungsverlauf. Erstellt von einer Fremdeinrichtung. Inkl.: KBV Muster 22 (Konsiliarbericht vor Aufnahme einer Psychotherapie)"
     * #AD060105 "Visitenprotokoll" "Die Dokumentation beinhaltet Angaben zu einer ärztlichen, therapeutischen und pflegerischen Besprechung zum aktuellen Zustand sowie weitere Maßnahmen. Visiten erfolgen in der Regel direkt im Beisein des zu Behandelnden. Exkl.: Ärztlicher Verlaufsbericht, Pflegevisite, Apotheke Visitenprotokoll"
-    * #AD060106 "Tumorkonferenzprotokoll" "n.a."
+    * #AD060106 "Tumorkonferenzprotokoll"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #AD060107 "Teambesprechungsprotokoll" "Die Dokumentation beinhaltet Angaben zu einer interdisziplinären Beratung über den aktuellen Gesundheitszustand mit Risikeinschätzung, Indikationsstellung und der Planung des weiteren Verlaufes/Vorgehens inkl. beteiligte Berufsgruppen/Facharztgruppen (z.B. Herzteam-Protokoll). Exkl.: Tumorkonferenzprotokoll"
     * #AD060108 "Anordnung/Verordnung" "Die Dokumentation beinhaltet die Festlegung therapeutischer Maßnahmen. Inkl.: KBV Muster 63/64/65 (Verordnung spezialisierter ambulanter Palliativversorgung) Exkl.: Heil-/ Hilfsmittelverordnung, Rezept, Psychologische Therapieanordnung, Verordnung von Krankenhausbehandlung, Postoperative Verordnung, Bestrahlungsverordnung"
-    * #AD060109 "Verordnung" "n.a."
+    * #AD060109 "Verordnung"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #AD060110 "Konsilbericht" "Die Dokumentation beinhaltet die Zusammenfassung der Befundung, die Einschätzung und Empfehlung eines Facharztes oder Apothekers/Apothekerin für den weiteren Behandlungsverlauf. Inkl.: KBV Muster 22 (Konsiliarbericht vor Aufnahme einer Psychotherapie), Exkl. AMTS-Prüfbericht"
@@ -105,12 +118,12 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
     * #AM010205 "Antrag auf Psychotherapie" "Die Dokumentation beinhaltet eine Anfrage für eine gezielte professionelle Behandlung psychischer Störungen. Inkl.: KBV Muster PTV1/PTV2"
     * #AM010206 "Antrag auf Pflegeeinstufung" "Die Dokumentation beinhaltet eine Anfrage an den MD zur Genehmigung eines Pflegegrades bei Pflegebedürftigkeit. Inkl.: Pflegeeinstufung"
       * ^property.code = #status
-      * ^property.valueCode = #deprecated 
+      * ^property.valueCode = #deprecated
     * #AM010207 "Kostenübernahmeantrag" "Die Dokumentation beinhaltet eine Anfrage zur Kostenübernahme für eine geplante Behandlung. Inkl.: KBV Muster 56"
     * #AM010208 "Antrag auf Leistungen der Pflegeversicherung" "Die Dokumentation beinhaltet einen Antrag zur Inanspruchnahme von Leistungen, welche durch die Pflegeversicherung übernommen werden sollen. Beispiel: Pflegegeld, Pflegehilfsmittel, etc."
     * #AM010209 "Antrag auf Kurzzeitpflege" "Die Dokumentation beinhaltet einen Antrag zur Inanspruchnahme einer begrenzten oder vollstationären Pflege einer pflegebedürftigen Person."
     * #AM010210 "Antrag auf Fixierung/Isolierung beim Amtsgericht" "Die Dokumentation beinhaltet die Anfrage beim Gericht auf notwendige Fixierungs- oder Isolierungsmaßnahmen."
-    * #AM010211 "Antrag abrechnungsrelevante OPS-Kodes" "Die Dokumentation enthält den Antrag gemäß der Richtlinie des Medizinischen Dienstes Bund nach § 283 Absatz 2 Satz 1  Nr.3 SGBV zu den regelmäßigen Begutachtungen zur Einhaltung von Strukturmerkmalen  von OPS-Kodes nach § 275d SGB V "
+    * #AM010211 "Antrag abrechnungsrelevante OPS-Kodes" "Die Dokumentation enthält den Antrag gemäß der Richtlinie des Medizinischen Dienstes Bund nach § 283 Absatz 2 Satz 1  Nr.3 SGBV zu den regelmäßigen Begutachtungen zur Einhaltung von Strukturmerkmalen  von OPS-Kodes nach § 275d SGB V"
     * #AM010299 "Sonstiger Antrag" "Die Dokumentation beinhaltet Angaben, die nicht in einer spezifischeren KDL dieser Unterklasse abgebildet werden kann. Inkl.: Antrag auf Haushaltshilfe"
   * #AM0103 "Aufklärungen"
     * #AM010301 "Anästhesieaufklärungsbogen" "Die Dokumentation beinhaltet Angaben über die Aufklärung der geplanten Anästhesie. Inkl.: Anamnese, Begleitmedikation, geplanter Eingriff, Vitaldaten"
@@ -126,10 +139,10 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
     * #AM030199 "Sonstige Checkliste Administration" "Die Dokumentation beinhaltet Angaben, die nicht in einer spezifischeren KDL dieser Unterklasse abgebildet werden kann. Inkl.: Aktendeckblatt, Aktencheckliste, Checkliste zur Archivierung der Krankengeschichte"
   * #AM0501 "Einwilligungen/Erklärungen"
     * #AM050101 "Datenschutzerklärung" "Die Dokumentation beinhaltet eine Erklärung zum Schutz von sensiblen Daten und deren Verwendung ."
-    * #AM050102 "Einverständniserklärung" "n.a."
+    * #AM050102 "Einverständniserklärung"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
-    * #AM050103 "Erklärung Nichtansprechbarkeit Patienten" "n.a."
+    * #AM050103 "Erklärung Nichtansprechbarkeit Patienten"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #AM050104 "Einverständniserklärung Abrechnung" "Die Dokumentation beinhaltet die schriftliche Erlaubnis, sensible Daten zu Abrechnungszwecken an Dritte weiterzugeben."
@@ -213,7 +226,7 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
   * #AU0501 "Einweisungs-/ Überweisungsdokumente"
     * #AU050101 "Verordnung von Krankenhausbehandlung" "Die Dokumentation beinhaltet Angaben zum Grund der stationären Aufnahme. Standardisiertes Einweisungsdokument gemäß Kassenärztliche Bundesvereinigung (KBV Muster 2)."
     * #AU050102 "Überweisungsschein" "Die Dokumentation beinhaltet Angaben zur geplanten Behandlungsart, Fachabteilung, Diagnosen, Behandlungsauftrag, Vertragsarzt. Inkl.: standardisierter Überweisungsschein gem. Kassenärztliche Bundesvereinigung (KBV Muster 6 und 7), Überweisung D-Arzt. Exkl.: Abrechnungsschein, Notfall/Vertretungsschein"
-    * #AU050103 "Überweisungsschein Entlassung" "n.a."
+    * #AU050103 "Überweisungsschein Entlassung"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #AU050104 "Verlegungsschein Intern" "Die Dokumentation beinhaltet Angaben zur krankenhausinternen Verlegung auf eine andere Station oder einen Fachbereich. Exkl.: Verlegungsbericht, Ärztliche Stellungnahme"
@@ -222,7 +235,7 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
     * #AU190101 "Einsatzprotokoll" "Die Dokumentation beinhaltet Angaben über den notarztspezifischen Einsatz. Inkl.: Rettungsstellenprotokoll, Nothilfeprotokoll"
     * #AU190102 "Notaufnahmebericht" "Die Dokumentation beinhaltet den ärztlichen Bericht über die Behandlung in der Notaufnahme."
     * #AU190103 "Notaufnahmebogen" "Die Dokumentation beinhaltet den Befund des aktuellen Zustands in der Notaufnahme (inkl. Triage)"
-    * #AU190104 "Notfalldatensatz" "n.a."
+    * #AU190104 "Notfalldatensatz"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #AU190105 "ISAR Screening" "Die Dokumentation beinhaltet Angaben für das Screening zur Ermittlung des geriatrischen Hilfebedarfs."
@@ -278,7 +291,7 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
     * #DG060203 "Allergietest" "Die Dokumentation beinhaltet Ergebnisse eines Verfahrens, mit dem man natürliche Abwehrreaktionen des Körpers nachweisen kann. Inkl.: Anforderung Allergietest"
     * #DG060204 "Zahlenverbindungstest" "Die Dokumentation beinhaltet Ergebnisse eines Tests auf kognitive Fähigkeiten beim Verbinden von Zahlen in einer bestimmten Reihenfolge. Dabei werden Dauer und Richtigkeit ausgewertet. Inkl.: Trail Making Test, Anforderung Zahlenverbindungstest"
     * #DG060205 "6-Minuten-Gehtest" "Die Dokumentation beinhaltet Messwerte der Herzfrequenz, des Blutdrucks und der Sauerstoffversorgung des Blutes vor und nach dem Zurücklegen einer Strecke. Inkl.: Gehstreckentest, Anforderung 6-Minuten-Gehtest"
-    * #DG060209 "Sonstige Funktionstests" "n.a."
+    * #DG060209 "Sonstige Funktionstests"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #DG060299 "Sonstiger Funktionstest" "Die Dokumentation beinhaltet Angaben, die nicht in einer spezifischeren KDL dieser Unterklasse abgebildet werden kann. Inkl.: Kopfimpulstest, Riechtest, Gehstreckentest"
@@ -341,7 +354,7 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
     * #LB130101 "Mikrobiologiebefund" "Die Dokumentation beinhaltet Ergebnisse der Untersuchung von Proben auf Bakterien, Pilze oder Viren und dessen Empfindlichkeit gegenüber Antiinfektiva. Exkl.: Urinbefund, Virologiebefund, Blutkulturenbefund"
     * #LB130102 "Urinbefund" "Die Dokumentation beinhaltet Ergebnisse der Urin-Untersuchung, um Erkrankungen der Harnorgane und Stoffwechselstörungen festzustellen. Exkl.: Mikrobiologiebefund, Laborbefund intern/extern"
   * #LB2201 "Virologie"
-    * #LB220101 "Befund über positive Infektionsmarker" "n.a."
+    * #LB220101 "Befund über positive Infektionsmarker"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #LB220102 "Virologiebefund" "Die Dokumentation beinhaltet Ergebnisse aus der Bestimmung von Viren in Untersuchungsmaterialien. Exkl.: Mikrobiologiebefund, Blutkulturenbefund"
@@ -383,20 +396,20 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
 * #SD "Spezielle Dokumentation"
   * #SD0701 "Geburtendokumente"
     * #SD070101 "Geburtenbericht" "Die Dokumentation beinhaltet Angaben zum Ablauf der Entbindung und unmittelbar danach, mit Angaben zur Mutter und zum Kind. Die Erfassung erfolgt nicht standardisiert als Freitext. Inkl.: Geburtenprotokoll"
-    * #SD070102 "Geburtenprotokoll" "n.a."
+    * #SD070102 "Geburtenprotokoll"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #SD070103 "Geburtenverlaufskurve" "Die Dokumentation beinhaltet Angaben über den Zeitraum der Entbindung. Vitalzeichen werden als Kurve dargestellt. Exkl.: Pflegekurve, Säuglingskurve"
     * #SD070104 "Neugeborenenscreening" "Die Dokumentation beinhaltet Untersuchungen vom Neugeborenen. Dazu gehören neben Laboruntersuchungen von Stoffwechselerkrankungen auch Hörtest und Sonographie der Hüften. Inkl.: Apgar"
     * #SD070105 "Partogramm" "Die Dokumentation beinhaltet die graphische Darstellung zur Geburtensituation und der Eröffnung des Muttermundes bei Entbindung."
     * #SD070106 "Wiegekarte" "Die Dokumentation beinhaltet die Kontrolle des Geburts- und Verlaufsgewichtes im 1. Lebensjahr."
-    * #SD070107 "Neugeborenendokumentationsbogen" "n.a."
+    * #SD070107 "Neugeborenendokumentationsbogen"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #SD070108 "Säuglingskurve" "Die Dokumentation beinhaltet Angaben zur Erfassung von Vitalzeichen, Trinkverhalten, Laborwerten und Pflegemaßnahmen des Säuglings/Neugeborenen. Vitalzeichen werden als Kurve dargestellt. Exkl.: Pflegekurve, Intensivkurve, Inkl.: Neugeborenendokumentationsbogen"
     * #SD070109 "Geburtenbogen" "Die Dokumentation beinhaltet standardisierte Angaben, die im Rahmen einer Entbindung erhoben werden. Exkl.: Geburtenverlaufskurve, Geburtenbericht"
     * #SD070110 "Perzentilkurve" "Die Dokumentation beinhaltet Angaben zum Verlauf von Gewicht, Länge und Kopfumfang. Exkl.: Messblatt"
-    * #SD070111 "Entnahme Nabelschnurblut" "n.a."
+    * #SD070111 "Entnahme Nabelschnurblut"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #SD070112 "Datenblatt für den Pädiater" "Die Dokumentation beinhaltet klinische sowie administrative Angaben des Neugeborenen wie Geburtenbuch Nr., Geburtsdauer, Geburtsgewicht, Apgar und Angaben zu Vater und Mutter. Die Daten werden auf einem standardisierten Formular erfasst. Exkl.: Geburtenbogen"
@@ -404,7 +417,7 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
   * #SD0702 "Geriatrische Dokumente"
     * #SD070201 "Barthel Index" "Die Dokumentation beinhaltet Angaben zur Ermittlung der eventuell benötigten Hilfestellung im Alltag. Die Auswertung erfolgt durch ein Punktesystem."
     * #SD070202 "Dem Tect" "Die Dokumentation beinhaltet Angaben zur Untersuchung von kognitiven Fähigkeiten, zur Früherkennung von Demenz. Die Auswertung erfolgt durch ein Punktesystem."
-    * #SD070203 "ISAR Screening" "n.a."
+    * #SD070203 "ISAR Screening"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #SD070204 "Sturzrisikoerfassungsbogen" "Die Dokumentation beinhaltet Angaben zur Ermittlung der Sturzgefahr und Festlegung vorbeugender Maßnahmen. Die Auswertung erfolgt durch ein Punktesystem. Exkl.: Mobilitätstest nach Tinetti"
@@ -481,10 +494,10 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
     * #TH130102 "Arzneiadministration" "Die Dokumentation beinhaltet Angaben zu einer Medikamentengabe (bspw. verabreichte Menge, Chargennummer, Applikationsweg, Verabreichungsdatum, Verabreichende/r, Empfänger/in). Inkl.: Auszüge aus einem Apothekenbuch, Chargendokumentation Apotheke"
     * #TH130103 "Chemotherapieprotokoll" "Die Dokumentation beinhaltet den Nachweis über die verabreichte Dosis der Zytostatika und die Anzahl der Zyklen."
     * #TH130104 "Hormontherapieprotokoll" "Die Dokumentation beinhaltet den Nachweis über die verabreichte Dosis der Hormone und die Anzahl der Zyklen."
-    * #TH130105 "Medikamentenplan extern" "n.a."
+    * #TH130105 "Medikamentenplan extern"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
-    * #TH130106 "Medikamentenplan intern/extern (mit BTM)" "n.a."
+    * #TH130106 "Medikamentenplan intern/extern (mit BTM)"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #TH130107 "Medikationsplan" "Die Dokumentation beinhaltet eine Übersicht über verordnete Arzneimittel. Exkl.: Medikationsplan elektronisch (eMP) = bundeseinheitlicher Medikationsplan - ED110103"
@@ -541,7 +554,7 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
     * #VL040303 "Isolierungsprotokoll" "Die Dokumentation beinhaltet Angaben zur Art und Dauer der Isolierungsmaßnahmen während der Behandlung."
     * #VL040304 "Lagerungsplan" "Die Dokumentation beinhaltet Angaben über festgelegte Lagerungsintervalle. Inkl.: Dekubitusprophylaxe, Bewegungsplan"
     * #VL040305 "Punktionsprotokoll" "Die Dokumentation beinhaltet Angaben zum Verlauf einer Punktion sowie Nachweise von Biopsien und Checklisten. Inkl.: diagnostischer oder therapeutischer Punktion, Anmeldung zur Punktion"
-    * #VL040306 "Punktionsprotokoll therapeutisch" "n.a."
+    * #VL040306 "Punktionsprotokoll therapeutisch"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #VL040307 "Reanimationsprotokoll" "Die Dokumentation beinhaltet Angaben zur Art und Dauer der durchgeführten Wiederbelebungsmaßnahme."
@@ -563,7 +576,7 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
   * #VL1601 "Pflegedokumente"
     * #VL160101 "Auszug aus den medizinischen Daten" "Die Dokumentation beinhaltet Angaben über Diagnostik, Krankheits- und den Behandlungsverlauf eines ausgewählten Zeitraumes, chronologisch erfasst."
     * #VL160102 "Ernährungsplan" "Die Dokumentation beinhaltet die Verordnung zur geplanten Ernährung."
-    * #VL160103 "Meldebogen Krebsregister" "n.a."
+    * #VL160103 "Meldebogen Krebsregister"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #VL160104 "Pflegeanamnesebogen" "Die Dokumentation beinhaltet Angaben zum aktuellen Pflegezustand bei Aufnahme."
@@ -581,7 +594,7 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
     * #VL160199 "Sonstiger Pflegedokumentationsbogen" "Die Dokumentation beinhaltet Angaben, die nicht in einer spezifischeren KDL dieser Unterklasse abgebildet werden kann."
   * #VL2301 "Wunddokumente"
     * #VL230101 "Wunddokumentationsbogen" "Die Dokumentation beinhaltet Angaben zu Hautdefekten, deren Lokalisation, Versorgung und Beschreibung. Inkl.: Wundkonsil"
-    * #VL230102 "Bewegungs- und Lagerungsplan" "n.a."
+    * #VL230102 "Bewegungs- und Lagerungsplan"
       * ^property.code = #status
       * ^property.valueCode = #deprecated
     * #VL230103 "Fotodokumentation Wunden" "Die Dokumentation beinhaltet bspw. postoperativ fotografierte Hautdefekte, Brandwunden, mechanische Wunden. Hier sind nur gedruckte Fotografien zu klassifizieren. Exkl.: Fotodokumentation Dermatologie, Fotodokumentation Dekubitus, OP-Bilddokumentation"
@@ -608,7 +621,7 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
     * #UB140301 "Arzneimittelliste" "Die Dokumentation beinhaltet den Nachweis von Arzneimittelbeständen oder Blutprodukten."
     * #UB140302 "Inventarliste" "Die Dokumentation beinhaltet den Nachweis von vorhandenem Material und Geräten. Inkl. Ausstattungsaufstellung"
     * #UB140303 "Medizinproduktebuch" "Die Dokumentation beinhaltet die zusammenfassende Dokumentation aller Daten eines betriebenen Medizinproduktes. Die erforderlichen Daten sind §12 MPBetreibV zu entnehmen."
-    * #UB140304 "Geräteeinweisung" "Die Dokumentation beinhaltet den Nachweis über durchgeführte Einweisungen von Personal an medizinischen Geräten. "
+    * #UB140304 "Geräteeinweisung" "Die Dokumentation beinhaltet den Nachweis über durchgeführte Einweisungen von Personal an medizinischen Geräten."
     * #UB140399 "Sonstiger Nachweis sachliche Ausstattung" "Die Dokumentation beinhaltet Nachweise zur Ausstattung, die nicht in einer spezifischeren KDL dieser Unterklasse abgebildet werden kann."
   * #UB1404 "Nachweisdokumentation: Prozesse"
     * #UB140401 "Aufstellung erbrachte Leistungen" "Die Dokumentation beinhaltet den Nachweis über erbrachten Eingriffe gem. Anlage 1 bei QK - QSFFx oder über Erfahrung - Fallzahlen/Mindestmengen bei QK - CAR-t."
@@ -622,7 +635,7 @@ Description: "Diese CodeSystem-Ressource definiert alle in der Klinischen Dokume
     * #UB140409 "Zertifizierungsurkunde" "Die Dokumentation beinhaltet den Nachweis für das Vorhandensein einer spezifischen Kompetenz. Inkl. Akkreditierungsurkunde"
     * #UB140499 "Sonstiger Nachweis Prozesse" "Die Dokumentation beinhaltet Nachweise zu Verfahren und Abläufen, die nicht in einer spezifischeren KDL dieser Unterklasse abgebildet werden kann."
   * #UB9999 "Sonstige Dokumentation"
-    * #UB999996 "Nachweise (Zusatz-) Entgelte" "Die Dokumentation beinhaltet die Nachweise (inkl. Dosis, Mengenangaben, Indikationsstellung) der durchgeführten diagnostischen, therapeutischen und/oder pflegerischen Maßnahmen von Entgelten, ergänzenden Tagesentgelten (ET), ZE oder ZP. Dieser KDL-Kode ist ausschließlich für die Anforderung von Unterlagen durch den MD zu verwenden. "
+    * #UB999996 "Nachweise (Zusatz-) Entgelte" "Die Dokumentation beinhaltet die Nachweise (inkl. Dosis, Mengenangaben, Indikationsstellung) der durchgeführten diagnostischen, therapeutischen und/oder pflegerischen Maßnahmen von Entgelten, ergänzenden Tagesentgelten (ET), ZE oder ZP. Dieser KDL-Kode ist ausschließlich für die Anforderung von Unterlagen durch den MD zu verwenden."
     * #UB999997 "Gesamtdokumentation stationäre Versorgung" "Die Dokumentation beinhaltet eine Sammlung verschiedener Dokumententypen im Rahmen der stationären Versorgung. Diese KDL ist nur in Einzelfällen zu verwenden. Beispiel: elektronischer Austausch der gesamten Patientenakte"
     * #UB999998 "Gesamtdokumentation ambulante Versorgung" "Die Dokumentation beinhaltet eine Sammlung verschiedener Dokumententypen im Rahmen der ambulanten Versorgung. Diese KDL ist nur in Einzelfällen zu verwenden. Beispiel: elektronischer Austausch der gesamten Ambulanzakte"
     * #UB999999 "Sonstige medizinische Dokumentation" "Die Dokumentation beinhaltet alle Dokumententypen, die nicht in eine spezifischeren KDL aller Unterklassen abgebildet werden können. Inkl.: Patientenetiketten, Visitenkarte, Registerblätter"
