@@ -3,20 +3,17 @@
 const fs = require('fs');
 const path = require('path');
 
-const PARENT_PROPERTY_DECLARATION = [
-  { field: 'code', value: '#parent' },
-  { field: 'uri', value: '"http://hl7.org/fhir/concept-properties#parent"' },
-  {
-    field: 'description',
-    value:
-      '"The concept identified in this property is a parent of the concept on which it is a property."'
-  },
-  { field: 'type', value: '#code' }
-];
+const PARENT_PROPERTY = {
+  code: 'parent',
+  uri: 'http://hl7.org/fhir/concept-properties#parent',
+  description:
+    'The concept identified in this property is a parent of the concept on which it is a property.',
+  type: 'code'
+};
 
 function usage() {
   const scriptName = path.basename(process.argv[1] || 'flatten-codesystem.js');
-  console.error(`Usage: node ${scriptName} <input.fsh> <output.fsh>`);
+  console.error(`Usage: node ${scriptName} <input.json> <output.json>`);
 }
 
 function fail(message) {
@@ -24,273 +21,111 @@ function fail(message) {
   process.exit(1);
 }
 
-function readText(filePath) {
+function readJson(filePath) {
+  let raw;
   try {
-    return fs.readFileSync(filePath, 'utf8');
+    raw = fs.readFileSync(filePath, 'utf8');
   } catch (error) {
     fail(`Konnte Eingabedatei nicht lesen: ${filePath}\n${error.message}`);
   }
+
+  try {
+    return JSON.parse(raw);
+  } catch (error) {
+    fail(`Ungültiges JSON in ${filePath}\n${error.message}`);
+  }
 }
 
-function writeText(filePath, content) {
+function writeJson(filePath, data) {
   try {
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
-    fs.writeFileSync(filePath, content, 'utf8');
+    fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
   } catch (error) {
     fail(`Konnte Ausgabedatei nicht schreiben: ${filePath}\n${error.message}`);
   }
 }
 
-function countLeadingSpaces(line) {
-  const match = line.match(/^ */);
-  return match ? match[0].length : 0;
+function deepClone(value) {
+  return JSON.parse(JSON.stringify(value));
 }
 
-function isConceptLine(line) {
-  return /^(\s*)\* #\S+/.test(line);
-}
-
-function isConceptPropertyLine(line) {
-  return /^(\s*)\* \^property/.test(line);
-}
-
-function isTopLevelPropertyLine(line) {
-  return /^\* \^property/.test(line.trim());
-}
-
-function parseConceptLine(line) {
-  const match = line.match(
-    /^(\s*)\* (#\S+)(?:\s+"((?:[^"\\]|\\.)*)")?(?:\s+"((?:[^"\\]|\\.)*)")?\s*$/
-  );
-  if (!match) {
-    fail(`Konzeptzeile konnte nicht geparst werden: ${line}`);
+function normalizeInvisibleWhitespace(value) {
+  if (typeof value === 'string') {
+    return value.replace(/\u00A0/g, ' ');
   }
 
-  return {
-    indent: match[1].length,
-    code: match[2].slice(1),
-    body: line.trimEnd().trim()
-  };
-}
-
-function parsePropertyLine(line) {
-  const trimmed = line.trim();
-  const match = trimmed.match(/^\* \^property(?:\[(\d+|\+|=)\])?\.(\w+) = (.+?)\s*$/);
-  if (!match) {
-    fail(`Property-Zeile konnte nicht geparst werden: ${line}`);
+  if (Array.isArray(value)) {
+    return value.map(normalizeInvisibleWhitespace);
   }
 
-  return {
-    raw: trimmed,
-    indexToken: match[1] || null,
-    field: match[2],
-    value: match[3]
-  };
-}
-
-function propertyEntriesFromLines(propertyLines, contextLabel) {
-  const entries = [];
-  let currentIndex = -1;
-
-  for (const line of propertyLines) {
-    const parsed = typeof line === 'string' ? parsePropertyLine(line) : line;
-
-    if (parsed.indexToken === '+') {
-      entries.push({ fields: [] });
-      currentIndex = entries.length - 1;
-    } else if (/^\d+$/.test(parsed.indexToken || '')) {
-      currentIndex = Number(parsed.indexToken);
-      while (entries.length <= currentIndex) {
-        entries.push({ fields: [] });
-      }
-    } else if (parsed.indexToken === '=') {
-      if (currentIndex < 0 || !entries[currentIndex]) {
-        fail(`${contextLabel}: '=' ohne vorherige Property-Instanz.`);
-      }
-    } else if (parsed.field === 'code') {
-      if (currentIndex >= 0 && entries[currentIndex] && entries[currentIndex].fields.length > 0) {
-        entries.push({ fields: [] });
-        currentIndex = entries.length - 1;
-      } else if (currentIndex < 0) {
-        entries.push({ fields: [] });
-        currentIndex = entries.length - 1;
-      }
-    } else if (currentIndex < 0) {
-      entries.push({ fields: [] });
-      currentIndex = entries.length - 1;
+  if (value && typeof value === 'object') {
+    const normalized = {};
+    for (const [key, entry] of Object.entries(value)) {
+      normalized[key] = normalizeInvisibleWhitespace(entry);
     }
-
-    entries[currentIndex].fields.push({
-      field: parsed.field,
-      value: parsed.value,
-      raw: parsed.raw
-    });
+    return normalized;
   }
 
-  return entries.filter(entry => entry.fields.length > 0);
+  return value;
 }
 
-function renderPropertyEntries(entries, indent) {
-  const lines = [];
-
-  entries.forEach((entry, entryIndex) => {
-    entry.fields.forEach((field, fieldIndex) => {
-      let token;
-      if (entryIndex === 0 && fieldIndex === 0) {
-        token = '[0]';
-      } else if (fieldIndex === 0) {
-        token = '[+]';
-      } else {
-        token = '[=]';
-      }
-
-      lines.push(`${indent}* ^property${token}.${field.field} = ${field.value}`);
-    });
-  });
-
-  return lines;
-}
-
-function cloneEntries(entries) {
-  return entries.map(entry => ({
-    fields: entry.fields.map(field => ({
-      field: field.field,
-      value: field.value,
-      raw: field.raw
-    }))
-  }));
-}
-
-function normalizeEntry(entry) {
-  return entry.fields.map(field => ({ field: field.field, value: field.value }));
-}
-
-function getEntryValue(entry, fieldName) {
-  const field = entry.fields.find(item => item.field === fieldName);
-  return field ? field.value : null;
-}
-
-function findPropertyEntry(entries, codeValue) {
-  return entries.find(entry => getEntryValue(entry, 'code') === codeValue);
-}
-
-function parseFsh(text) {
-  const lines = text.split(/\r?\n/);
-  const before = [];
-  const concepts = [];
-  const after = [];
-  const stack = [];
-  let conceptSectionStarted = false;
-  let conceptSectionEnded = false;
-  let currentConcept = null;
-
-  for (const line of lines) {
-    if (!conceptSectionStarted) {
-      if (isConceptLine(line)) {
-        conceptSectionStarted = true;
-      } else {
-        before.push(line);
-        continue;
-      }
-    }
-
-    if (conceptSectionEnded) {
-      after.push(line);
-      continue;
-    }
-
-    if (isConceptLine(line)) {
-      const parsed = parseConceptLine(line);
-      const concept = {
-        code: parsed.code,
-        indent: parsed.indent,
-        conceptLine: parsed.body,
-        propertyLines: [],
-        propertyEntries: [],
-        children: []
-      };
-
-      while (stack.length > 0 && stack[stack.length - 1].indent >= concept.indent) {
-        stack.pop();
-      }
-
-      if (stack.length > 0) {
-        stack[stack.length - 1].children.push(concept);
-      } else {
-        concepts.push(concept);
-      }
-
-      stack.push(concept);
-      currentConcept = concept;
-      continue;
-    }
-
-    if (isConceptPropertyLine(line)) {
-      if (!currentConcept) {
-        fail(`Concept-Property ohne zugehöriges Konzept gefunden: ${line}`);
-      }
-
-      if (countLeadingSpaces(line) <= currentConcept.indent) {
-        fail(`Concept-Property ist nicht tiefer eingerückt als sein Konzept: ${line}`);
-      }
-
-      currentConcept.propertyLines.push(line);
-      currentConcept.propertyEntries = propertyEntriesFromLines(
-        currentConcept.propertyLines,
-        `Konzept ${currentConcept.code}`
-      );
-      continue;
-    }
-
-    if (line.trim() === '') {
-      if (!currentConcept) {
-        before.push(line);
-      }
-      continue;
-    }
-
-    conceptSectionEnded = true;
-    after.push(line);
+function countNestedConceptContainers(concepts) {
+  if (!Array.isArray(concepts)) {
+    return 0;
   }
 
-  if (!conceptSectionStarted) {
-    fail('Keine Konzeptdefinitionen in der FSH-Datei gefunden.');
-  }
-
-  return { before, concepts, after };
-}
-
-function traverseConcepts(concepts, visit, parentCode = null) {
+  let nestedCount = 0;
   for (const concept of concepts) {
-    visit(concept, parentCode);
-    traverseConcepts(concept.children, visit, concept.code);
+    if (Array.isArray(concept.concept) && concept.concept.length > 0) {
+      nestedCount += 1;
+      nestedCount += countNestedConceptContainers(concept.concept);
+    }
   }
+  return nestedCount;
 }
 
-function collectOriginalStats(concepts) {
+function collectStats(concepts) {
   const stats = {
     totalConcepts: 0,
-    rootConcepts: 0,
-    existingPropertyLines: 0,
-    deprecatedProperties: 0,
-    codes: []
+    withParent: 0,
+    codes: [],
+    conceptPropertiesExcludingParent: 0,
+    deprecatedProperties: 0
   };
 
-  traverseConcepts(concepts, (concept, parentCode) => {
-    stats.totalConcepts += 1;
-    stats.codes.push(concept.code);
-    if (parentCode == null) {
-      stats.rootConcepts += 1;
+  function visit(list) {
+    if (!Array.isArray(list)) {
+      return;
     }
 
-    for (const entry of concept.propertyEntries) {
-      stats.existingPropertyLines += entry.fields.length;
-      if (getEntryValue(entry, 'code') === '#status' && getEntryValue(entry, 'valueCode') === '#deprecated') {
-        stats.deprecatedProperties += 1;
+    for (const concept of list) {
+      stats.totalConcepts += 1;
+      stats.codes.push(concept.code);
+
+      const properties = Array.isArray(concept.property) ? concept.property : [];
+      let hasParentProperty = false;
+
+      for (const property of properties) {
+        if (property && property.code === 'parent') {
+          hasParentProperty = true;
+        } else {
+          stats.conceptPropertiesExcludingParent += 1;
+        }
+
+        if (property && property.code === 'status' && property.valueCode === 'deprecated') {
+          stats.deprecatedProperties += 1;
+        }
       }
-    }
-  });
 
+      if (hasParentProperty) {
+        stats.withParent += 1;
+      }
+
+      visit(concept.concept);
+    }
+  }
+
+  visit(concepts);
   return stats;
 }
 
@@ -309,192 +144,128 @@ function findDuplicateCodes(codes) {
   return Array.from(duplicates).sort();
 }
 
-function normalizeTopLevelPropertyDeclarations(lines) {
-  const result = lines.slice();
-  let blockStart = -1;
-  let blockEnd = -1;
+function ensureParentPropertyDeclaration(codeSystem) {
+  if (!Array.isArray(codeSystem.property)) {
+    codeSystem.property = [];
+  }
 
-  for (let i = 0; i < result.length; i += 1) {
-    if (isTopLevelPropertyLine(result[i])) {
-      if (blockStart === -1) {
-        blockStart = i;
-      }
-      blockEnd = i;
-    } else if (blockStart !== -1) {
-      break;
+  const existing = codeSystem.property.find(property => property && property.code === 'parent');
+  if (!existing) {
+    codeSystem.property.push(deepClone(PARENT_PROPERTY));
+  }
+}
+
+function addParentProperty(flatConcept, parentCode) {
+  if (parentCode == null) {
+    return;
+  }
+
+  if (!Array.isArray(flatConcept.property)) {
+    flatConcept.property = [];
+  }
+
+  const existingParentProperties = flatConcept.property.filter(
+    property => property && property.code === 'parent'
+  );
+
+  if (existingParentProperties.length > 1) {
+    fail(`Konzept ${flatConcept.code} enthält mehrere parent-Properties.`);
+  }
+
+  if (existingParentProperties.length === 1) {
+    if (existingParentProperties[0].valueCode !== parentCode) {
+      fail(
+        `Konzept ${flatConcept.code} enthält bereits eine parent-Property mit valueCode ` +
+          `${existingParentProperties[0].valueCode}, erwartet ${parentCode}.`
+      );
     }
+    return;
   }
 
-  const entries =
-    blockStart === -1
-      ? []
-      : propertyEntriesFromLines(result.slice(blockStart, blockEnd + 1), 'CodeSystem');
-
-  if (!findPropertyEntry(entries, '#parent')) {
-    entries.push({
-      fields: PARENT_PROPERTY_DECLARATION.map(field => ({ field: field.field, value: field.value }))
-    });
-  }
-
-  const rendered = renderPropertyEntries(entries, '');
-
-  if (blockStart === -1) {
-    if (result.length > 0 && result[result.length - 1] !== '') {
-      result.push('');
-    }
-    result.push(...rendered, '');
-    return result;
-  }
-
-  result.splice(blockStart, blockEnd - blockStart + 1, ...rendered);
-  return result;
+  flatConcept.property.push({
+    code: 'parent',
+    valueCode: parentCode
+  });
 }
 
 function flattenConcepts(concepts) {
   const flatConcepts = [];
-
-  traverseConcepts(concepts, (concept, parentCode) => {
-    const originalPropertyEntries = cloneEntries(concept.propertyEntries);
-    const propertyEntries = cloneEntries(concept.propertyEntries);
-
-    if (parentCode != null) {
-      const parentEntry = findPropertyEntry(propertyEntries, '#parent');
-      if (parentEntry) {
-        if (getEntryValue(parentEntry, 'valueCode') !== `#${parentCode}`) {
-          fail(`Konzept ${concept.code} enthält bereits eine parent-Property mit falschem Parent.`);
-        }
-      } else {
-        propertyEntries.push({
-          fields: [
-            { field: 'code', value: '#parent' },
-            { field: 'valueCode', value: `#${parentCode}` }
-          ]
-        });
-      }
-    }
-
-    flatConcepts.push({
-      code: concept.code,
-      conceptLine: concept.conceptLine,
-      parentCode,
-      originalPropertyEntries,
-      propertyEntries
-    });
-  });
-
-  return flatConcepts;
-}
-
-function validateFlattened(flatConcepts, originalStats) {
-  const codes = flatConcepts.map(concept => concept.code);
-  const duplicateCodes = findDuplicateCodes(codes);
-  const codeSet = new Set(codes);
-  const parentReferenceErrors = [];
-  let conceptsWithParent = 0;
-  let nestedConceptsRemain = false;
-
-  for (const concept of flatConcepts) {
-    if (/^\s/.test(concept.conceptLine)) {
-      nestedConceptsRemain = true;
-    }
-
-    for (let i = 0; i < concept.originalPropertyEntries.length; i += 1) {
-      const originalEntry = concept.originalPropertyEntries[i];
-      const transformedEntry = concept.propertyEntries[i];
-      if (!transformedEntry) {
-        fail(`Bestehende Concept-Properties wurden für Konzept ${concept.code} entfernt.`);
-      }
-
-      if (
-        JSON.stringify(normalizeEntry(originalEntry)) !== JSON.stringify(normalizeEntry(transformedEntry))
-      ) {
-        fail(`Bestehende Concept-Properties wurden für Konzept ${concept.code} verändert.`);
-      }
-    }
-
-    if (concept.parentCode != null) {
-      conceptsWithParent += 1;
-      if (!codeSet.has(concept.parentCode)) {
-        parentReferenceErrors.push(`${concept.code} -> ${concept.parentCode}`);
-      }
-    }
-
-    const statusEntry = findPropertyEntry(concept.propertyEntries, '#status');
-    const parentEntry = findPropertyEntry(concept.propertyEntries, '#parent');
-    if (statusEntry && getEntryValue(statusEntry, 'valueCode') === '#deprecated') {
-      if (!parentEntry || getEntryValue(parentEntry, 'valueCode') !== `#${concept.parentCode}`) {
-        fail(
-          `Deprecated-Konzept ${concept.code} enthält nach der Transformation nicht sowohl status=deprecated als auch parent=${concept.parentCode}.`
-        );
-      }
-    }
-  }
-
-  const summary = {
-    totalConceptsBefore: originalStats.totalConcepts,
-    totalConceptsAfter: flatConcepts.length,
-    rootConcepts: originalStats.rootConcepts,
-    conceptsWithParent,
-    propertyLinesPreserved: originalStats.existingPropertyLines,
-    deprecatedProperties: originalStats.deprecatedProperties,
-    duplicateCodes,
-    parentReferenceErrors,
-    nestedConceptsRemain
+  const stats = {
+    rootConcepts: 0
   };
 
-  if (summary.totalConceptsAfter !== summary.totalConceptsBefore) {
-    fail('Die Anzahl der Konzepte nach der Transformation stimmt nicht mit der Eingabe überein.');
+  function visit(list, parentCode) {
+    if (!Array.isArray(list)) {
+      return;
+    }
+
+    for (const concept of list) {
+      if (parentCode == null) {
+        stats.rootConcepts += 1;
+      }
+
+      const children = Array.isArray(concept.concept) ? concept.concept : [];
+      const flatConcept = deepClone(concept);
+      delete flatConcept.concept;
+
+      addParentProperty(flatConcept, parentCode);
+      flatConcepts.push(flatConcept);
+
+      visit(children, concept.code);
+    }
   }
 
-  if (summary.conceptsWithParent !== summary.totalConceptsAfter - summary.rootConcepts) {
-    fail('Nicht jedes Nicht-Root-Konzept besitzt genau eine parent-Property.');
-  }
-
-  if (summary.duplicateCodes.length > 0) {
-    fail(`Doppelte Concept-Codes gefunden: ${summary.duplicateCodes.join(', ')}`);
-  }
-
-  if (summary.parentReferenceErrors.length > 0) {
-    fail(`Ungültige parent-Referenzen gefunden: ${summary.parentReferenceErrors.join('; ')}`);
-  }
-
-  if (summary.nestedConceptsRemain) {
-    fail('Nach der Transformation sind noch eingerückte Konzeptzeilen vorhanden.');
-  }
-
-  return summary;
+  visit(concepts, null);
+  return { flatConcepts, stats };
 }
 
-function renderFsh(before, flatConcepts, after) {
-  const lines = normalizeTopLevelPropertyDeclarations(before);
-
-  if (lines.length > 0 && lines[lines.length - 1] !== '') {
-    lines.push('');
+function validateCodeSystem(codeSystem) {
+  if (!codeSystem || typeof codeSystem !== 'object') {
+    fail('Eingabe ist kein JSON-Objekt.');
   }
+
+  if (codeSystem.resourceType !== 'CodeSystem') {
+    fail(`Erwartet resourceType "CodeSystem", gefunden: ${codeSystem.resourceType || '<leer>'}`);
+  }
+
+  if (!Array.isArray(codeSystem.concept)) {
+    fail('CodeSystem.concept fehlt oder ist kein Array.');
+  }
+}
+
+function validateParentReferences(flatConcepts) {
+  const codes = new Set(flatConcepts.map(concept => concept.code));
+  const missingReferences = [];
 
   for (const concept of flatConcepts) {
-    lines.push(concept.conceptLine);
-    lines.push(...renderPropertyEntries(concept.propertyEntries, '  '));
-  }
+    const properties = Array.isArray(concept.property) ? concept.property : [];
+    const statusDeprecated = properties.some(
+      property => property && property.code === 'status' && property.valueCode === 'deprecated'
+    );
+    const parentProperty = properties.find(property => property && property.code === 'parent');
 
-  if (after.length > 0) {
-    if (lines.length > 0 && lines[lines.length - 1] !== '') {
-      lines.push('');
+    if (parentProperty && !codes.has(parentProperty.valueCode)) {
+      missingReferences.push(`${concept.code} -> ${parentProperty.valueCode}`);
     }
-    lines.push(...after);
+
+    if (statusDeprecated) {
+      if (!parentProperty) {
+        missingReferences.push(`${concept.code} -> <missing parent for deprecated concept>`);
+      }
+    }
   }
 
-  return `${lines.join('\n')}\n`;
+  return missingReferences;
 }
 
 function printSummary(summary) {
-  console.log(`Anzahl Konzepte vorher: ${summary.totalConceptsBefore}`);
-  console.log(`Anzahl Konzepte nachher: ${summary.totalConceptsAfter}`);
+  console.log(`Anzahl Konzepte vorher: ${summary.before.totalConcepts}`);
+  console.log(`Anzahl Konzepte nachher: ${summary.after.totalConcepts}`);
   console.log(`Anzahl Root-Konzepte: ${summary.rootConcepts}`);
-  console.log(`Anzahl Konzepte mit parent: ${summary.conceptsWithParent}`);
+  console.log(`Anzahl Konzepte mit parent: ${summary.after.withParent}`);
   console.log(
     `Anzahl vorhandener/deprecated Properties, die erhalten wurden: ` +
-      `${summary.propertyLinesPreserved}/${summary.deprecatedProperties}`
+      `${summary.after.conceptPropertiesExcludingParent}/${summary.after.deprecatedProperties}`
   );
   console.log(
     `Doppelte Concept-Codes: ${
@@ -503,11 +274,13 @@ function printSummary(summary) {
   );
   console.log(
     `Alle parent.valueCode-Referenzen gültig: ${
-      summary.parentReferenceErrors.length === 0 ? 'ja' : 'nein'
+      summary.missingParentReferences.length === 0 ? 'ja' : 'nein'
     }`
   );
   console.log(
-    `Noch verschachtelte concept-Zeilen vorhanden: ${summary.nestedConceptsRemain ? 'ja' : 'nein'}`
+    `Verschachtelte concept.concept nach Transformation vorhanden: ${
+      summary.remainingNestedConcepts === 0 ? 'nein' : 'ja'
+    }`
   );
 }
 
@@ -522,15 +295,81 @@ function main() {
   const inputPath = path.resolve(inputArg);
   const outputPath = path.resolve(outputArg);
 
-  const input = readText(inputPath);
-  const parsed = parseFsh(input);
-  const originalStats = collectOriginalStats(parsed.concepts);
-  const flatConcepts = flattenConcepts(parsed.concepts);
-  const summary = validateFlattened(flatConcepts, originalStats);
-  const output = renderFsh(parsed.before, flatConcepts, parsed.after);
+  const input = readJson(inputPath);
+  validateCodeSystem(input);
 
-  writeText(outputPath, output);
+  const originalConcepts = input.concept;
+  const originalStats = collectStats(originalConcepts);
+
+  const transformed = deepClone(input);
+  ensureParentPropertyDeclaration(transformed);
+  delete transformed.text;
+
+  const { flatConcepts, stats: flattenStats } = flattenConcepts(originalConcepts);
+  transformed.concept = flatConcepts;
+  const normalizedTransformed = normalizeInvisibleWhitespace(transformed);
+
+  const transformedStats = collectStats(normalizedTransformed.concept);
+  const duplicateCodes = findDuplicateCodes(transformedStats.codes);
+  const missingParentReferences = validateParentReferences(normalizedTransformed.concept);
+  const remainingNestedConcepts = countNestedConceptContainers(normalizedTransformed.concept);
+  const parentDeclarationCount = Array.isArray(normalizedTransformed.property)
+    ? normalizedTransformed.property.filter(property => property && property.code === 'parent').length
+    : 0;
+
+  const summary = {
+    before: originalStats,
+    after: transformedStats,
+    rootConcepts: flattenStats.rootConcepts,
+    duplicateCodes,
+    missingParentReferences,
+    remainingNestedConcepts
+  };
+
   printSummary(summary);
+
+  if (transformedStats.totalConcepts !== originalStats.totalConcepts) {
+    fail('Die Anzahl der Konzepte nach der Transformation stimmt nicht mit der Eingabe überein.');
+  }
+
+  if (transformedStats.withParent !== transformedStats.totalConcepts - summary.rootConcepts) {
+    fail('Nicht jedes Nicht-Root-Konzept besitzt genau eine parent-Property.');
+  }
+
+  if (summary.rootConcepts !== transformedStats.totalConcepts - transformedStats.withParent) {
+    fail('Die Anzahl der Root-Konzepte ist nach der Transformation inkonsistent.');
+  }
+
+  if (
+    transformedStats.conceptPropertiesExcludingParent !==
+    originalStats.conceptPropertiesExcludingParent
+  ) {
+    fail('Bestehende Concept-Properties wurden nicht unverändert erhalten.');
+  }
+
+  if (transformedStats.deprecatedProperties !== originalStats.deprecatedProperties) {
+    fail('Deprecated-Properties wurden nicht vollständig erhalten.');
+  }
+
+  if (duplicateCodes.length > 0) {
+    fail(`Doppelte Concept-Codes gefunden: ${duplicateCodes.join(', ')}`);
+  }
+
+  if (missingParentReferences.length > 0) {
+    fail(
+      `Ungültige parent.valueCode-Referenzen gefunden: ${missingParentReferences.join('; ')}`
+    );
+  }
+
+  if (remainingNestedConcepts > 0) {
+    fail('Nach der Transformation sind noch verschachtelte concept.concept-Elemente vorhanden.');
+  }
+
+  if (parentDeclarationCount !== 1) {
+    fail(`CodeSystem.property enthält parent ${parentDeclarationCount} Mal statt genau 1 Mal.`);
+  }
+
+  writeJson(outputPath, normalizedTransformed);
   console.log(`Ausgabe geschrieben nach: ${outputPath}`);
 }
 
