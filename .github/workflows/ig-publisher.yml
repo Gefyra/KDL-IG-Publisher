@@ -28,6 +28,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Transform KDL FSH
+        run: |
+          set -euo pipefail
+          source="input/fsh/codesystems/CodeSystem-kdl.hierarchical.fsh"
+          target="input/fsh/codesystems/CodeSystem-kdl.fsh"
+          if [ ! -f "$source" ]; then
+            echo "Expected hierarchical KDL FSH source not found: $source"
+            exit 1
+          fi
+          rm -f "$target"
+          node scripts/flatten-kdl-fsh.js "$source" "$target"
+          if [ ! -f "$target" ]; then
+            echo "Expected flattened KDL FSH was not generated: $target"
+            exit 1
+          fi
+          rm "$source"
+
       # Run SUSHI (FSH -> FHIR conversion) on Resources directory
       - name: Run SUSHI
         run: |
