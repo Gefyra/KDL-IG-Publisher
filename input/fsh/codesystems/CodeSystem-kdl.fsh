@@ -37,7 +37,7 @@ Die KDL ermöglicht eine einheitliche Bezeichnung der enorm vielfältigen Dokume
 
 * ^property.code = #status
 * ^property.uri = "http://hl7.org/fhir/concept-properties#status"
-* ^property.description = "A property that indicates the status of the concept. One of active, experimental, deprecated, retired"
+* ^property.description = "A property that indicates the status of the concept. One of active, experimental, deprecated, retired."
 * ^property.type = #code
 
 * #AD "Arztdokumentation"
