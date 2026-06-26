@@ -5,6 +5,7 @@ Description: "Dieses ValueSet enthält sämtliche Codes aus dem CodeSystem &quot
 * insert DVMDAuthor
 * insert EffectivePeriod
 
+* ^meta.profile[+] = $shareablevalueset
 * ^url = "http://dvmd.de/fhir/ValueSet/kdl-all"
 * ^language = #de-DE
 * ^status = #active
