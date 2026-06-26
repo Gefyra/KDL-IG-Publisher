@@ -7,13 +7,13 @@ id: dvmd.kdl.r4
 canonical: http://dvmd.de/fhir
 name: KDL
 title: Klinische Dokumentenklassen-Liste (KDL)
-# description: Example Implementation Guide for getting started with SUSHI
+description: Das Package enthält die KDL im FHIR-Format für den Datenaustausch im Kontext der elektronischen Patientenakte. Die Zusammenstellung des FHIR Pakets basiert auf den Inhalten, die seitens DVMD e.V. zur Verfügung gestellt wurden.
 status: active # draft | active | retired | unknown
 version: 2026.0.0
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2026+
 releaseLabel: 2026
-license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
+license: GPL-3.0-or-later # https://www.hl7.org/fhir/valueset-spdx-license.html
 jurisdiction: urn:iso:std:iso:3166#DE "Germany" # https://www.hl7.org/fhir/valueset-jurisdiction.html
 language: de-DE
 publisher:
