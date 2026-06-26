@@ -23,3 +23,11 @@ RuleSet: EffectivePeriod
 RuleSet: EffectivePeriodInstance
 * extension[+].url = "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod"
 * extension[=].valuePeriod.start = "2026-01-01"
+
+RuleSet: LastReviewDate
+* ^extension[+].url = $resource-lastReviewDate
+* ^extension[=].valueDate = "2026-01-13"
+
+RuleSet: LastReviewDateInstance
+* extension[+].url = $resource-lastReviewDate
+* extension[=].valueDate = "2026-01-13"

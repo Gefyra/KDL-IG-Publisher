@@ -3,6 +3,7 @@ InstanceOf: ConceptMap
 Usage: #definition
 * insert DVMDAuthorInstance
 * insert EffectivePeriodInstance
+* insert LastReviewDateInstance
 
 * url = "http://dvmd.de/fhir/ConceptMap/kdl-ihe-classcode"
 * language = #de-DE

@@ -9,6 +9,7 @@ Die KDL ermöglicht eine einheitliche Bezeichnung der enorm vielfältigen Dokume
 """
 * insert DVMDAuthor
 * insert EffectivePeriod
+* insert LastReviewDate
 
 * ^meta.profile[+] = $shareablecodesystem
 * ^url = "http://dvmd.de/fhir/CodeSystem/kdl"

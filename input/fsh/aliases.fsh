@@ -1,5 +1,6 @@
 //Fhir Extensions Pack
 Alias: $artifact-author = http://hl7.org/fhir/StructureDefinition/artifact-author
+Alias: $resource-lastReviewDate = http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate
 Alias: $shareablevalueset = http://hl7.org/fhir/StructureDefinition/shareablevalueset
 Alias: $shareablecodesystem = http://hl7.org/fhir/StructureDefinition/shareablecodesystem
 

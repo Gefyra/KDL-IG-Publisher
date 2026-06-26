@@ -4,6 +4,7 @@ Title: "Dokumenten(typ)klassen Klinische Dokumentenklassen-Liste 2026"
 Description: "ValueSets sind Listen von Codes, die in einem bestimmten Kontext verwendet werden. Durch sog. &quot;Terminology-Binding&quot; können Attribute von FHIR-Ressourcen an ValueSets gebunden werden, um die Menge der zulässigen Werte für dieses Attribut einzuschränken. Dieses ValueSet enthält nur Codes der Ebene 3 (Dokumenten(typ)klassen) aus dem CodeSystem &quot;KDL&quot; und ist für Bindings an Attribute geeignet, an denen ausschließlich Dokumentenklassen erlaubt werden sollen. Beispiel: DocumentReference.type"
 * insert DVMDAuthor
 * insert EffectivePeriod
+* insert LastReviewDate
 * ^meta.profile[+] = $shareablevalueset
 * ^url = "http://dvmd.de/fhir/ValueSet/kdl"
 * ^language = #de-DE
