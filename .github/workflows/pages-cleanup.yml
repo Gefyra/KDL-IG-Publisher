@@ -1,0 +1,36 @@
+name: Clean up branch previews
+
+# Preview directories under branches/ outlive the branch they were built from,
+# so they are reaped when a branch goes away -- plus a weekly sweep to catch
+# branches deleted while this workflow was not running (or before it existed).
+on:
+  delete:
+  schedule:
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Shared with the publish job in ig-publisher.yml: both force-push gh-pages.
+concurrency:
+  group: gh-pages-publish
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    # Tag deletions leave no preview behind.
+    if: github.event_name != 'delete' || github.event.ref_type == 'branch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Remove previews of deleted branches
+        shell: bash
+        env:
+          REPO: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: scripts/gh-pages.sh cleanup
