@@ -4,7 +4,11 @@
 
 Willkommen zum KDL Implementation Guide! Dieses Projekt verwendet FHIR Shorthand (FSH) zur Erstellung eines FHIR Implementation Guides.
 
-**Voransicht des aktuellen CodeStands:** https://gefyra.github.io/KDL-IG-Publisher/main/
+**Veröffentlichte Fassung:** https://gefyra.github.io/KDL-IG-Publisher/
+
+**Voransicht des aktuellen Codestands:** https://gefyra.github.io/KDL-IG-Publisher/branches/main/
+
+Ältere Fassungen bleiben unter ihrer Versionsnummer erreichbar, z. B. https://gefyra.github.io/KDL-IG-Publisher/2026.0.0/
 
 ## 🚀 Schnellstart für Anfänger
 
@@ -38,8 +42,9 @@ Kompiliert Ihre FSH-Dateien zu FHIR-Ressourcen
 - **Nach einem Commit passiert automatisch:**
   - ✅ Ihre Änderungen werden in Git gesichert
   - ✅ Ein vollständiger Build wird auf GitHub ausgeführt
-  - ✅ Der Implementation Guide wird auf GitHub Pages aktualisiert
-  - ✅ Sie können ihn unter https://gefyra.github.io/KDL-IG-Publisher/main/ ansehen
+  - ✅ Der Implementation Guide wird geprüft (siehe [Automatische Prüfung](#-automatische-prüfung))
+  - ✅ Bei fehlerfreier Prüfung wird er auf GitHub Pages aktualisiert
+  - ✅ Sie können ihn unter https://gefyra.github.io/KDL-IG-Publisher/branches/main/ ansehen
 
 - **So nutzen Sie Commit:**
   1. Klicken Sie auf den **💾 Commit** Button (rechts in der Statusleiste)
@@ -90,8 +95,8 @@ Lädt benötigte FHIR-Pakete herunter
    - **Fertig!** GitHub baut und veröffentlicht automatisch
 
 4. **Warten Sie ca. 5-10 Minuten**
-   - Der IG wird automatisch neu gebaut
-   - Schauen Sie auf https://gefyra.github.io/KDL-IG-Publisher/main/
+   - Der IG wird automatisch neu gebaut und geprüft
+   - Schauen Sie auf https://gefyra.github.io/KDL-IG-Publisher/branches/main/
 
 > **💡 Tipp:** Der Workflow ist: **SUSHI Build → Commit → Warten → Auf GitHub Pages ansehen**
 
@@ -105,17 +110,41 @@ Wenn Sie den IG **vor dem Commit** lokal ansehen möchten:
 4. Browser öffnen: http://localhost:8080/index.html
 5. **💾 Commit** klicken, wenn alles gut aussieht
 
+## ✅ Automatische Prüfung
+
+Jeder Commit wird nicht nur gebaut, sondern auch validiert. Findet die Prüfung **Fehler**, schlägt der Build fehl und **es wird nichts veröffentlicht** — die alte Fassung auf GitHub Pages bleibt unangetastet. Warnungen werden angezeigt, verhindern die Veröffentlichung aber nicht.
+
+Wo Sie die Ergebnisse sehen:
+
+- **Direkt am Code:** Jedes Problem erscheint als Anmerkung an der betroffenen Zeile
+- **Im Pull Request:** ein Kommentar mit allen Befunden und dem Link zur Voransicht, der bei jedem weiteren Commit aktualisiert wird
+- **Im Build-Protokoll:** eine Übersichtstabelle unter "Summary" des jeweiligen Workflow-Laufs
+
+Bleibt ein Build rot, finden Sie die vollständige Prüfausgabe (`qa.html`) im Artefakt `fhir-ig` des Laufs. Es wird 14 Tage aufbewahrt.
+
+## 🌐 Wo der IG veröffentlicht wird
+
+| Auslöser                        | Adresse                                                    |
+| ------------------------------- | ---------------------------------------------------------- |
+| Commit auf einen Branch         | `…/branches/<branch-name>/`                                |
+| Veröffentlichtes GitHub-Release | `/` (Wurzel) **und** `…/<version>/` als dauerhaftes Archiv |
+
+Voransichten gelöschter Branches werden automatisch entfernt. Die Versionsnummer eines Releases muss mit `version:` in `sushi-config.yaml` übereinstimmen, sonst bricht der Build ab, bevor etwas veröffentlicht wird.
+
 ## 📁 Projektstruktur
 
 ```
 input/fsh/              # Ihre FSH-Definitionen (hier arbeiten Sie!)
 ├── codesystems/        # Code-Systeme
 ├── valuesets/          # Value Sets
-├── profiles/           # Profile
-└── examples/           # Beispiel-Instanzen
+├── conceptMaps/        # Mappings auf andere Terminologien
+├── examples/           # Beispiel-Instanzen
+├── aliases.fsh         # Abkürzungen für häufig genutzte URLs
+└── rulesets.fsh        # Wiederverwendbare Regelblöcke
 
-sushi-config.yaml       # Projekt-Konfiguration
-output/                 # Generierte HTML-Dokumentation
+input/pagecontent/      # Freitextseiten des IGs (z. B. Änderungshistorie)
+sushi-config.yaml       # Projekt-Konfiguration inkl. Versionsnummer
+output/                 # Generierte HTML-Dokumentation (lokal, nicht in Git)
 ```
 
 ## 💡 Tipps für Anfänger
