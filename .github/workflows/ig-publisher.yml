@@ -123,7 +123,7 @@ jobs:
       # Uploaded before the QA gate, so a failing build still leaves qa.html
       # behind to look at.
       - name: Upload Build Results
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: fhir-ig
           path: |
