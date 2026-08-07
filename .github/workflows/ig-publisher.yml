@@ -116,8 +116,8 @@ jobs:
             exit 1
           fi
 
-      # Kept for two weeks so a questionable build can still be inspected
-      # (qa.html in particular) after the fact.
+      # Uploaded before the QA gate, so a failing build still leaves qa.html
+      # behind to look at.
       - name: Upload Build Results
         uses: actions/upload-artifact@v6
         with:
@@ -125,6 +125,25 @@ jobs:
           path: |
             ${{ env.INPUT_DIR }}/output
           retention-days: 14
+
+      # The publisher reports validation results in qa.xml instead of through
+      # its exit code, so nothing fails on errors unless we look ourselves.
+      # The renderer turns those issues into inline annotations and a summary
+      # table, and fails the job if any error survives the filters below.
+      - name: Check IG validation results
+        uses: patrick-werner/validation-outcome-markdown-renderer@v1
+        with:
+          # qa.xml is the publisher's own OperationOutcome bundle; the renderer
+          # detects XML from the content, so it is consumed as-is.
+          bundle-file: ${{ env.INPUT_DIR }}/output/qa.xml
+          # Warnings are annotated for visibility but do not fail the build --
+          # only errors do. Warnings meant to stay are silenced in
+          # input/ignoreWarnings.txt, which the publisher applies before this.
+          include: warnings
+          # Written even when the step fails, so the PR comment below can
+          # report the errors that caused the failure. Kept explicit because
+          # that step reads the very same path.
+          pr-summary-path: pr-summary.md
 
       # Mark repository as safe to avoid dubious ownership warnings
       - name: Mark repository as safe
@@ -171,25 +190,61 @@ jobs:
           printf '### Deployment\n[Open published IG for %s](%s)\n' "${label}" "${url}" >> "${GITHUB_STEP_SUMMARY}"
           echo "published_url=${url}" >> "${GITHUB_OUTPUT}"
 
-      - name: Upsert PR comment with published URL
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
+      # Repo-internal PRs are built by their branch's push event, not by the
+      # pull_request event, so the PR feedback has to be posted from here.
+      # Runs even when validation failed -- that is when the report matters
+      # most -- but not when the job was cancelled.
+      - name: Upsert PR comment with build results
+        if: ${{ !cancelled() && github.event_name == 'push' && startsWith(github.ref, 'refs/heads/') }}
         uses: actions/github-script@v8
         env:
           BRANCH_NAME: ${{ github.ref_name }}
           PUBLISHED_URL: ${{ steps.announce_url.outputs.published_url }}
+          # Written by the validation step above.
+          SUMMARY_PATH: pr-summary.md
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         with:
           script: |
+            const fs = require('fs');
             const { owner, repo } = context.repo;
             const branch = process.env.BRANCH_NAME;
             const marker = '<!-- ig-publish-url -->';
             const url = process.env.PUBLISHED_URL;
-            const body = `${marker}
-            ### Deployment
-            [Open published IG for branch \`${branch}\`](${url})`;
+            const runUrl = process.env.RUN_URL;
 
-            // Try to find an open PR for this branch
+            // The renderer writes the same markdown it puts in the job summary.
+            // Absent means the build died before validation ran.
+            let validation = '';
+            try {
+              validation = fs.readFileSync(process.env.SUMMARY_PATH, 'utf8').trim();
+            } catch {
+              core.info('No validation summary found; reporting the deployment only.');
+            }
+
+            // Comments are capped at 65536 characters, and a run with many
+            // findings can exceed that. Keep room for the deployment section.
+            const limit = 60000;
+            if (validation.length > limit) {
+              validation = validation.slice(0, limit) +
+                `\n\n_Truncated — see the [full validation summary](${runUrl})._`;
+            }
+
+            const deployment = url
+              ? `[Open published IG for branch \`${branch}\`](${url})`
+              : `Not published — see the [workflow run](${runUrl}).`;
+
+            if (!validation && !url) {
+              core.info('Neither a validation summary nor a published URL; skipping PR comment.');
+              return;
+            }
+
+            const body = [marker, validation, '### Deployment', deployment]
+              .filter(Boolean).join('\n\n');
+
+            // Try to find an open PR for this branch. Filtering by head server
+            // side keeps this to one short page no matter how many PRs are open.
             const { data: prs } = await github.rest.pulls.list({
-              owner, repo, state: 'open', per_page: 100
+              owner, repo, state: 'open', head: `${owner}:${branch}`, per_page: 100
             });
             const pr = prs.find(p => p.head && p.head.ref === branch);
             if (!pr) {
@@ -197,8 +252,10 @@ jobs:
               return;
             }
 
-            // List existing comments on that PR
-            const { data: comments } = await github.rest.issues.listComments({
+            // Paginated on purpose: the marker comment is the oldest one on the
+            // PR, so on a busy PR it sits past the first page. Missing it would
+            // post a duplicate instead of updating the existing comment.
+            const comments = await github.paginate(github.rest.issues.listComments, {
               owner, repo, issue_number: pr.number, per_page: 100
             });
 
@@ -209,10 +266,10 @@ jobs:
               await github.rest.issues.updateComment({
                 owner, repo, comment_id: existing.id, body
               });
-              core.info(`Updated IG publish URL comment on PR #${pr.number}`);
+              core.info(`Updated build results comment on PR #${pr.number}`);
             } else {
               await github.rest.issues.createComment({
                 owner, repo, issue_number: pr.number, body
               });
-              core.info(`Created IG publish URL comment on PR #${pr.number}`);
+              core.info(`Created build results comment on PR #${pr.number}`);
             }
