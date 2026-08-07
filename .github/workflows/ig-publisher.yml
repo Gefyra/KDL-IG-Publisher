@@ -7,11 +7,19 @@ on:
   push:
     branches:
       - '**'
+      # Dependabot branches always come with a PR, which builds via pull_request.
+      # Skipping the push event avoids a duplicate build and a Pages preview.
+      - '!dependabot/**'
+      - '!gh-pages'
   pull_request:
+  # Publishing a GitHub release builds that tag and promotes it to the site
+  # root. The tag must match the version in sushi-config.yaml.
+  release:
+    types: [published]
 
 permissions:
-  actions: write
   contents: write
+  # PR comments go through the issues API, hence both scopes.
   issues: write
   pull-requests: write
 
@@ -19,6 +27,22 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    # A branch in this repo already builds on its push event, so the PR run
+    # would be a second build of the same commit. Fork PRs have no push event
+    # here and are the only ones that need it.
+    if: >-
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name != github.repository
+    # An IG build that hangs would otherwise sit in the default 6h timeout and,
+    # through the shared concurrency group, block every other publish.
+    timeout-minutes: 45
+    # Publishing force-pushes gh-pages, so two publishing runs must not overlap:
+    # the later push would silently drop the other run's directory. Shared with
+    # pages-cleanup.yml. Runs that only build (pull_request) are grouped per ref
+    # and stay parallel.
+    concurrency:
+      group: ${{ github.event_name == 'pull_request' && format('ig-build-{0}', github.ref) || 'gh-pages-publish' }}
+      cancel-in-progress: false
     container:
       image: ghcr.io/gefyra/ig-publisher:latest
     env:
@@ -27,6 +51,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      # Fail before the (slow) build rather than after, and never publish an IG
+      # under a version number it does not actually carry.
+      - name: Resolve release version
+        id: release
+        if: github.event_name == 'release'
+        shell: bash
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          set -euo pipefail
+          version="${TAG#v}"
+          configured="$(awk '/^version:/ {print $2; exit}' sushi-config.yaml)"
+          if [ "${version}" != "${configured}" ]; then
+            echo "Release tag '${TAG}' resolves to version ${version}," >&2
+            echo "but sushi-config.yaml declares ${configured}." >&2
+            exit 1
+          fi
+          echo "version=${version}" >> "${GITHUB_OUTPUT}"
 
       # Run SUSHI (FSH -> FHIR conversion) on Resources directory
       - name: Run SUSHI
@@ -73,90 +116,59 @@ jobs:
             exit 1
           fi
 
-      - name: Record branch metadata for Pages cleanup
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
-        run: |
-          set -eu
-          echo "${GITHUB_REF_NAME}" > "${{ env.INPUT_DIR }}/output/.branch-name"
-
-      # Upload the IG build output as an artifact
+      # Kept for two weeks so a questionable build can still be inspected
+      # (qa.html in particular) after the fact.
       - name: Upload Build Results
         uses: actions/upload-artifact@v6
         with:
           name: fhir-ig
           path: |
             ${{ env.INPUT_DIR }}/output
-
-      # Configure Git identity
-      - name: Set git user
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
+          retention-days: 14
 
       # Mark repository as safe to avoid dubious ownership warnings
       - name: Mark repository as safe
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
+        if: github.event_name != 'pull_request'
         run: git config --global --add safe.directory ${{ github.workspace }}
 
-      # Publish the IG output to a branch-specific directory on gh-pages
-      - name: Publish branch output to GitHub Pages
+      # Publish the IG output to a branch-specific preview directory
+      - name: Publish branch preview to GitHub Pages
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
         shell: bash
         env:
           REPO: ${{ github.repository }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GIT_AUTHOR_NAME: github-actions[bot]
-          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-        run: |
-          set -euo pipefail
+          OUTPUT_DIR: ${{ env.INPUT_DIR }}/output
+        run: scripts/gh-pages.sh publish-preview "${GITHUB_REF_NAME}"
 
-          remote_url="https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git"
-
-          rm -rf gh-pages
-
-          if git ls-remote --heads "${remote_url}" gh-pages | grep -q "."; then
-            git clone --depth 1 --branch gh-pages "${remote_url}" gh-pages
-          else
-            git clone "${remote_url}" gh-pages
-            cd gh-pages
-            git checkout --orphan gh-pages
-            git rm -rf . >/dev/null 2>&1 || true
-            touch .nojekyll
-            git add .nojekyll
-            git commit -m "chore: initialize gh-pages"
-            git push --set-upstream origin gh-pages
-            cd ..
-          fi
-
-          branch_dir="gh-pages/${GITHUB_REF_NAME}"
-          rm -rf "${branch_dir}"
-          mkdir -p "${branch_dir}"
-          cp -R "${{ env.INPUT_DIR }}/output/." "${branch_dir}/"
-
-          cd gh-pages
-          git config user.name "${GIT_AUTHOR_NAME}"
-          git config user.email "${GIT_AUTHOR_EMAIL}"
-          git add --all
-          if git diff --cached --quiet; then
-            echo "No updates to publish."
-            exit 0
-          fi
-          git commit -m "chore: update ${GITHUB_REF_NAME} pages"
-          git push origin gh-pages
+      # Promote a published release to the site root and archive it by version
+      - name: Publish release to GitHub Pages
+        if: github.event_name == 'release'
+        shell: bash
+        env:
+          REPO: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OUTPUT_DIR: ${{ env.INPUT_DIR }}/output
+        run: scripts/gh-pages.sh publish-release "${{ steps.release.outputs.version }}"
 
       - name: Announce published URL
         id: announce_url
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
+        if: github.event_name != 'pull_request'
         shell: bash
+        env:
+          RELEASE_VERSION: ${{ steps.release.outputs.version }}
         run: |
           set -eu
-          repo_owner="${GITHUB_REPOSITORY_OWNER}"
-          repo_name="${GITHUB_REPOSITORY#*/}"
-          branch="${GITHUB_REF_NAME}"
-          url="https://${repo_owner}.github.io/${repo_name}/${branch}/"
+          site="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}"
+          if [ "${GITHUB_EVENT_NAME}" = release ]; then
+            label="release ${RELEASE_VERSION}"
+            url="${site}/"
+          else
+            label="branch ${GITHUB_REF_NAME}"
+            url="${site}/branches/${GITHUB_REF_NAME}/"
+          fi
           echo "Published to ${url}"
-          printf '### Deployment\n[Open published IG for branch `%s`](%s)\n' "${branch}" "${url}" >> "${GITHUB_STEP_SUMMARY}"
+          printf '### Deployment\n[Open published IG for %s](%s)\n' "${label}" "${url}" >> "${GITHUB_STEP_SUMMARY}"
           echo "published_url=${url}" >> "${GITHUB_OUTPUT}"
 
       - name: Upsert PR comment with published URL
