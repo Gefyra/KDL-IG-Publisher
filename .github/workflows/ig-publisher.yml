@@ -200,7 +200,7 @@ jobs:
       # most -- but not when the job was cancelled.
       - name: Upsert PR comment with build results
         if: ${{ !cancelled() && github.event_name == 'push' && startsWith(github.ref, 'refs/heads/') }}
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         env:
           BRANCH_NAME: ${{ github.ref_name }}
           PUBLISHED_URL: ${{ steps.announce_url.outputs.published_url }}
