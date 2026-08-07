@@ -7,8 +7,9 @@ on:
   push:
     branches:
       - '**'
-      # Dependabot branches always come with a PR, which builds via pull_request.
-      # Skipping the push event avoids a duplicate build and a Pages preview.
+      # Dependabot branches build through their PR instead (see the job
+      # condition below), which keeps a bot branch from publishing a Pages
+      # preview that nobody asked for.
       - '!dependabot/**'
       - '!gh-pages'
   pull_request:
@@ -28,11 +29,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     # A branch in this repo already builds on its push event, so the PR run
-    # would be a second build of the same commit. Fork PRs have no push event
-    # here and are the only ones that need it.
+    # would be a second build of the same commit. Two kinds of PR have no push
+    # event to rely on: those from forks, and Dependabot's, whose branches are
+    # excluded from the push trigger above. Without the last clause a
+    # Dependabot PR would build nowhere at all and merge unverified.
     if: >-
       github.event_name != 'pull_request' ||
-      github.event.pull_request.head.repo.full_name != github.repository
+      github.event.pull_request.head.repo.full_name != github.repository ||
+      startsWith(github.head_ref, 'dependabot/')
     # An IG build that hangs would otherwise sit in the default 6h timeout and,
     # through the shared concurrency group, block every other publish.
     timeout-minutes: 45
