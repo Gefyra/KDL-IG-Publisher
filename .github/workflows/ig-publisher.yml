@@ -54,7 +54,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       # Fail before the (slow) build rather than after, and never publish an IG
       # under a version number it does not actually carry.
