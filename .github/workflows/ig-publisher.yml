@@ -149,6 +149,21 @@ jobs:
           # that step reads the very same path.
           pr-summary-path: pr-summary.md
 
+      # The pr-comment job cannot recompute a validation result, so the only way
+      # it can report on a PR opened after this run finished is to read what this
+      # run wrote. Kept out of the fhir-ig artifact because that one is uploaded
+      # before validation has even run.
+      - name: Upload PR summary
+        if: ${{ !cancelled() && github.event_name == 'push' && startsWith(github.ref, 'refs/heads/') }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: pr-summary
+          path: pr-summary.md
+          # Absent when the build died before validation ran; the pr-comment job
+          # handles a missing summary on its own.
+          if-no-files-found: ignore
+          retention-days: 14
+
       # Mark repository as safe to avoid dubious ownership warnings
       - name: Mark repository as safe
         if: github.event_name != 'pull_request'
@@ -210,70 +225,158 @@ jobs:
         with:
           script: |
             const fs = require('fs');
+            const { buildBody, findOpenPr, upsertComment } =
+              require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/pr-comment.js`);
             const { owner, repo } = context.repo;
             const branch = process.env.BRANCH_NAME;
-            const marker = '<!-- ig-publish-url -->';
-            const url = process.env.PUBLISHED_URL;
-            const runUrl = process.env.RUN_URL;
 
             // The renderer writes the same markdown it puts in the job summary.
             // Absent means the build died before validation ran.
             let validation = '';
             try {
-              validation = fs.readFileSync(process.env.SUMMARY_PATH, 'utf8').trim();
+              validation = fs.readFileSync(process.env.SUMMARY_PATH, 'utf8');
             } catch {
               core.info('No validation summary found; reporting the deployment only.');
             }
 
-            // Comments are capped at 65536 characters, and a run with many
-            // findings can exceed that. Keep room for the deployment section.
-            const limit = 60000;
-            if (validation.length > limit) {
-              validation = validation.slice(0, limit) +
-                `\n\n_Truncated — see the [full validation summary](${runUrl})._`;
-            }
-
-            const deployment = url
-              ? `[Open published IG for branch \`${branch}\`](${url})`
-              : `Not published — see the [workflow run](${runUrl}).`;
-
-            if (!validation && !url) {
+            const body = buildBody({
+              validation,
+              url: process.env.PUBLISHED_URL,
+              branch,
+              runUrl: process.env.RUN_URL,
+            });
+            if (!body) {
               core.info('Neither a validation summary nor a published URL; skipping PR comment.');
               return;
             }
 
-            const body = [marker, validation, '### Deployment', deployment]
-              .filter(Boolean).join('\n\n');
-
-            // Try to find an open PR for this branch. Filtering by head server
-            // side keeps this to one short page no matter how many PRs are open.
-            const { data: prs } = await github.rest.pulls.list({
-              owner, repo, state: 'open', head: `${owner}:${branch}`, per_page: 100
-            });
-            const pr = prs.find(p => p.head && p.head.ref === branch);
+            // A PR opened after this point gets its comment from the pr-comment
+            // job instead -- this run is already past looking.
+            const pr = await findOpenPr({ github, owner, repo, branch });
             if (!pr) {
               core.info(`No open PR found for branch ${branch}; skipping PR comment.`);
               return;
             }
 
-            // Paginated on purpose: the marker comment is the oldest one on the
-            // PR, so on a busy PR it sits past the first page. Missing it would
-            // post a duplicate instead of updating the existing comment.
-            const comments = await github.paginate(github.rest.issues.listComments, {
-              owner, repo, issue_number: pr.number, per_page: 100
+            await upsertComment({ github, core, owner, repo, prNumber: pr.number, body });
+
+  # Reports a push build's result on a PR that did not exist yet while that
+  # build was running. The build job skips repo-internal, non-dependabot PRs
+  # because the branch's push event already built the same commit, and that push
+  # run posts the comment itself -- but only if it finds an open PR when it gets
+  # there. Push the branch, then open the PR a moment later, and nothing ever
+  # reports back: the pull_request run is skipped and the push run is done
+  # looking. This job builds nothing; it only replays the finished run's result.
+  pr-comment:
+    runs-on: ubuntu-latest
+    # The exact complement of the build job's condition, restricted to the two
+    # actions that can open the gap. On synchronize the PR already exists, so
+    # the push run triggered by that same commit finds it without help.
+    if: >-
+      github.event_name == 'pull_request' &&
+      (github.event.action == 'opened' || github.event.action == 'reopened') &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      !startsWith(github.head_ref, 'dependabot/')
+    permissions:
+      # Reading another run's artifact needs actions:read, which the workflow's
+      # default permissions do not include.
+      actions: read
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      # Only the shared helper is needed, not the IG sources.
+      - name: Checkout comment helper
+        uses: actions/checkout@v7
+        with:
+          sparse-checkout: .github/scripts
+          sparse-checkout-cone-mode: false
+
+      - name: Find the push build for this commit
+        id: push_run
+        uses: actions/github-script@v9
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const { data } = await github.rest.actions.listWorkflowRuns({
+              owner, repo,
+              workflow_id: 'ig-publisher.yml',
+              head_sha: process.env.HEAD_SHA,
+              event: 'push',
+              status: 'completed',
+              per_page: 100,
             });
 
-            // Find existing marker comment (any author)
-            const existing = comments.find(c => typeof c.body === 'string' && c.body.includes(marker));
-
-            if (existing) {
-              await github.rest.issues.updateComment({
-                owner, repo, comment_id: existing.id, body
-              });
-              core.info(`Updated build results comment on PR #${pr.number}`);
-            } else {
-              await github.rest.issues.createComment({
-                owner, repo, issue_number: pr.number, body
-              });
-              core.info(`Created build results comment on PR #${pr.number}`);
+            // Newest first. A push build still in flight is deliberately left
+            // alone: it will find this PR by itself and comment, so stepping in
+            // here would only race it with a half-finished result.
+            const run = data.workflow_runs[0];
+            if (!run) {
+              core.info('No completed push build for this commit; it will comment on its own.');
+              return;
             }
+
+            core.setOutput('run_id', String(run.id));
+            core.setOutput('conclusion', run.conclusion || '');
+            core.setOutput('run_url', run.html_url);
+
+      - name: Download that run's PR summary
+        if: steps.push_run.outputs.run_id
+        # Expired after 14 days, or never written because the build died before
+        # validation. Both stay reportable, just without the findings table.
+        continue-on-error: true
+        uses: actions/download-artifact@v8
+        with:
+          name: pr-summary
+          run-id: ${{ steps.push_run.outputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upsert PR comment with build results
+        if: steps.push_run.outputs.run_id
+        uses: actions/github-script@v9
+        env:
+          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          SUMMARY_PATH: pr-summary.md
+          RUN_CONCLUSION: ${{ steps.push_run.outputs.conclusion }}
+          RUN_URL: ${{ steps.push_run.outputs.run_url }}
+        with:
+          script: |
+            const fs = require('fs');
+            const { buildBody, upsertComment } =
+              require(`${process.env.GITHUB_WORKSPACE}/.github/scripts/pr-comment.js`);
+            const { owner, repo } = context.repo;
+            const branch = process.env.BRANCH_NAME;
+
+            let validation = '';
+            try {
+              validation = fs.readFileSync(process.env.SUMMARY_PATH, 'utf8');
+            } catch {
+              core.info('No validation summary artifact; reporting the deployment only.');
+            }
+
+            // Publishing sits behind the validation gate, so a preview exists
+            // exactly when that run succeeded. Rebuilt from the same pieces the
+            // build job uses, since it had no PR to hand its own URL to.
+            const url = process.env.RUN_CONCLUSION === 'success'
+              ? `https://${owner}.github.io/${repo}/branches/${branch}/`
+              : '';
+
+            const body = buildBody({
+              validation,
+              url,
+              branch,
+              runUrl: process.env.RUN_URL,
+            });
+            if (!body) {
+              core.info('Neither a validation summary nor a published URL; skipping PR comment.');
+              return;
+            }
+
+            await upsertComment({
+              github, core, owner, repo,
+              prNumber: Number(process.env.PR_NUMBER),
+              body,
+            });
