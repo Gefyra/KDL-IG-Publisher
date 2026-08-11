@@ -15,7 +15,7 @@ Description: "ValueSets sind Listen von Codes, die in einem bestimmten Kontext v
 * ^experimental = false
 * ^date = "2026-01-01"
 * ^copyright = "2026 DVMD e.V."
-* include codes from system KDL|2026.0.0 where child exists false
+* include codes from system KDL|2026.1.0 where child exists false
 * ^expansion.identifier = "urn:uuid:36767acf-e0a8-41c4-b302-922b2293e106"
 * ^expansion.timestamp = "2026-02-26T10:15:19.220Z"
 * ^expansion.total = 483
@@ -29,7 +29,7 @@ Description: "ValueSets sind Listen von Codes, die in einem bestimmten Kontext v
 * ^expansion.parameter[+].name = "count"
 * ^expansion.parameter[=].valueInteger = 1000
 * ^expansion.parameter[+].name = "used-codesystem"
-* ^expansion.parameter[=].valueUri = "http://dvmd.de/fhir/CodeSystem/kdl|2026.0.0"
+* ^expansion.parameter[=].valueUri = "http://dvmd.de/fhir/CodeSystem/kdl|2026.1.0"
 * ^expansion.contains[0].system = "http://dvmd.de/fhir/CodeSystem/kdl"
 * ^expansion.contains[=].code = #AD010101
 * ^expansion.contains[=].display = "Ärztliche Stellungnahme"
@@ -194,7 +194,7 @@ Description: "ValueSets sind Listen von Codes, die in einem bestimmten Kontext v
 * ^expansion.contains[=].display = "MD Prüfauftrag"
 * ^expansion.contains[+].system = "http://dvmd.de/fhir/CodeSystem/kdl"
 * ^expansion.contains[=].code = #AM010108
-* ^expansion.contains[=].display = "MD Gutachten"
+* ^expansion.contains[=].display = "MD-Gutachten"
 * ^expansion.contains[+].system = "http://dvmd.de/fhir/CodeSystem/kdl"
 * ^expansion.contains[=].code = #AM010109
 * ^expansion.contains[=].display = "Begründete Unterlagen Leistungskodierung"
@@ -946,10 +946,10 @@ Description: "ValueSets sind Listen von Codes, die in einem bestimmten Kontext v
 * ^expansion.contains[=].display = "Sonstige Geburtendokumentation"
 * ^expansion.contains[+].system = "http://dvmd.de/fhir/CodeSystem/kdl"
 * ^expansion.contains[=].code = #SD070201
-* ^expansion.contains[=].display = "Barthel Index"
+* ^expansion.contains[=].display = "Barthel-Index"
 * ^expansion.contains[+].system = "http://dvmd.de/fhir/CodeSystem/kdl"
 * ^expansion.contains[=].code = #SD070202
-* ^expansion.contains[=].display = "Dem Tect"
+* ^expansion.contains[=].display = "DemTect"
 * ^expansion.contains[+].system = "http://dvmd.de/fhir/CodeSystem/kdl"
 * ^expansion.contains[=].code = #SD070203
 * ^expansion.contains[=].display = "ISAR Screening"

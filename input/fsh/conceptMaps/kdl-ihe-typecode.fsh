@@ -14,10 +14,10 @@ Usage: #definition
 * date = "2026-01-01"
 * description = "Diese Ressource dient als Grundlage für die Zuordnung von KDL-Codes zu IHE-XDS DocumentEntry.typeCodes (gemäß Spezifikation von IHE Deutschland e.V., siehe http://www.ihe-d.de/projekte/xds-value-sets-fuer-deutschland/). Grundlage ist der ANWENDUNGSFALL: DIGITALE ARCHIVIERUNG, inkl. aktuelle Anforderungen des Anhangs zur Anlage 1 der eVV. Das Reviewergebnis - zu diesem Mappingkonzept - von der IHE-AG IHE-XDS ValueSets aus 2023 wurde berücksichtigt."
 * copyright = "2026 DVMD e.V."
-* sourceCanonical = "http://dvmd.de/fhir/ValueSet/kdl|2026.0.0"
+* sourceCanonical = "http://dvmd.de/fhir/ValueSet/kdl|2026.1.0"
 * targetCanonical = $IHEXDStypeCodeVS
 * group[0]
-  * source = "http://dvmd.de/fhir/CodeSystem/kdl|2026.0.0"
+  * source = "http://dvmd.de/fhir/CodeSystem/kdl|2026.1.0"
   * target = $IHEXDStypeCode
   * element[0]
     * code = #AD010101
@@ -392,7 +392,7 @@ Usage: #definition
       * equivalence = #wider
   * element[+]
     * code = #AM010108
-    * display = "MD Gutachten"
+    * display = "MD-Gutachten"
     * target
       * code = #ABRE
       * display = "Abrechnungsdokumente"
@@ -2121,14 +2121,14 @@ Usage: #definition
       * equivalence = #wider
   * element[+]
     * code = #SD070201
-    * display = "Barthel Index"
+    * display = "Barthel-Index"
     * target
       * code = #PFLG
       * display = "Pflegedokumentation"
       * equivalence = #wider
   * element[+]
     * code = #SD070202
-    * display = "Dem Tect"
+    * display = "DemTect"
     * target
       * code = #FUNK
       * display = "Ergebnisse Funktionsdiagnostik"
@@ -3177,7 +3177,7 @@ Usage: #definition
       * display = "Wunddokumentation"
       * equivalence = #wider
 * group[+]
-  * source = "http://dvmd.de/fhir/CodeSystem/kdl|2026.0.0"
+  * source = "http://dvmd.de/fhir/CodeSystem/kdl|2026.1.0"
   * target = "http://terminology.hl7.org/CodeSystem/v3-NullFlavor"
   * element[0]
     * code = #UB140101
