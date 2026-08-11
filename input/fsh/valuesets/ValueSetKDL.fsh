@@ -13,4 +13,4 @@ Description: "Dieses ValueSet enthält sämtliche Codes aus dem CodeSystem &quot
 * ^experimental = false
 * ^date = "2026-01-01"
 * ^copyright = "2026 DVMD e.V."
-* include codes from system KDL|2026.0.0
+* include codes from system KDL|2026.1.0

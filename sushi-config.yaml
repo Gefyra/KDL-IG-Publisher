@@ -9,7 +9,7 @@ name: KDL
 title: Klinische Dokumentenklassen-Liste (KDL)
 description: Das Package enthält die KDL im FHIR-Format für den Datenaustausch im Kontext der elektronischen Patientenakte. Die Zusammenstellung des FHIR Pakets basiert auf den Inhalten, die seitens DVMD e.V. zur Verfügung gestellt wurden.
 status: active # draft | active | retired | unknown
-version: 2026.0.0
+version: 2026.1.0
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2026+
 releaseLabel: 2026
