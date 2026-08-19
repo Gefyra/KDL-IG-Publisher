@@ -1,0 +1,30 @@
+{
+  "codeSystems" : [{
+    "url" : "http://dvmd.de/fhir/CodeSystem/kdl",
+    "version" : "2026.1.0",
+    "status" : "active",
+    "name" : "KDL",
+    "title" : "CodeSystem Klinische Dokumentenklassen-Liste 2026",
+    "description" : "Die Klinische Dokumentenklassen-Liste (KDL) ist eine Entwicklung der anwendungsorientierten Forschung der DMI GmbH & Co. KG aus den Jahren 2013 – 2018 und basiert auf der Erfahrung aus der Indexierung von jährlich rund 4 Millionen Patientenakten mit 200 Millionen Dokumenten. Im Jahr 2018 ist die KDL für die Weiterentwicklung in den DVMD e. V. überführt wurden.\n\nAls Ergebnis dieser umfassenden Praxiserfahrung von Dokumenttyp-Benennungen deutscher Krankenhäuser leistet die KDL einen wichtigen Beitrag zur semantischen Interoperabilität in der Gesundheits-IT: Sie ermöglicht das Klassieren, also die Zuordnung, interner Dokumenttyp-Benennungen der Einrichtungen zu den Bezeichnungen bei Stakeholdern - und schafft so die Basis für den digitalen Austausch. Zu den zahlreichen potenziellen Stakeholdern in der Kommunikation - bei der Informationen aus Patientenakten eine Rolle spielen - zählen unter anderem Leistungspartner in der Behandlungskette, Kostenträger, der Medizinische Dienst, Behörden und der Patient.\n\nDie KDL ermöglicht eine einheitliche Bezeichnung der enorm vielfältigen Dokumententyp-Benennungen im täglichen Gebrauch. Sie stellt den Kern von Dokumententypen in einer medizinischen Einrichtung dar. Basis für die Liste sind die - von zwischenzeitlich über 300 Krankenhäusern aller Versorgungsstufen - vorhandenen Benennungen von Dokumenten (Bezeichnungen der papierbasierten und elektronischen Dokumentation) in einer Patientenakte.",
+    "oids" : ["1.2.276.0.76.5.562"],
+    "uses" : {
+    },
+    "ConceptMap-kdl-ihe-typecode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.typeCodes - Kontext: Archivierung, inkl. eVV",
+    "ValueSet-kdl-all.html" : "Klinische Dokumentenklassen-Liste 2026",
+    "ValueSet-kdl.html" : "Dokumenten(typ)klassen Klinische Dokumentenklassen-Liste 2026",
+    "ConceptMap-kdl-ihe-classcode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.classCodes - Kontext: Archivierung, inkl. eVV"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+    "version" : "4.0.0",
+    "status" : "active",
+    "name" : "NullFlavor",
+    "title" : "NullFlavor",
+    "description" : "A collection of codes specifying why a valid value is not present.",
+    "oids" : ["2.16.840.1.113883.5.1008"],
+    "uses" : {
+    },
+    "ConceptMap-kdl-ihe-typecode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.typeCodes - Kontext: Archivierung, inkl. eVV",
+    "ConceptMap-kdl-ihe-classcode.html" : "ConceptMap zur Übersetzung von KDL-Codes in IHE-XDS DocumentEntry.classCodes - Kontext: Archivierung, inkl. eVV"
+  }]
+}

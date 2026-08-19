@@ -1,0 +1,95 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://dvmd.de/fhir/ValueSet/kdl-all> a fhir:ValueSet ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "kdl-all"] ;
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/shareablevalueset" ;
+       fhir:index 0 ;
+       fhir:link <http://hl7.org/fhir/StructureDefinition/shareablevalueset>
+     ]
+  ] ;
+  fhir:Resource.language [ fhir:value "de-DE"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xml:lang=\"de-DE\" xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"de-DE\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet kdl-all</b></p><a name=\"kdl-all\"> </a><a name=\"hckdl-all\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-DE</p><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://hl7.org/fhir/R4/shareablevalueset.html\">Shareable ValueSet</a></p></div><ul><li>Include all codes defined in <a href=\"CodeSystem-kdl.html\"><code>http://dvmd.de/fhir/CodeSystem/kdl</code></a><span title=\"Version is explicitly stated to be 2026.1.0\"> version ?2026.1.0</span></li></ul></div>"
+  ] ;
+  fhir:DomainResource.extension [
+     fhir:index 0 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/artifact-author" ] ;
+     fhir:Extension.valueContactDetail [
+       fhir:ContactDetail.name [ fhir:value "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)" ] ;
+       fhir:ContactDetail.telecom [
+         fhir:index 0 ;
+         fhir:ContactPoint.system [ fhir:value "email" ] ;
+         fhir:ContactPoint.value [ fhir:value "dvmd@dvmd.de" ]
+       ], [
+         fhir:index 1 ;
+         fhir:ContactPoint.system [ fhir:value "url" ] ;
+         fhir:ContactPoint.value [ fhir:value "https://www.dvmd.de" ]
+       ]
+     ]
+  ], [
+     fhir:index 1 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod" ] ;
+     fhir:Extension.valuePeriod [
+       fhir:Period.start [ fhir:value "2026-01-01"^^xsd:date ]
+     ]
+  ], [
+     fhir:index 2 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate" ] ;
+     fhir:Extension.valueDate [ fhir:value "2026-01-13"^^xsd:date ]
+  ] ;
+  fhir:ValueSet.url [ fhir:value "http://dvmd.de/fhir/ValueSet/kdl-all"] ;
+  fhir:ValueSet.version [ fhir:value "2026.1.0"] ;
+  fhir:ValueSet.name [ fhir:value "ValueSetKDL"] ;
+  fhir:ValueSet.title [ fhir:value "Klinische Dokumentenklassen-Liste 2026"] ;
+  fhir:ValueSet.status [ fhir:value "active"] ;
+  fhir:ValueSet.experimental [ fhir:value "false"^^xsd:boolean] ;
+  fhir:ValueSet.date [ fhir:value "2026-01-01"^^xsd:date] ;
+  fhir:ValueSet.publisher [ fhir:value "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"] ;
+  fhir:ValueSet.contact [
+     fhir:index 0 ;
+     fhir:ContactDetail.name [ fhir:value "Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index 0 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "https://www.dvmd.de" ]
+     ], [
+       fhir:index 1 ;
+       fhir:ContactPoint.system [ fhir:value "email" ] ;
+       fhir:ContactPoint.value [ fhir:value "dvmd@dvmd.de" ]
+     ]
+  ] ;
+  fhir:ValueSet.description [ fhir:value "Dieses ValueSet enthält sämtliche Codes aus dem CodeSystem &quot;KDL&quot; (alle Hierarchieebenen). **Wichtig:** Dieses ValueSet sollte NICHT in Profilen verwendet werden! Zur Kodierung von Dokumententypen sollen ausschließlich Codes der Ebene 3 (Dokumenten(typ)klassen) verwendet werden. Verwenden Sie stattdessen das ValueSet &quot;ValueSetKDLEbene3&quot; für Bindings an Attribute wie DocumentReference.type."] ;
+  fhir:ValueSet.jurisdiction [
+     fhir:index 0 ;
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ] ;
+       fhir:Coding.code [ fhir:value "DE" ] ;
+       fhir:Coding.display [ fhir:value "Germany" ]
+     ]
+  ] ;
+  fhir:ValueSet.copyright [ fhir:value "2026 DVMD e.V."] ;
+  fhir:ValueSet.compose [
+     fhir:ValueSet.compose.include [
+       fhir:index 0 ;
+       fhir:ValueSet.compose.include.system [ fhir:value "http://dvmd.de/fhir/CodeSystem/kdl" ] ;
+       fhir:ValueSet.compose.include.version [ fhir:value "2026.1.0" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://dvmd.de/fhir/ValueSet/kdl-all.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

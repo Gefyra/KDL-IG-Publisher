@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="kdl-all"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+  </meta>
+  <language value="de-DE"/>
+  <text>
+    <status value="generated"/><div xml:lang="de-DE" xmlns="http://www.w3.org/1999/xhtml" lang="de-DE"><p class="res-header-id"><b>Generated Narrative: ValueSet kdl-all</b></p><a name="kdl-all"> </a><a name="hckdl-all"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">Language: de-DE</p><p style="margin-bottom: 0px">Profile: <a href="http://hl7.org/fhir/R4/shareablevalueset.html">Shareable ValueSet</a></p></div><ul><li>Include all codes defined in <a href="CodeSystem-kdl.html"><code>http://dvmd.de/fhir/CodeSystem/kdl</code></a><span title="Version is explicitly stated to be 2026.1.0"> version &#x1F4CD;2026.1.0</span></li></ul></div>
+  </text>
+  <extension url="http://hl7.org/fhir/StructureDefinition/artifact-author">
+    <valueContactDetail>
+      <name value="Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"/>
+      <telecom>
+        <system value="email"/>
+        <value value="dvmd@dvmd.de"/>
+      </telecom>
+      <telecom>
+        <system value="url"/>
+        <value value="https://www.dvmd.de"/>
+      </telecom>
+    </valueContactDetail>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod">
+    <valuePeriod>
+      <start value="2026-01-01"/>
+    </valuePeriod>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate">
+    <valueDate value="2026-01-13"/>
+  </extension>
+  <url value="http://dvmd.de/fhir/ValueSet/kdl-all"/>
+  <version value="2026.1.0"/>
+  <name value="ValueSetKDL"/>
+  <title value="Klinische Dokumentenklassen-Liste 2026"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-01-01"/>
+  <publisher value="Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"/>
+  <contact>
+    <name value="Der Fachverband für Dokumentation und Informationsmanagement in der Medizin (DVMD)"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.dvmd.de"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="dvmd@dvmd.de"/>
+    </telecom>
+  </contact>
+  <description value="Dieses ValueSet enthält sämtliche Codes aus dem CodeSystem &amp;quot;KDL&amp;quot; (alle Hierarchieebenen). **Wichtig:** Dieses ValueSet sollte NICHT in Profilen verwendet werden! Zur Kodierung von Dokumententypen sollen ausschließlich Codes der Ebene 3 (Dokumenten(typ)klassen) verwendet werden. Verwenden Sie stattdessen das ValueSet &amp;quot;ValueSetKDLEbene3&amp;quot; für Bindings an Attribute wie DocumentReference.type."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="DE"/>
+      <display value="Germany"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="2026 DVMD e.V."/>
+  <compose>
+    <include>
+      <system value="http://dvmd.de/fhir/CodeSystem/kdl"/>
+      <version value="2026.1.0"/>
+    </include>
+  </compose>
+</ValueSet>
