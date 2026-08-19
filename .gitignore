@@ -9,3 +9,9 @@ Thumbs.db
 .index.json
 .index.db
 /CodeSystem-kdl-properties.json
+
+# artifact of the "Download: JSON Resources" task
+json-resources.zip
+
+# IDE
+.idea/

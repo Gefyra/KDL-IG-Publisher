@@ -1,28 +1,10 @@
 {
-  "name": "FHIR IG Generator Dev Container",
-  "image": "ghcr.io/gefyra/igpublisher-devcontainer:latest",
-  "remoteUser": "runner",
-  "updateRemoteUserUID": true,
+  "name": "KDL IG",
+  "image": "ghcr.io/gefyra/igpublisher-devcontainer-image:latest",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "updateRemoteUserUID": true,
   "overrideCommand": true,
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {}
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "gematikde.codfsh",
-        "fhir-shorthand.vscode-fsh",
-        "yannick-lagger.vscode-fhir-tools",
-        "redhat.vscode-yaml",
-        "esbenp.prettier-vscode",
-        "yzhang.markdown-all-in-one",
-        "streetsidesoftware.code-spell-checker",
-        "mhutchie.git-graph",
-        "peakchen90.open-html-in-browser",
-        "spencerwmiles.vscode-task-buttons"
-      ]
-    }
-  },
-  "postCreateCommand": "[ -f input-cache/publisher.jar ] || bash _updatePublisher.sh -y && echo 'Devcontainer ready.'"
+  }
 }
