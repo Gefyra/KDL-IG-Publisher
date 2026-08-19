@@ -135,6 +135,12 @@ jobs:
       # The renderer turns those issues into inline annotations and a summary
       # table, and fails the job if any error survives the filters below.
       - name: Check IG validation results
+        id: validation
+        # A validation error is a statement about the IG, not a build failure.
+        # Letting it end the job here would skip publishing -- that is, the
+        # rendered output one needs in order to understand those errors. The run
+        # still turns red, in the last step of this job.
+        continue-on-error: true
         uses: patrick-werner/validation-outcome-markdown-renderer@v1
         with:
           # qa.xml is the publisher's own OperationOutcome bundle; the renderer
@@ -148,21 +154,6 @@ jobs:
           # report the errors that caused the failure. Kept explicit because
           # that step reads the very same path.
           pr-summary-path: pr-summary.md
-
-      # The pr-comment job cannot recompute a validation result, so the only way
-      # it can report on a PR opened after this run finished is to read what this
-      # run wrote. Kept out of the fhir-ig artifact because that one is uploaded
-      # before validation has even run.
-      - name: Upload PR summary
-        if: ${{ !cancelled() && github.event_name == 'push' && startsWith(github.ref, 'refs/heads/') }}
-        uses: actions/upload-artifact@v7
-        with:
-          name: pr-summary
-          path: pr-summary.md
-          # Absent when the build died before validation ran; the pr-comment job
-          # handles a missing summary on its own.
-          if-no-files-found: ignore
-          retention-days: 14
 
       # Mark repository as safe to avoid dubious ownership warnings
       - name: Mark repository as safe
@@ -208,6 +199,26 @@ jobs:
           echo "Published to ${url}"
           printf '### Deployment\n[Open published IG for %s](%s)\n' "${label}" "${url}" >> "${GITHUB_STEP_SUMMARY}"
           echo "published_url=${url}" >> "${GITHUB_OUTPUT}"
+          # Handed to the pr-comment job, which cannot infer from the run's
+          # conclusion whether a preview exists: validation errors turn the run
+          # red without preventing the publish above.
+          printf '%s' "${url}" > published-url.txt
+
+      # Uploaded after publishing so that it carries the URL as well. Kept out of
+      # the fhir-ig artifact because that one goes up before validation has run,
+      # and the pr-comment job can recompute neither value.
+      - name: Upload PR summary
+        if: ${{ !cancelled() && github.event_name == 'push' && startsWith(github.ref, 'refs/heads/') }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: pr-summary
+          path: |
+            pr-summary.md
+            published-url.txt
+          # Both are absent when the build died early; the pr-comment job handles
+          # a missing summary on its own.
+          if-no-files-found: ignore
+          retention-days: 14
 
       # Repo-internal PRs are built by their branch's push event, not by the
       # pull_request event, so the PR feedback has to be posted from here.
@@ -259,6 +270,17 @@ jobs:
             }
 
             await upsertComment({ github, core, owner, repo, prNumber: pr.number, body });
+
+      # Last, so that everything above it has already run. Publishing
+      # deliberately does not depend on validation, which leaves this as the only
+      # thing that makes a build with errors visible as a failure -- and as what
+      # a branch protection rule can be pointed at.
+      - name: Fail when the IG has validation errors
+        if: steps.validation.outcome == 'failure'
+        run: |
+          echo "The IG Publisher reported validation errors." >&2
+          echo "See the annotations on this run and the summary above." >&2
+          exit 1
 
   # Reports a push build's result on a PR that did not exist yet while that
   # build was running. The build job skips repo-internal, non-dependabot PRs
@@ -319,7 +341,6 @@ jobs:
             }
 
             core.setOutput('run_id', String(run.id));
-            core.setOutput('conclusion', run.conclusion || '');
             core.setOutput('run_url', run.html_url);
 
       - name: Download that run's PR summary
@@ -340,7 +361,6 @@ jobs:
           BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           SUMMARY_PATH: pr-summary.md
-          RUN_CONCLUSION: ${{ steps.push_run.outputs.conclusion }}
           RUN_URL: ${{ steps.push_run.outputs.run_url }}
         with:
           script: |
@@ -357,12 +377,15 @@ jobs:
               core.info('No validation summary artifact; reporting the deployment only.');
             }
 
-            // Publishing sits behind the validation gate, so a preview exists
-            // exactly when that run succeeded. Rebuilt from the same pieces the
-            // build job uses, since it had no PR to hand its own URL to.
-            const url = process.env.RUN_CONCLUSION === 'success'
-              ? `https://${owner}.github.io/${repo}/branches/${branch}/`
-              : '';
+            // Read rather than inferred from the run's conclusion: validation
+            // errors turn a run red without preventing the publish, so the
+            // conclusion says nothing about whether a preview exists.
+            let url = '';
+            try {
+              url = fs.readFileSync('published-url.txt', 'utf8').trim();
+            } catch {
+              core.info('No published URL recorded; reporting the findings only.');
+            }
 
             const body = buildBody({
               validation,
