@@ -34,7 +34,7 @@
     {
       "label": "Update IG Publisher",
       "type": "shell",
-      "command": "./_updatePublisher.sh -y",
+      "command": "ig-update-publisher",
       "group": "build",
       "presentation": {
         "echo": true,
@@ -74,9 +74,33 @@
       "problemMatcher": []
     },
     {
-      "label": "Git: Commit Changes",
+      "label": "Git: Commit & Push",
       "type": "shell",
-      "command": "git add -A && git commit -m \"${input:commitMessage}\"",
+      "command": "ig-commit \"${input:commitMessage}\"",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Download: IG Package",
+      "type": "shell",
+      "command": "ig-package",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Download: JSON Resources",
+      "type": "shell",
+      "command": "ig-json-resources",
       "presentation": {
         "echo": true,
         "reveal": "always",

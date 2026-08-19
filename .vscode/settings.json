@@ -33,9 +33,25 @@
       "tooltip": "Serve IG locally on port 8080"
     },
     {
-      "label": "$(git-commit) Commit",
-      "task": "Git: Commit Changes",
-      "tooltip": "Änderungen committen (speichert alle Dateien)"
+      "label": "$(git-commit) Commit & Push",
+      "task": "Git: Commit & Push",
+      "tooltip": "Alle Änderungen committen und auf den aktuellen Branch pushen"
+    },
+    {
+      "label": "$(cloud-download) Download",
+      "tasks": [
+        {
+          "label": "$(file-zip) Download IG",
+          "task": "Download: IG Package",
+          "description": "Download full-ig.zip aus output/"
+        },
+        {
+          "label": "$(file-code) Download JSON Files",
+          "task": "Download: JSON Resources",
+          "description": "JSON-Dateien aus fsh-generated/resources als ZIP"
+        }
+      ],
+      "tooltip": "Download Build-Artefakte"
     }
   ],
   "github.copilot.chat.startupMessage": false,
